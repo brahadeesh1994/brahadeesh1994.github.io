@@ -4,7 +4,7 @@ title: About me
 # subtitle: Why you'd want to go on a date with me
 ---
 
-<img src="https://github.com/brahadeesh1994/brahadeesh1994.github.io/blob/13b9b2f96c82abe5223ee461a8b63a44e490f7c2/website-photo.jpg" width="50%">
+<img src="https://raw.githubusercontent.com/brahadeesh1994/brahadeesh1994.github.io/13b9b2f96c82abe5223ee461a8b63a44e490f7c2/website-photo.jpg" width="50%">
 
 I am a fourth-year PhD student in the [Department of Mathematics][1] at [IIT Bombay][2], and I am funded by [NBHM][3].
 I completed my BS-MS (Dual) Degree with a major in Mathematics from [IISER Bhopal][4].
