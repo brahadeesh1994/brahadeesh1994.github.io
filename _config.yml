@@ -6,7 +6,7 @@
 # --- Required options --- #
 
 # Name of website
-title: Brahadeesh's Homepage
+title: Home
 
 # Your name to show in the footer
 author: Brahadeesh Sankarnarayanan
@@ -18,7 +18,7 @@ navbar-links:
 #  Resources:
 #    - Beautiful Jekyll: "https://beautifuljekyll.com"
 #    - Learn markdown: "https://www.markdowntutorial.com/"
-#  Author's home: "https://deanattali.com"
+  Academic homepage: "https://sites.google.com/view/brahadeesh-sankarnarayanan"
 
 # --- Logo --- #
 
@@ -61,8 +61,8 @@ social-network-links:
 #  telegram: yourname
 #  calendly: yourname
 #  mastodon: instance.url/@username
-  ORCID: 0000-0001-9191-1253
-  google-scholar: citations?user=EkZ13RYAAAAJ
+#  ORCID: 0000-0001-9191-1253
+#  google-scholar: citations?user=EkZ13RYAAAAJ
 #  discord: invite/invite_code or users/userid 
 #  kaggle: yourname
 #  hackerrank: yourname
