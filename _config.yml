@@ -69,7 +69,7 @@ social-network-links:
 
 # If you want your website to generate an RSS feed, provide a description
 # The URL for the feed will be https://<your_website>/feed.xml
-rss-description: Brahadeesh's latest updates and blog posts
+rss-description: My latest updates and blog posts
 
 # --- General options --- #
 
@@ -82,7 +82,7 @@ share-links-active:
 
 # How to display the link to your website in the footer
 # Remove this if you don't want a link in the footer
-# url-pretty: "MyWebsite.com"
+url-pretty: "https://sites.google.com/view/brahadeesh-sankarnarayanan"
 
 # Excerpt word length - Truncate the excerpt of each post on the feed page to the specified number of words
 excerpt_length: 50
@@ -97,7 +97,7 @@ feed_show_tags: true
 post_search: true
 
 # The keywords to associate with your website, for SEO purposes
-#keywords: "my,list,of,keywords"
+keywords: "mathematics,carnatic music"
 
 # --- Colours / background image --- #
 
@@ -158,7 +158,7 @@ footer-hover-col: "#0085A1"
 # --- Comments --- #
 
 # To use Disqus comments, sign up to https://disqus.com and fill in your Disqus shortname (NOT the userid)
-#disqus: ""
+disqus: "brahadeeshs-blog"
 
 # To use Facebook Comments, create a Facebook app and fill in the Facebook App ID
 #fb_comment_id: ""
@@ -217,7 +217,7 @@ date_format: "%B %-d, %Y"
 # --- You don't need to touch anything below here (but you can if you want) --- #
 
 # Output options (more information on Jekyll's site)
-timezone: "America/Toronto"
+timezone: "Asia/Kolkata"
 markdown: kramdown
 highlighter: rouge
 permalink: /:year-:month-:day-:title/
