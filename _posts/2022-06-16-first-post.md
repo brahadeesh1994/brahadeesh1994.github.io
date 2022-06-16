@@ -8,7 +8,7 @@ subtitle: Only to temporarily test MathJax
 tags: [math, general]
 ---
 
-This is just a test post. Here is some inline math with dollars as delimiters: $e^{i \pi} + 1 = 0$. Here is some inline math with the LaTeX delimiters: \(e^{i \pi} + 1 = 0\).
+This is just a test post. Here is some inline math with dollars as delimiters: $e^{i \pi} + 1 = 0$. Here is some inline math with the LaTeX delimiters: \\(e^{i \pi} + 1 = 0\\).
 
 Here is some displayed math with double dollars as delimiters (there's a newline in the plain text file right after this one ends):
 
@@ -17,7 +17,7 @@ e^{i \pi} + 1 = 0.
 $$
 
 Here is some displayed math with the LaTeX delimiters:
-\[
+\\[
 e^{i \pi} + 1 = 0.
-\]
+\\]
 
