@@ -11,7 +11,7 @@ Hello, and welcome to my blog. I am a fourth-year PhD student in the [Department
 
 ## About this blog
 
-My blog is intended to serve as an outlet for me to formulate and express some of the thoughts that enter my mind. The two topics that occupy most of my attention are my mathematics and my music.
+My blog is intended to serve as a creative outlet for me. The two topics that occupy most of my attention are my mathematics and my music.
 
 By "my mathematics", I mean every piece of mathematics that catches my attention. But, I do not expect to write much about my ongoing research. Organizing my thoughts on _that_ will demand more time and effort than I can spare. Instead, my preference is to write about the "obvious" things --- those ideas that have been settled, and perhaps even made their way into the under/graduate curriculum.
 
@@ -20,7 +20,7 @@ By "my music", I mean the music in the classical tradition of South India, also 
 I have no clear audience in mind for my blog. If you happen to stumble upon my posts and wish to leave feedback, please feel free to do so in the comments. Or, you can drop me an email (address linked in the footer).
 
 
-  [1]: http://www.math.iitb.ac.in
+  [1]: https://www.math.iitb.ac.in
   [2]: https://www.iitb.ac.in
   [3]: https://homepages.iitb.ac.in/~niranj/
   [4]: https://en.wikipedia.org/wiki/Carnatic_music
