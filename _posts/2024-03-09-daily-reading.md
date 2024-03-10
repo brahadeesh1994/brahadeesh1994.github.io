@@ -12,7 +12,7 @@ By way of breathing life into this blog, I've resolved to make a post every day 
 My library of physical books has now filled into four bookshelves, and I'm really excited to dig into the pages that are awaiting my attention!
 Hopefully, by logging my reading activity in this manner I will be inspired to really keep at it, instead of just doomscrolling on social media (ugh!).
 
-----------
+***
 
 I bought a copy of Charles Loewner's [*Theory of Continuous Groups*: Notes by Harley Flanders and Murray H. Potter][Loewner] at a book fair organized by IIT Bombay's Central Library a few months ago.
 Having read a chapter and a half so far, it seems like a lovely introduction to representation theory.
@@ -90,7 +90,7 @@ The category theoretical style is the modern one, I believe, and for many good r
 But, if it's computation that I need, then I'll take it in whichever flavor it comes; category theory can wait!
 Perhaps Amritanshu Prasad's [*Representation Theory*: A combinatorial viewpoint][Prasad] can be my second course.
 
-----------
+***
 
 The approach of working with *concrete* groups (called *transformation groups* in Loewner) as opposed to *abstract* groups, brought to my mind two things.
 
@@ -124,3 +124,4 @@ So much to read, so little time...
   [Herstein]: https://zbmath.org/1230.00004
   [Arusha]: https://sites.google.com/view/arushac
   [Prahlad]: https://home.iiserb.ac.in/~prahlad/
+  
