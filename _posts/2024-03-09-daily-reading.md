@@ -20,7 +20,7 @@ Having read a chapter and a half so far, it seems like a lovely introduction to 
 Just for a bit of background, the first (and only) course on representation theory that I took was in the final semester of the BS-MS programme at IISER Bhopal, and at that time we had followed Benjamin Steinberg's [*Representation Theory of Finite Groups*: An introductory approach][Steinberg].
 Somehow, I didn't understand the subject well (my transcript says I was awarded a B, but that's probably generous).
 Everything just seemed far too slick for my taste.
-I gave it another shot when I entered the Ph.D. program at IIT Bombay, but Serge Lang's [*Algebra*][Lang] was of no help.
+I gave it another shot when I entered the Ph.D. programme at IIT Bombay, but Serge Lang's [*Algebra*][Lang] was of no help.
 It was only much later, towards the end of my Ph.D., that I realized that I was looking for a combinatorial view of representation theory.
 So, I immediately picked up Bruce Sagan's [*The Symmetric Group*: Representations, combinatorial algorithms, and symmetric functions][Sagan], but it turned out that I wasn't ready for a graduate level textbook.
 
