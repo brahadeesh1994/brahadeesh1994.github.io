@@ -1,11 +1,11 @@
 ---
 layout: post
 title: A reading resolution
-subtitle: Day 1 of 365: Representation theory
+subtitle: Day 1 of 365
 # cover-img: /assets/img/path.jpg
 # thumbnail-img: /assets/img/thumb.png
 # share-img: /assets/img/path.jpg
-tags: [math, abstract-algebra, representation-theory]
+tags: [math, abstract algebra, representation theory]
 ---
 
 By way of breathing life into this blog, I've resolved to make a post every day which summarizes what I've read that day.
@@ -27,68 +27,98 @@ So, I immediately picked up Bruce Sagan's [*The Symmetric Group*: Representation
 So, Loewner's notes, organized as 14 lectures in just over a hundred pages, seemed very enticing.
 Here is its table of contents:
 
-* Preface
-* Lecture I
+Preface
+
+Lecture I
+  
   1. Transformation Groups
   2. Similarity
-* Lecture II
+
+Lecture II
+
   3. Representations of Groups
   4. Combinations of Representations
   5. Similarity and Reducibility
-* Lecture III
+
+Lecture III
+  
   6. Representations of Cyclic Groups
   7. Representations of Finite Abelian Groups
   8. Representations of Finite Groups
-* Lecture IV
+
+Lecture IV
+
   9. Representations of Finite Groups (continued)
   10. Characters
-* Lecture V
+
+Lecture V
+
   11. Representations of Finite Groups (concluded)
   12. Introduction to Differentable Manifolds
   13. Tensor Calculus on a Manifold
-* Lecture VI
+
+Lecture VI
+
   14. Quantities, Vectors, and Tensors
   15. Generation of Quantities by Differentiation
   16. Commutator of Two Contravariant Vector Fields
   17. Hurwitz Integration on a Group Manifold
-* Lecture VII
+
+Lecture VII
+
   18. Hurwitz Integration on a Group Manifold (continued)
   19. Representation of Compact Groups
   20. Existence of Representations
-* Lecture VIII
+
+Lecture VIII
+
   21. Representation of Compact Groups (continued)
   22. Characters
   23. Examples
       1. Rotation Group in the Plane
       2. Orthogonal Group in $E^{3}$
       3. Unitary Group in Two Variables
-* Lecture IX
+
+Lecture IX
+
   24. Lie Groups
   25. Infinitesimal Transformations on a Manifold
-* Lecture X
+
+Lecture X
+
   26. Infinitesimal Transformations of a Group
   27. Examples
   28. Geometry on the Group Space
-* Lecture XI
+  
+Lecture XI
+
   29. Parallelism
   30. First Fundamental Theorem of Lie Groups
   31. Mayer-Lie Systems
-* Lecture XII
+
+Lecture XII
+
   32. The Sufficiency Proof
   33. First Fundamental Theorem; Converse
   34. Second Fundamental Theorem; Converse
-* Lecture XIII
+
+Lecture XIII
+
   35. Converse of the Second Fundamental Theorem (continued)
   36. Concept of Group Germ
-* Lecture XIV
+
+Lecture XIV
+
   37. Converse of the Third Fundamental Theorem
   38. The Helmholtz-Lie Problem
-* Index
+
+Index
 
 The flavor of the lectures is very different from the other books I've read, perhaps because the terminology and style is antiquated.
 The category theoretical style is the modern one, I believe, and for many good reasons.
 But, if it's computation that I need, then I'll take it in whichever flavor it comes; category theory can wait!
-Perhaps Amritanshu Prasad's [*Representation Theory*: A combinatorial viewpoint][Prasad] can be my second course.
+
+After these fourteen lectures, perhaps Amritanshu Prasad's [*Representation Theory*: A combinatorial viewpoint][Prasad] can be my second course.
 
 ***
 
