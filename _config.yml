@@ -54,9 +54,9 @@ social-network-links:
   rss: true  # remove this line if you don't want to show an RSS link at the bottom
 #  facebook: deanattali
   github: brahadeesh1994
-#  twitter: brahadeesh_math
+  twitter: brahadeesh_math
 #  patreon: DeanAttali
-#  youtube: "@briha1994"
+  youtube: "@briha1994"
 #  medium: yourname
 #  reddit: yourname
   linkedin: brahadeesh-sankarnarayanan
@@ -71,10 +71,10 @@ social-network-links:
 #  yelp: yourname
 #  telegram: yourname
 #  calendly: yourname
-#  mastodon: instance.url/@username
+  mastodon: mathstodon.xyz/@brahadeesh
 #  bluesky: yourname
-#  ORCID: your ORCID ID
-#  google-scholar: your google scholar
+  ORCID: 0000-0001-9191-1253
+  google-scholar: EkZ13RYAAAAJ
 #  discord: "invite_code" or "users/userid" or "invite/invite_code" 
 #  kaggle: yourname
 #  hackerrank: yourname
