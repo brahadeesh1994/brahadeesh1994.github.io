@@ -7,7 +7,7 @@ title: About me
 
 <img src="https://raw.githubusercontent.com/brahadeesh1994/brahadeesh1994.github.io/13b9b2f96c82abe5223ee461a8b63a44e490f7c2/website-photo.jpg" width="50%">
 
-Hello, and welcome to my blog. I am a fourth-year PhD student in the [Department of Mathematics][1] at [IIT Bombay][2], working under [Prof. Niranjan Balachandran][3]. My current research interest is broadly in extremal graph theory and combinatorics.
+Hello, and welcome to my blog. I am a final-year PhD student in the [Department of Mathematics][1] at [IIT Bombay][2], working under [Prof. Niranjan Balachandran][3]. My current research interest is broadly in extremal graph theory and combinatorics.
 
 ## About this blog
 
