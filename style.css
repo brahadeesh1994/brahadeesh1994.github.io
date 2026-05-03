@@ -98,27 +98,77 @@ footer {
     .hero { flex-direction: column-reverse; text-align: center; }
 }
 
-/* Publications Styling */
-.pub-card {
+/* Chronological Row Styling */
+.pub-row {
     display: flex;
-    gap: 20px;
-    background: white;
-    padding: 20px;
-    margin-bottom: 20px;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-    border-left: 5px solid var(--accent);
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #eee;
 }
-.pub-year { font-weight: bold; color: var(--accent); font-size: 1.2rem; min-width: 50px; }
-.pub-info h3 { margin: 0 0 5px 0; font-size: 1.1rem; }
-.authors { color: #666; margin: 0; font-style: italic; }
-.venue { font-weight: 500; margin: 5px 0; }
-.pub-links a { font-size: 0.9rem; margin-right: 15px; text-decoration: none; color: var(--accent); }
 
-/* Teaching Styling */
-.teaching-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
-.course-card { background: var(--light); padding: 20px; border-radius: 8px; position: relative; }
-.badge { 
-    background: var(--primary); color: white; padding: 2px 8px; 
-    border-radius: 4px; font-size: 0.7rem; text-transform: uppercase;
+.pub-date {
+    font-weight: bold;
+    font-size: 1.1rem;
+    color: var(--accent);
+    min-width: 80px;
+}
+
+.pub-details {
+    flex-grow: 1;
+}
+
+.pub-title {
+    display: block;
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: var(--primary);
+    margin-bottom: 5px;
+}
+
+.pub-authors {
+    display: block;
+    color: #555;
+    margin-bottom: 5px;
+}
+
+.pub-venue {
+    display: block;
+    font-style: italic;
+    color: #777;
+    margin-bottom: 10px;
+}
+
+#publications h3 {
+    margin: 40px 0 20px 0;
+    color: var(--secondary);
+    border-left: 4px solid var(--accent);
+    padding-left: 15px;
+    font-size: 1.3rem;
+}
+
+/* Abstract Styling */
+.abstract-btn {
+    background: none;
+    border: 1px solid #ccc;
+    padding: 3px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.85rem;
+    color: #666;
+    transition: 0.3s;
+}
+
+.abstract-btn:hover {
+    background: #f0f0f0;
+}
+
+.abstract-content {
+    display: none; /* Hidden by default */
+    background: #f9f9f9;
+    padding: 15px;
+    margin-top: 10px;
+    border-radius: 5px;
+    font-size: 0.9rem;
+    line-height: 1.6;
+    border-left: 2px solid var(--accent);
 }
