@@ -3,20 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Brahadeesh Sankarnarayanan | Home</title>
+    <title>Teaching | Brahadeesh Sankarnarayanan</title>
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lmodern@0.0.3/dist/lmodern.css">
 
     <script>
       window.MathJax = {
-        tex: {
-          inlineMath: [['$', '$'], ['\\(', '\\)']],
-          processEscapes: true
-        },
-        chtml: {
-            matchFontHeight: true,
-            displayAlign: 'left'
-        }
+        tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] },
+        chtml: { matchFontHeight: true, displayAlign: 'left' }
       };
     </script>
     <script type="text/javascript" id="MathJax-script" async
@@ -27,6 +21,7 @@
     <link rel="icon" type="image/x-icon" href="k7-logo.svg">
 </head>
 <body>
+
 <nav>
     <div class="container">
         <div class="logo-area">
@@ -48,35 +43,41 @@
 </nav>
 
 <main class="container">
-    <div class="profile-section">
-        
-        <div class="bio-text">
-            <h2>About Me</h2>
-            <p>
-                I am a researcher at <strong>IIT Bombay</strong> specializing in the structural properties of <strong>6-regular triangulations</strong>. My work focuses on the intersection of topological graph theory and algorithmic complexity.
-            </p>
-            
-            <div class="thesis-figure">
-                <img src="thesis-viz.png" alt="6-regular triangulation embedding" class="thesis-img">
-                <p class="figure-caption">Figure 1: A 5-list coloring of a 6-regular triangulation on a torus, a central object of my current research.</p>
+    <h2>Professional Activities</h2>
+
+    <section class="activity-block">
+        <h3>Organization</h3>
+        <div class="pub-row">
+            <div class="pub-header">
+                <span class="pub-title">Graduate Student Combinatorics Conference (GSCC)</span>
             </div>
-
-            <p>
-                My current project involves developing linear-time algorithms for list-coloring problems on surfaces with non-zero Euler characteristics.
-            </p>
+            <div class="pub-split">
+                <div class="pub-meta"><div>2026</div><div>Lead Organizer</div></div>
+                <div class="abstract-text">Coordinated logistics, abstract submissions, and funding for over 100 international participants.</div>
+            </div>
         </div>
+    </section>
 
-        <div class="profile-sidebar">
-            <img src="headshot.jpg" alt="Brahadeesh Sankarnarayanan" class="profile-photo">
-            
-            <ul class="contact-links">
-                <li><a href="mailto:email@iitb.ac.in">email [at] iitb.ac.in</a></li>
-                <li><a href="#">Google Scholar</a></li>
-                <li><a href="#">GitHub</a></li>
-                <li><a href="#">CV (PDF)</a></li>
-            </ul>
-        </div>
-    </div>
+    <section class="activity-block">
+        <h3>Selected Talks</h3>
+        <ul class="teaching-list">
+            <li class="teaching-item">
+                <div class="course-info">
+                    <span class="course-main">"Rotation Systems of $K_7$ on the Torus"</span>
+                    <span class="course-date">Oct 2025</span>
+                </div>
+                <span class="course-desc">Discrete Math Seminar, IIT Bombay</span>
+            </li>
+        </ul>
+    </section>
+
+    <section class="activity-block">
+        <h3>Reviewing & Writing</h3>
+        <p class="service-text">
+            <strong>Reviewer for:</strong> MathSciNet, zbMATH Open, Journal of Combinatorial Theory (Series B).<br>
+            <strong>Expository Writing:</strong> Regular contributor to the [CAT Lab Blog], focusing on topological graph theory and $6$-regular triangulations.
+        </p>
+    </section>
 </main>
 
 <footer>

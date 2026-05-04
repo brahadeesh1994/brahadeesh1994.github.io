@@ -3,20 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Brahadeesh Sankarnarayanan | Home</title>
+    <title>Teaching | Brahadeesh Sankarnarayanan</title>
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lmodern@0.0.3/dist/lmodern.css">
 
     <script>
       window.MathJax = {
-        tex: {
-          inlineMath: [['$', '$'], ['\\(', '\\)']],
-          processEscapes: true
-        },
-        chtml: {
-            matchFontHeight: true,
-            displayAlign: 'left'
-        }
+        tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] },
+        chtml: { matchFontHeight: true, displayAlign: 'left' }
       };
     </script>
     <script type="text/javascript" id="MathJax-script" async
@@ -27,6 +21,7 @@
     <link rel="icon" type="image/x-icon" href="k7-logo.svg">
 </head>
 <body>
+
 <nav>
     <div class="container">
         <div class="logo-area">
@@ -48,35 +43,33 @@
 </nav>
 
 <main class="container">
-    <div class="profile-section">
-        
-        <div class="bio-text">
-            <h2>About Me</h2>
-            <p>
-                I am a researcher at <strong>IIT Bombay</strong> specializing in the structural properties of <strong>6-regular triangulations</strong>. My work focuses on the intersection of topological graph theory and algorithmic complexity.
-            </p>
-            
-            <div class="thesis-figure">
-                <img src="thesis-viz.png" alt="6-regular triangulation embedding" class="thesis-img">
-                <p class="figure-caption">Figure 1: A 5-list coloring of a 6-regular triangulation on a torus, a central object of my current research.</p>
+    <h2>Teaching</h2>
+
+    <ul class="teaching-list">
+        <li class="teaching-item">
+            <div class="course-info">
+                <span class="course-main">MA 212: Combinatorics and Graph Theory (Teaching Assistant)</span>
+                <span class="course-date">Fall 2025</span>
             </div>
+            <span class="course-desc">IIT Bombay — Led weekly tutorials and graded examinations.</span>
+        </li>
 
-            <p>
-                My current project involves developing linear-time algorithms for list-coloring problems on surfaces with non-zero Euler characteristics.
-            </p>
-        </div>
+        <li class="teaching-item">
+            <div class="course-info">
+                <span class="course-main">MA 401: Linear Algebra (Instructor)</span>
+                <span class="course-date">Spring 2025</span>
+            </div>
+            <span class="course-desc">IIT Bombay — Conducted remedial sessions for undergraduate students.</span>
+        </li>
 
-        <div class="profile-sidebar">
-            <img src="headshot.jpg" alt="Brahadeesh Sankarnarayanan" class="profile-photo">
-            
-            <ul class="contact-links">
-                <li><a href="mailto:email@iitb.ac.in">email [at] iitb.ac.in</a></li>
-                <li><a href="#">Google Scholar</a></li>
-                <li><a href="#">GitHub</a></li>
-                <li><a href="#">CV (PDF)</a></li>
-            </ul>
-        </div>
-    </div>
+        <li class="teaching-item">
+            <div class="course-info">
+                <span class="course-main">CS 101: Introduction to Programming</span>
+                <span class="course-date">Fall 2024</span>
+            </div>
+            <span class="course-desc">IIT Bombay — Developed lab exercises and automated grading scripts.</span>
+        </li>
+    </ul>
 </main>
 
 <footer>

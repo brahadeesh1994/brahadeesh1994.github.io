@@ -3,20 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Brahadeesh Sankarnarayanan | Home</title>
+    <title>Teaching | Brahadeesh Sankarnarayanan</title>
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lmodern@0.0.3/dist/lmodern.css">
 
     <script>
       window.MathJax = {
-        tex: {
-          inlineMath: [['$', '$'], ['\\(', '\\)']],
-          processEscapes: true
-        },
-        chtml: {
-            matchFontHeight: true,
-            displayAlign: 'left'
-        }
+        tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] },
+        chtml: { matchFontHeight: true, displayAlign: 'left' }
       };
     </script>
     <script type="text/javascript" id="MathJax-script" async
@@ -27,6 +21,7 @@
     <link rel="icon" type="image/x-icon" href="k7-logo.svg">
 </head>
 <body>
+
 <nav>
     <div class="container">
         <div class="logo-area">
@@ -48,35 +43,32 @@
 </nav>
 
 <main class="container">
-    <div class="profile-section">
-        
-        <div class="bio-text">
-            <h2>About Me</h2>
-            <p>
-                I am a researcher at <strong>IIT Bombay</strong> specializing in the structural properties of <strong>6-regular triangulations</strong>. My work focuses on the intersection of topological graph theory and algorithmic complexity.
-            </p>
-            
-            <div class="thesis-figure">
-                <img src="thesis-viz.png" alt="6-regular triangulation embedding" class="thesis-img">
-                <p class="figure-caption">Figure 1: A 5-list coloring of a 6-regular triangulation on a torus, a central object of my current research.</p>
-            </div>
+    <h2>Notes & Expositions</h2>
+    <p style="margin-bottom: 40px; color: var(--grey);">
+        A collection of informal writings on combinatorics, graph theory, and academic life.
+    </p>
 
-            <p>
-                My current project involves developing linear-time algorithms for list-coloring problems on surfaces with non-zero Euler characteristics.
-            </p>
-        </div>
+    <article class="blog-post-entry">
+        <div class="blog-date">May 2026</div>
+        <span class="blog-title">
+            <a href="posts/k7-embedding.html">Why $K_7$ is the "Perfect" Toroidal Graph</a>
+        </span>
+        <p class="blog-excerpt">
+            An exploration into the Heawood conjecture and why the symmetries of the $K_7$ embedding into the torus are more than just aesthetically pleasing...
+        </p>
+        <a href="posts/k7-embedding.html" class="read-more">Read Note →</a>
+    </article>
 
-        <div class="profile-sidebar">
-            <img src="headshot.jpg" alt="Brahadeesh Sankarnarayanan" class="profile-photo">
-            
-            <ul class="contact-links">
-                <li><a href="mailto:email@iitb.ac.in">email [at] iitb.ac.in</a></li>
-                <li><a href="#">Google Scholar</a></li>
-                <li><a href="#">GitHub</a></li>
-                <li><a href="#">CV (PDF)</a></li>
-            </ul>
-        </div>
-    </div>
+    <article class="blog-post-entry">
+        <div class="blog-date">April 2026</div>
+        <span class="blog-title">
+            <a href="posts/tikz-graphs.html">Automating Graph Drawings with TikZ</a>
+        </span>
+        <p class="blog-excerpt">
+            My workflow for generating high-quality combinatorial diagrams directly from adjacency matrices using LaTeX-native tools.
+        </p>
+        <a href="posts/tikz-graphs.html" class="read-more">Read Note →</a>
+    </article>
 </main>
 
 <footer>
@@ -89,5 +81,6 @@
         </div>
     </div>
 </footer>
+
 </body>
 </html>
