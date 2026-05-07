@@ -1,0 +1,585 @@
+%-------------------------
+% Faculty CV -- Brahadeesh Sankarnarayanan
+% Based on a template by Zoe Kearney (MIT-licensed), based in turn on
+% https://www.overleaf.com/latex/templates/coles-resume-template/qhpynjcvjpcj
+% Style follows: https://theprofessorisin.com/2016/08/19/dr-karens-rules-of-the-academic-cv/
+%------------------------
+
+% Document class and font size
+\documentclass[a4paper,9pt]{extarticle}
+\usepackage[T1]{fontenc}
+% Packages
+\usepackage[utf8]{inputenc} % For input encoding
+\usepackage{geometry} % For page margins
+\geometry{a4paper, margin=1in} % Set paper size and margins
+\usepackage{titlesec} % For section title formatting
+\usepackage{enumitem} % For itemized list formatting
+\usepackage{hyperref} % For hyperlinks
+	\hypersetup{
+		colorlinks=true,
+		linkcolor=red,
+		urlcolor=blue,
+		citecolor=magenta
+	}
+	\urlstyle{same}
+
+\makeatletter
+\newcommand{\doitext}{doi:}
+
+\newcommand*{\doi}{% 
+  \begingroup 
+  \lccode`\~=`\#\relax 
+  \lowercase{\def~{\#}}%
+  \lccode`\~=`\_\relax
+  \lowercase{\def~{\textunderscore}}%
+  \lccode`\~=`\<\relax 
+  \lowercase{\def~{\textless}}%
+  \lccode`\~=`\>\relax 
+  \lowercase{\def~{\textgreater}}%
+  \lccode`\~=0\relax 
+  \catcode`\#=\active 
+  \catcode`\_=\active 
+  \catcode`\<=\active 
+  \catcode`\>=\active 
+  \@doi
+}
+
+\def\@doi#1{% 
+  \let\#\relax
+  \let\_\relax
+  \let\textless\relax 
+  \let\textgreater\relax 
+  \edef\x{\toks0={{#1}}}% 
+  \x
+  \edef\#{\@percentchar23}%
+  \edef\_{_}%
+  \edef\textless{\@percentchar3C}%
+  \edef\textgreater{\@percentchar3E}%
+  \edef\x{\toks1={\noexpand\href{https://doi.org/#1}}}% 
+  \x
+  \edef\x{\endgroup\the\toks1 {\doitext\the\toks0}}%
+  \x
+}
+\makeatother
+
+\newcommand{\arXiv}[1]{\href{https://arxiv.org/abs/#1}{arXiv:#1}}
+\newcommand{\MR}[1]{\href{https://mathscinet.ams.org/mathscinet-getitem?mr=MR#1}{MR#1}}
+\newcommand{\Zbl}[1]{\href{https://zbmath.org/#1}{Zbl~#1}}
+
+% Formatting
+\setlist{noitemsep}
+\titleformat{\section}{\large\bfseries}{\thesection}{1em}{}[\titlerule]
+\titlespacing*{\section}{0pt}{\baselineskip}{\baselineskip}
+
+% Vertical spacing between entries: a small gap after each paragraph
+% so consecutive items in a section are visually separated.
+\setlength{\parskip}{4pt}
+\setlength{\parindent}{0pt}
+
+% Begin document
+\begin{document}
+
+\pagestyle{empty}
+
+%------------------------
+% Header
+%------------------------
+\begin{center}
+\textbf{\Large Brahadeesh Sankarnarayanan} \\[2pt]
+Assistant Professor (Grade II), Department of Mathematics \\
+Indian Institute of Technology Jodhpur, NH 62 Nagaur Road,\\
+Karwar 342030, Jodhpur District, Rajasthan, India \\[2pt]
+\href{mailto:brahadeesh@iitj.ac.in}{brahadeesh@iitj.ac.in} $\cdot$ +91 291 280 1469 \\[2pt]
+\href{https://brahadeesh1994.github.io/}{Website} $\cdot$
+\href{https://scholar.google.com/citations?user=EkZ13RYAAAAJ}{Google Scholar} $\cdot$
+\href{https://orcid.org/0000-0001-9191-1253}{ORCID} $\cdot$
+\href{https://mathscinet.ams.org/mathscinet/MRAuthorID/1329130}{MathSciNet} $\cdot$
+\href{https://zbmath.org/authors/?q=ai:sankarnarayanan.brahadeesh}{zbMATH Open}
+\end{center}
+
+%------------------------
+% Research Interests
+%------------------------
+\section*{RESEARCH INTERESTS}
+
+\noindent
+I work in combinatorics. My current interests are in spectral extremal graph theory, intersection graphs of paths, and combinatorial matrix theory. My past work covers list coloring of surface-embedded graphs, intersecting set systems, and the rank of structured matrices arising from tournaments.
+
+%------------------------
+% Education
+%------------------------
+\section*{EDUCATION}
+
+\noindent
+\textbf{Ph.D.\ (Mathematics)} \hfill 07/2018 -- 08/2024 \\
+Indian Institute of Technology (IIT) Bombay \\
+Thesis: ``Some problems in combinatorics: Excursions in graph colorings and extremal set theory'' \\
+Advisor: Niranjan Balachandran \\
+CPI: 8.89/10.0
+
+\noindent
+\textbf{BS--MS (Dual) Degree (Major in Mathematics)} \hfill 07/2012 -- 06/2017 \\
+Indian Institute of Science Education and Research (IISER) Bhopal \\
+Thesis: ``Automorphic forms and Tate's thesis'' \\
+Advisor: Karam Deo Shankhadhar \\
+CPI: 9.31/10.0
+
+%------------------------
+% Employment
+%------------------------
+\section*{EMPLOYMENT}
+
+\noindent
+\textbf{Assistant Professor (Grade II)} \hfill 09/2025 -- present \\
+Department of Mathematics, IIT Jodhpur
+
+\noindent
+\textbf{Research Associate} \hfill 05/2025 -- 09/2025 \\
+Department of Mathematics, IIT Hyderabad \\
+Project: ``Spectral Theory of Signed Graphs'' \\
+Principal Investigator: M.\ Rajesh Kannan
+
+\noindent
+\textbf{Institute Post-Doctoral Fellow} \hfill 08/2024 -- 02/2025 \\
+Department of Mathematics, IIT Bombay \\
+Mentor: Niranjan Balachandran
+
+\noindent
+\textbf{Project Assistant} \hfill 09/2017 -- 11/2017 \\
+Department of Mathematics, IISER Bhopal \\
+Project: ``Self-dual representations and signs'' \\
+Principal Investigator: Kumar Balasubramanian
+
+%------------------------
+% Publications
+%------------------------
+\section*{PUBLICATIONS}
+
+%\noindent
+%\emph{Author lists are alphabetical by surname, following the standard convention in mathematics; see the AMS statement on Joint Research and Its Publication.}
+
+\subsection*{\textsc{Refereed Journal Articles}}
+
+\noindent
+Niranjan Balachandran, Brahadeesh Sankarnarayanan. \\
+\emph{$5$-list coloring toroidal $6$-regular triangulations in linear time}. \\
+Discrete Applied Mathematics \textbf{386} (2026), 75--103, \doi{10.1016/j.dam.2026.01.032}, \\
+\arXiv{2106.01634}, \MR{5028701}, \Zbl{08187875}.
+
+\noindent
+Niranjan Balachandran, Shagnik Das, Brahadeesh Sankarnarayanan. \\
+\emph{Bounded fractional intersecting families are linear in size}. \\
+The Electronic Journal of Combinatorics \textbf{32} (2025), no.~3, \#P3.34, 10~pp., \doi{10.37236/12900}, \\
+\arXiv{2402.14981}, \MR{4949605}, \Zbl{1572.05240}.
+
+\noindent
+Niranjan Balachandran, Brahadeesh Sankarnarayanan. \\
+\emph{Low-rank matrices, tournaments, and symmetric designs}. \\
+Linear Algebra and its Applications \textbf{694} (2024), 136--147, \doi{10.1016/j.laa.2024.04.006}, \\
+\arXiv{2401.14015}, \MR{4736676}, \Zbl{1539.05071}.
+
+\noindent
+Niranjan Balachandran, Srimanta Bhattacharya, Brahadeesh Sankarnarayanan. \\
+\emph{Almost full rank matrices arising from transitive tournaments}. \\
+Linear and Multilinear Algebra \textbf{72} (2024), no.~2, 153--161, \doi{10.1080/03081087.2022.2158168}, \\
+\MR{4703565}, \Zbl{1533.05147}.
+
+\noindent
+Niranjan Balachandran, Srimanta Bhattacharya, Krishn Vishwas Kher, Rogers Mathew, \\
+Brahadeesh Sankarnarayanan. \\
+\emph{On hierarchically closed fractional intersecting families}. \\
+The Electronic Journal of Combinatorics \textbf{30} (2023), no.~4, \#P4.37, 17~pp., \doi{10.37236/11651}, \\
+\arXiv{2211.02540}, \MR{4672585}, \Zbl{1533.05268}.
+
+\noindent
+Niranjan Balachandran, Srimanta Bhattacharya, Brahadeesh Sankarnarayanan. \\
+\emph{An ensemble of high-rank matrices arising from tournaments}. \\
+Linear Algebra and its Applications \textbf{658} (2023), 310--318, \doi{10.1016/j.laa.2022.11.004}, \\
+\arXiv{2108.10871}, \MR{4513895}, \Zbl{1506.15034}. 
+%{\small An addendum (in the arXiv version) was announced in Richard A. Brualdi, ``From the Editor-in-Chief'', Linear Algebra and its Applications \textbf{684} (2024), 158--159.}
+
+\noindent
+Brahadeesh Sankarnarayanan. \\
+\emph{Note on $4$-coloring $6$-regular triangulations on the torus}. \\
+Annals of Combinatorics \textbf{26} (2022), no.~3, 559--569, \doi{10.1007/s00026-022-00573-8}, \\
+\arXiv{2106.01037}, \MR{4473892}, \Zbl{1497.05098}.
+
+\noindent
+Niranjan Balachandran, Brahadeesh Sankarnarayanan. \\
+\emph{The choice number versus the chromatic number for graphs embeddable on orientable surfaces}. \\
+The Electronic Journal of Combinatorics \textbf{28} (2021), no.~4, \#P4.50, 20~pp., \doi{10.37236/10263}, \\
+\arXiv{2102.06993}, \MR{4394670}, \Zbl{1486.05101}.
+
+\noindent
+Kumar Balasubramanian, K.~S.~Senthil Raani, Brahadeesh Sankarnarayanan. \\
+\emph{Self-dual representations of $\mathrm{SL}(2,F)$: an approach using the Iwahori--Hecke algebra}. \\
+Communications in Algebra \textbf{47} (2019), no.~10, 4210--4215, \doi{10.1080/00927872.2019.1581211}, \\
+\MR{3975999}, \Zbl{1432.20031}.
+
+\subsection*{\textsc{Conference Proceedings}}
+
+\noindent
+Niranjan Balachandran, Brahadeesh Sankarnarayanan. \\
+\emph{$5$-list coloring toroidal $6$-regular triangulations in linear time}. Extended abstract. \\
+CALDAM 2023. In: Amitabha Bagchi, Rahul Muthu (eds.) \emph{Algorithms and Discrete Applied Mathematics}, Lecture Notes in Computer Science, vol.~13947, pp.~134--146, Springer, Cham (2023), \\\doi{10.1007/978-3-031-25211-2_10},
+\MR{4573050}, \Zbl{07728658}. \\
+{\small The full version appeared in Discrete Applied Mathematics \textbf{386} (2026), 75--103 (above).}
+
+\subsection*{\textsc{Manuscripts in Preparation}}
+
+\noindent
+Niranjan Balachandran, Shagnik Das, Brahadeesh Sankarnarayanan, Umesh Shankar. \\
+\emph{An extremal problem for vertex intersection graphs of paths}. \\
+2026, in preparation.
+
+%------------------------
+% Research Supervision
+%------------------------
+\section*{RESEARCH SUPERVISION}
+
+\subsection*{\textsc{Doctoral Students}}
+
+\noindent
+\textbf{Vishnu Kumar} \hfill enrolled Autumn 2025--26 \\
+Department of Mathematics, IIT Jodhpur
+
+\noindent
+\textbf{Yash Chawda} \hfill enrolled Spring 2025--26 \\
+Department of Mathematics, IIT Jodhpur
+
+\subsection*{\textsc{Executive M.Tech.\ Projects}}
+
+\noindent
+\textbf{Rayipalli Prakash} \hfill 10/2025 -- present \\
+School of Artificial Intelligence and Data Science, IIT Jodhpur \\
+Project: ``GNN-Based Automatic Calorie Identification from Food Images''
+
+\noindent
+\textbf{Md.\ Parvez Rahaman} \hfill 10/2025 -- present \\
+School of Artificial Intelligence and Data Science, IIT Jodhpur \\
+Project: ``AI-Based Text Summarization and Tone Rewriting System Using BART and T5''
+
+%------------------------
+% Fellowships, Awards & Honors
+%------------------------
+\section*{FELLOWSHIPS, AWARDS \& HONORS}
+
+\noindent
+\textbf{Institute Post-Doctoral Fellowship} \hfill 08/2024 -- 02/2025 \\
+IIT Bombay
+
+\noindent
+\textbf{National Board for Higher Mathematics (NBHM) Research Award} \hfill 08/2018 -- 07/2023 \\
+Department of Atomic Energy, Government of India
+
+\noindent
+\textbf{Joint CSIR--UGC National Eligibility Test for Junior Research Fellowship} \hfill 07/2017 \\
+CSIR -- Human Resource Development Group; All-India Rank 20 in Mathematical Sciences
+
+\noindent
+\textbf{Director's Gold Medal} \hfill 06/2017 \\
+IISER Bhopal \\
+Awarded for outstanding all-round achievement and leadership in the BS--MS graduating class
+
+\noindent
+\textbf{Rashtrapati Bhavan In-Residence Programme for Scholars from IITs, IISERs, and IISc} \hfill 06/2016 \\
+Invited by the President of India to represent IISER Bhopal
+
+\noindent
+\textbf{Science Academies' Summer Research Fellowship} \hfill 05/2015 \& 05/2016 \\
+Indian Academy of Sciences, Indian National Science Academy, and National Academy of Sciences, India
+
+\noindent
+\textbf{World Science Conference, Israel} \hfill 08/2015 \\
+Hebrew University of Jerusalem; member of a 15-person Indian contingent
+
+\noindent
+\textbf{INSPIRE Scholarship for Higher Education} \hfill 08/2012 -- 06/2017 \\
+Department of Science \& Technology, Government of India
+
+%------------------------
+% Invited Talks
+%------------------------
+\section*{INVITED TALKS}
+
+\noindent
+\textbf{Counting the infinite} \hfill 12/2025 \\
+National Mathematics Day Guest Lecture, Government College Makroniya Bujurg, Sagar, Madhya Pradesh (online)
+
+\noindent
+\textbf{Sunflowers and symmetric designs} \hfill 04/2025 \\
+Research Seminar, Department of Mathematics, IIT Jodhpur
+
+\noindent
+\textbf{Sunflowers and symmetric designs} \hfill 11/2024 \\
+RA Seminar, Theoretical Statistics and Mathematics Unit, Indian Statistical Institute, Bangalore Centre
+
+\noindent
+\textbf{Sunflowers, tournaments, and symmetric designs} \hfill 05/2024 \\
+IPDF Seminar, Department of Mathematics, IIT Bombay
+
+\noindent
+\textbf{Some recent work on fractional intersecting families} \hfill 03/2024 \\
+CSE Research Symposium, IIT Palakkad
+
+%------------------------
+% Conference Presentations
+%------------------------
+\section*{CONFERENCE PRESENTATIONS}
+
+\noindent
+\textbf{Nonstandard analysis: a gentle introduction} \hfill 12/2025 \\
+Discussion Meeting on Number Theory and Combinatorics, Evolve Back, Coorg
+
+\noindent
+\textbf{Bisection-closed families, tournaments, and symmetric designs} \hfill 05/2025 \\
+Geometry, Probability, and Algorithms, International Centre for Theoretical Sciences, Bengaluru
+%{\small [\href{https://www.youtube.com/watch?v=MkbJERF0P9I}{recording}]}
+
+\noindent
+\textbf{Some recent work on fractional intersecting families} \hfill 06/2024 \\
+Meru Annual Combinatorics Conference, Graphic Era Hill University, Bhimtal Campus
+
+\noindent
+\textbf{$5$-list coloring toroidal $6$-regular triangulations in linear time} \hfill 02/2023 \\
+Conference on Algorithms and Discrete Applied Mathematics (CALDAM), Dhirubhai Ambani Institute of Information and Communication Technology, Gandhinagar
+
+%------------------------
+% Events Organized
+%------------------------
+\section*{EVENTS ORGANIZED}
+
+\noindent
+\textbf{Career Opportunities Beyond Academia} \hfill 03/2026 \\
+One-day interaction session with industry mathematicians \\
+Department of Mathematics, IIT Jodhpur
+
+\noindent
+\textbf{An Introductory Workshop on the Lean Theorem Prover} \hfill 02/2026 \\
+Three-day workshop led by T.~V.~H.\ Prathamesh (Krea University); \\
+co-organized with Dilpreet Kaur and Kriti Goel \\
+Department of Mathematics, IIT Jodhpur
+
+%------------------------
+% Teaching Experience
+%------------------------
+\section*{TEACHING EXPERIENCE}
+
+\subsection*{\textsc{Instructor: IIT Jodhpur}}
+
+\noindent
+\textbf{MAL2040 Design and Analysis of Experiments} \hfill Spring 2025--26 \\
+49 students; overall instructor rating 3.70/5.0 (mean), median 4 across all dimensions
+
+\subsection*{\textsc{Teaching Assistant: IIT Hyderabad}}
+
+\noindent
+\textbf{MA5020 Functional Analysis} \hfill Autumn 2025--26 \\
+Instructor: M.\ Rajesh Kannan
+
+\subsection*{\textsc{Teaching Assistant: IIT Bombay}}
+
+\noindent
+\textbf{SI 419 Combinatorics} \hfill Autumn 2024--25, Autumn 2021--22 \\
+\textbf{SI 416 Optimization} \hfill Spring 2021--22 \\
+\textbf{MA 205 Complex Analysis} \hfill Autumn 2021--22, Autumn 2020--21, Autumn 2019--20 \\
+\textbf{MA 207 Differential Equations II} \hfill Autumn 2020--21, Autumn 2019--20 \\
+\textbf{MA 108 Differential Equations} \hfill Summer 2020--21, Spring 2019--20 \\
+\textbf{MA 106 Linear Algebra} \hfill Spring 2020--21, Spring 2019--20 \\
+\textbf{MA 111 Calculus II} \hfill Spring 2020--21
+
+\subsection*{\textsc{Other Teaching and Mentoring}}
+
+\noindent
+\textbf{Masterminds Program (Trainer)} \hfill 2023--24, 2024--25 \\
+UAE IMO selection camp, Ministry of Education, UAE \\
+Topics: combinatorics and number theory
+
+\noindent
+\textbf{Self-Assessment Team (Member)} \hfill 09/2023 -- 12/2023 \\
+Mathematics Training and Talent Search Programme (MTTS)
+
+\noindent
+\textbf{Online Foundation Course in Mathematics (Mentor)} \hfill 08/2023 -- 09/2023 \\
+Mathematics Training and Talent Search Programme (MTTS)
+
+\noindent
+\textbf{Online Short Course in Linear Algebra: Application View (Mentor)} \hfill 07/2023 \\
+Mathematics Training and Talent Search Programme (MTTS)
+
+\noindent
+\textbf{Study-Help Room (Co-organizer)} \hfill 2023 \\
+Department of Mathematics, IIT Bombay \\
+Weekly drop-in math help for BS and MSc students
+
+\noindent
+\textbf{TA Skill Enhancement \& Training (Master TA)} \hfill 10/2022 -- 11/2022 \\
+Parimal and Pramod Chaudhari Centre for Learning and Teaching, IIT Bombay
+
+\noindent
+\textbf{A Basic Course in Number Theory (TA)} \hfill 07/2020 -- 10/2020 \\
+NPTEL Online Certification course
+
+%------------------------
+% Professional Service
+%------------------------
+\section*{PROFESSIONAL SERVICE}
+
+\subsection*{\textsc{Memberships}}
+
+\noindent
+\textbf{Life Member, Mathematics Teachers' Association (India)} \hfill 05/2026 -- present
+
+\noindent
+\textbf{Affiliate Member, American Mathematical Society} \hfill 01/2026 -- present
+
+\noindent
+\textbf{Advisory Board Member, Heliyon Mathematics (Cell Press)} \hfill 09/2024 -- 02/2025
+
+\subsection*{\textsc{Reviewing}}
+
+\noindent
+\textbf{Indian Journal of Pure and Applied Mathematics} \hfill 12/2025 -- present
+
+\noindent
+\textbf{Acta Informatica} \hfill 11/2025 -- present
+
+\noindent
+\textbf{Proceedings -- Mathematical Sciences (Indian Academy of Sciences)} \hfill 04/2024 -- present
+
+\noindent
+\textbf{Mathematical Reviews / MathSciNet} \hfill 03/2023 -- present 
+% Reviewer Number: \href{https://mathscinet.ams.org/mathscinet/publications-search?query=rn:"Sankarnarayanan Brahadeesh"}{169002}
+
+\noindent
+\textbf{zbMATH Open} \hfill 01/2022 -- present 
+% Reviewer ID: \href{https://zbmath.org/?q=rv:19671}{19671}
+
+\noindent
+\textbf{Conference on Algorithms and Discrete Applied Mathematics (CALDAM)} \hfill 10/2020 -- present
+
+%------------------------
+% Institutional Service
+%------------------------
+\section*{INSTITUTIONAL SERVICE}
+
+\subsection*{\textsc{IIT Jodhpur}}
+
+\noindent
+\textbf{Faculty Advisor, Mathematics Society} \hfill 09/2025 -- present \\
+Board of Departmental Societies
+
+\noindent
+\textbf{Member, Departmental Undergraduate Committee (DUGC)} \hfill 09/2025 -- present \\
+Department of Mathematics
+
+\noindent
+\textbf{Member, Department-level committee for projection of new B.S.\ programme} \hfill 10/2025 -- present \\
+B.S.\ in Mathematics and Computing, Department of Mathematics
+
+\subsection*{\textsc{IIT Bombay}}
+
+\noindent
+\textbf{Coordinator, Students' Seminar} \hfill 01/2023 -- 05/2023 \\
+Department of Mathematics
+
+\subsection*{\textsc{IISER Bhopal}}
+
+\noindent
+\textbf{President, Students Activity Council} \hfill 02/2016 -- 01/2017
+
+\noindent
+\textbf{Coordinator, Mathematics Club} \hfill 08/2013 -- 07/2015
+
+%------------------------
+% Conferences, Workshops & External Courses Attended
+%------------------------
+\section*{CONFERENCES, WORKSHOPS \& EXTERNAL COURSES ATTENDED}
+
+\noindent
+\textbf{Indo-Polish Pre-Conference School on Algorithms and Combinatorics} \hfill 02/2026 \\
+IIT Dharwad
+
+\noindent
+\textbf{Discussion Meeting on Number Theory and Combinatorics} \hfill 12/2025 \\
+Evolve Back, Coorg
+
+\noindent
+\textbf{Topics in Geometric Combinatorics (NCM Workshop)} \hfill 06/2025 \\
+Chennai Mathematical Institute
+
+\noindent
+\textbf{Meru Annual Combinatorics Conference} \hfill 05/2025 \\
+BITS Pilani, K.~K.\ Birla Goa Campus
+
+\noindent
+\textbf{Geometry, Probability, and Algorithms} \hfill 05/2025 \\
+International Centre for Theoretical Sciences, Bengaluru
+
+\noindent
+\textbf{HDXs and Codes} \hfill 04/2025 \\
+International Centre for Theoretical Sciences, Bengaluru
+
+\noindent
+\textbf{Lean for the Curious Mathematician} \hfill 04/2025 \\
+International Centre for Theoretical Sciences, Bengaluru
+
+\noindent
+\textbf{Sparse graphs: treewidth, planarity, bounded expansion (GIAN)} \hfill 02/2025 \\
+IIT Dharwad
+
+\noindent
+\textbf{Combinatorial Methods in Enumerative Algebra} \hfill 12/2024 \\
+International Centre for Theoretical Sciences, Bengaluru
+
+\noindent
+\textbf{Discrete Integrable Systems} \hfill 10/2024 \\
+International Centre for Theoretical Sciences, Bengaluru
+
+\noindent
+\textbf{Meru Annual Combinatorics Conference} \hfill 06/2024 \\
+Graphic Era Hill University, Bhimtal Campus
+
+\noindent
+\textbf{A First Second Course in the Probabilistic Method} \hfill 02/2024 \\
+IIT Palakkad
+
+\noindent
+\textbf{Conference on Algorithms and Discrete Applied Mathematics (CALDAM)} \hfill 02/2023 \\
+Dhirubhai Ambani Institute of Information and Communication Technology, Gandhinagar
+
+\noindent
+\textbf{Indo-Dutch Pre-Conference School on Algorithms and Combinatorics} \hfill 02/2023 \\
+Dhirubhai Ambani Institute of Information and Communication Technology, Gandhinagar
+
+\noindent
+\textbf{Meru Annual Combinatorics Conference} \hfill 05/2023 \\
+Pondicherry University
+
+%%------------------------
+%% References
+%%------------------------
+%\section*{REFERENCES}
+%
+%\noindent
+%\textbf{Niranjan Balachandran} \\
+%Professor, Department of Mathematics, \\
+%Indian Institute of Technology Bombay, Powai, Mumbai 400076, Maharashtra, India \\
+%Email: \href{mailto:niranj@math.iitb.ac.in}{niranj@math.iitb.ac.in} \\
+%Telephone: +91 22 2576 9466
+%
+%\noindent
+%\textbf{Sivaramakrishnan Sivasubramanian} \\
+%Professor, Department of Mathematics, \\
+%Indian Institute of Technology Bombay, Powai, Mumbai 400076, Maharashtra, India \\
+%Email: \href{mailto:krishnan@math.iitb.ac.in}{krishnan@math.iitb.ac.in} \\
+%Telephone: +91 22 2576 7461
+%
+%\noindent
+%\textbf{Rogers Mathew} \\
+%Associate Professor, Department of Computer Science \& Engineering, \\
+%Indian Institute of Technology Hyderabad, Kandi, Sangareddy 502284, Telangana, India \\
+%Email: \href{mailto:rogers@cse.iith.ac.in}{rogers@cse.iith.ac.in} \\
+%Telephone: +91 40 2301 6370
+
+\end{document}
