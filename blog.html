@@ -3,32 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Teaching | Brahadeesh Sankarnarayanan</title>
-
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lmodern@0.0.3/dist/lmodern.css">
-
-    <script>
-      window.MathJax = {
-        tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] },
-        chtml: { matchFontHeight: true, displayAlign: 'left' }
-      };
-    </script>
-    <script type="text/javascript" id="MathJax-script" async
-      src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
-    </script>
-
+    <title>Blog | Brahadeesh Sankarnarayanan</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
-    <link rel="icon" type="image/x-icon" href="k7-logo.svg">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lmodern@0.0.3/dist/lmodern.css">
+    <link rel="icon" type="image/png" href="k7-torus.png">
 </head>
 <body>
 
 <nav>
     <div class="container">
         <div class="logo-area">
-            <img src="k7-torus.svg" alt="CAT Lab Logo" class="lab-logo-img">
+            <img src="k7-torus.png" alt="CAT Lab Logo" class="lab-logo-img">
             <div class="lab-name">
                 <span class="lab-title">CAT Lab</span>
-                <span class="lab-subtitle">Combinatorial Applications & Techniques</span>
+                <span class="lab-subtitle">Combinatorial Applications &amp;&nbsp;Techniques</span>
             </div>
         </div>
         <ul>
@@ -43,44 +34,43 @@
 </nav>
 
 <main class="container">
-    <h2>Notes & Expositions</h2>
-    <p style="margin-bottom: 40px; color: var(--grey);">
-        A collection of informal writings on combinatorics, graph theory, and academic life.
+    <h2>Blog</h2>
+
+    <p class="blog-intro">
+        Occasional notes and reflections. Topics range from expository mathematics
+        (mostly combinatorics and graph theory) to thoughts on academic life.
+        New posts appear infrequently. To discuss a post, please email me &mdash;
+        the address is on my <a href="index.html#contact">home page</a>.
     </p>
 
-    <article class="blog-post-entry">
-        <div class="blog-date">May 2026</div>
-        <span class="blog-title">
-            <a href="posts/k7-embedding.html">Why $K_7$ is the "Perfect" Toroidal Graph</a>
-        </span>
-        <p class="blog-excerpt">
-            An exploration into the Heawood conjecture and why the symmetries of the $K_7$ embedding into the torus are more than just aesthetically pleasing...
-        </p>
-        <a href="posts/k7-embedding.html" class="read-more">Read Note →</a>
-    </article>
+    <ul class="blog-list">
+        <li class="blog-entry">
+            <div class="blog-entry-meta">
+                <span class="blog-date">2026-05-07</span>
+                <span class="blog-category">Updates</span>
+            </div>
+            <h3 class="blog-entry-title">
+                <a href="blog/welcome.html">Welcome</a>
+            </h3>
+            <p class="blog-entry-excerpt">
+                A brief introduction to this blog and what to expect.
+            </p>
+        </li>
 
-    <article class="blog-post-entry">
-        <div class="blog-date">April 2026</div>
-        <span class="blog-title">
-            <a href="posts/tikz-graphs.html">Automating Graph Drawings with TikZ</a>
-        </span>
-        <p class="blog-excerpt">
-            My workflow for generating high-quality combinatorial diagrams directly from adjacency matrices using LaTeX-native tools.
-        </p>
-        <a href="posts/tikz-graphs.html" class="read-more">Read Note →</a>
-    </article>
+        <!-- Future posts: add a new <li class="blog-entry"> block above this comment.
+             Newer posts go at the top so the list stays in reverse-chronological order. -->
+    </ul>
 </main>
 
 <footer>
     <div class="container">
         <hr class="footer-line">
         <div class="footer-content">
-            <span class="copyright">© 2026 Brahadeesh Sankarnarayanan</span>
-            <span class="lab-foot">CAT Lab • IIT Bombay</span>
+            <span class="copyright">&copy; 2026 Brahadeesh Sankarnarayanan</span>
+            <span class="lab-foot">CAT Lab &bull; IIT Jodhpur</span>
             <span class="updated">Last updated: May 2026</span>
         </div>
     </div>
 </footer>
-
 </body>
 </html>

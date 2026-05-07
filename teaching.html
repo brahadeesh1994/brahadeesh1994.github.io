@@ -1,86 +1,322 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Teaching | Brahadeesh Sankarnarayanan</title>
-
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lmodern@0.0.3/dist/lmodern.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
 
     <script>
-      window.MathJax = {
-        tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] },
-        chtml: { matchFontHeight: true, displayAlign: 'left' }
-      };
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']]
+            },
+            svg: { fontCache: 'global' }
+        };
     </script>
     <script type="text/javascript" id="MathJax-script" async
-      src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
-    </script>
+        src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+        </script>
 
     <link rel="stylesheet" href="style.css">
-    <link rel="icon" type="image/x-icon" href="k7-logo.svg">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lmodern@0.0.3/dist/lmodern.css">
+    <link rel="icon" type="image/png" href="k7-torus.png">
 </head>
+
 <body>
 
-<nav>
-    <div class="container">
-        <div class="logo-area">
-            <img src="k7-torus.svg" alt="CAT Lab Logo" class="lab-logo-img">
-            <div class="lab-name">
-                <span class="lab-title">CAT Lab</span>
-                <span class="lab-subtitle">Combinatorial Applications & Techniques</span>
+    <nav>
+        <div class="container">
+            <div class="logo-area">
+                <img src="k7-torus.png" alt="CAT Lab Logo" class="lab-logo-img">
+                <div class="lab-name">
+                    <span class="lab-title">CAT Lab</span>
+                    <span class="lab-subtitle">Combinatorial Applications &amp;&nbsp;Techniques</span>
+                </div>
+            </div>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="research.html">Research</a></li>
+                <li><a href="publications.html">Publications</a></li>
+                <li><a href="teaching.html">Teaching</a></li>
+                <li><a href="activities.html">Activities</a></li>
+                <li><a href="blog.html">Blog</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="container">
+
+        <h2>Teaching</h2>
+
+        <section class="teaching-block">
+            <h3>IIT Jodhpur &mdash; Instructor</h3>
+
+            <article class="course-feature">
+                <div class="course-feature-header">
+                    <span class="course-code">MAL2040</span>
+                    <span class="course-title">Design and Analysis of Experiments</span>
+                    <span class="course-term">Spring 2025&ndash;26</span>
+                </div>
+                <p class="course-desc">
+                    Analysis of variance (ANOVA), combinatorial designs, and response-surface methodology.
+                </p>
+                <p class="course-meta">
+                    <span class="meta-label">Enrollment</span>49 students (48 responses)<span
+                        class="meta-sep">&middot;</span><span class="meta-label">Overall
+                        rating</span>3.70&thinsp;/&thinsp;5 (mean)<span class="meta-sep">&middot;</span><span
+                        class="meta-label">Course interest</span>52% &rarr; 65% (high / very high interest)
+                </p>
+                <div class="feedback-content">
+                    <div class="feedback-inner">
+                        <h4>Detailed evaluation (means on a 1&ndash;5 scale; medians were 4 throughout)</h4>
+                        <ul class="metric-list">
+                            <li>Evaluation criteria explained at the start: 3.88</li>
+                            <li>Encouraged students to express ideas: 3.81</li>
+                            <li>Timely feedback on assessments: 3.79</li>
+                            <li>Real-world relevance and context: 3.79</li>
+                            <li>Course objectives clearly explained: 3.77</li>
+                            <li>Enthusiasm and engagement: 3.75</li>
+                            <li>Contribution to knowledge: 3.75</li>
+                            <li>Appropriateness of exam questions: 3.73</li>
+                        </ul>
+                        <h4>Selected student feedback</h4>
+                        <blockquote class="student-feedback">
+                            &ldquo;Brahadeesh sir was really passionate and committed in delivering this
+                            course and made sure he presented quality content. He really encouraged students
+                            to ask doubts and clarified it then and there.&rdquo;
+                        </blockquote>
+                        <blockquote class="student-feedback">
+                            &ldquo;&hellip;the biggest benefit of the course was the project&hellip; examples given in
+                            class were also related to real life. The biggest plus which I felt was the notes
+                            provided&hellip;&rdquo;
+                        </blockquote>
+                        <blockquote class="student-feedback">
+                            &ldquo;Well-organized course with good balance of theory and practice. Instructor
+                            was always available for doubts.&rdquo;
+                        </blockquote>
+                    </div>
+                </div>
+                <button class="feedback-toggle" onclick="toggleFeedback(this)">View teaching feedback &darr;</button>
+            </article>
+        </section>
+        <section class="teaching-block">
+            <h3>IIT Hyderabad &mdash; Teaching Assistant</h3>
+            <table class="course-list">
+                <tbody>
+                    <tr>
+                        <td class="course-code">MA5020</td>
+                        <td class="course-title">Functional Analysis</td>
+                        <td class="course-term">Autumn 2025&ndash;26</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section class="teaching-block">
+            <h3>IIT Bombay &mdash; Teaching Assistant</h3>
+
+            <table class="course-list">
+                <tbody>
+                    <tr>
+                        <td class="course-code">SI 419</td>
+                        <td class="course-title">Combinatorics</td>
+                        <td class="course-term">Autumn 2024&ndash;25</td>
+                    </tr>
+                    <tr>
+                        <td class="course-code">SI 416</td>
+                        <td class="course-title">Optimization</td>
+                        <td class="course-term">Spring 2021&ndash;22 (hybrid)</td>
+                    </tr>
+                    <tr>
+                        <td class="course-code">SI 419</td>
+                        <td class="course-title">Combinatorics</td>
+                        <td class="course-term">Autumn 2021&ndash;22 (online)</td>
+                    </tr>
+                    <tr>
+                        <td class="course-code">MA 205</td>
+                        <td class="course-title">Complex Analysis</td>
+                        <td class="course-term">Autumn 2021&ndash;22 (online)</td>
+                    </tr>
+                    <tr>
+                        <td class="course-code">MA 108</td>
+                        <td class="course-title">Differential Equations</td>
+                        <td class="course-term">Summer 2020&ndash;21 (online)</td>
+                    </tr>
+                    <tr>
+                        <td class="course-code">MA 106</td>
+                        <td class="course-title">Linear Algebra</td>
+                        <td class="course-term">Spring 2020&ndash;21 (online)</td>
+                    </tr>
+                    <tr>
+                        <td class="course-code">MA 111</td>
+                        <td class="course-title">Calculus II</td>
+                        <td class="course-term">Spring 2020&ndash;21 (online)</td>
+                    </tr>
+                    <tr>
+                        <td class="course-code">MA 207</td>
+                        <td class="course-title">Differential Equations II</td>
+                        <td class="course-term">Autumn 2020&ndash;21 (online)</td>
+                    </tr>
+                    <tr>
+                        <td class="course-code">MA 205</td>
+                        <td class="course-title">Complex Analysis</td>
+                        <td class="course-term">Autumn 2020&ndash;21 (online)</td>
+                    </tr>
+                    <tr>
+                        <td class="course-code">MA 108</td>
+                        <td class="course-title">Differential Equations</td>
+                        <td class="course-term">Spring 2019&ndash;20 (online)</td>
+                    </tr>
+                    <tr>
+                        <td class="course-code">MA 106</td>
+                        <td class="course-title">Linear Algebra</td>
+                        <td class="course-term">Spring 2019&ndash;20</td>
+                    </tr>
+                    <tr>
+                        <td class="course-code">MA 207</td>
+                        <td class="course-title">Differential Equations II</td>
+                        <td class="course-term">Autumn 2019&ndash;20</td>
+                    </tr>
+                    <tr>
+                        <td class="course-code">MA 205</td>
+                        <td class="course-title">Complex Analysis</td>
+                        <td class="course-term">Autumn 2019&ndash;20</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <p>Student feedback from two of these semesters:</p>
+
+            <article class="course-feature">
+                <div class="course-feature-header">
+                    <span class="course-code">MA 205</span>
+                    <span class="course-title">Complex Analysis</span>
+                    <span class="course-term">Autumn 2020&ndash;21 (online)</span>
+                </div>
+                <p class="course-meta">
+                    <span class="meta-label">Responses</span>13 students<span class="meta-sep">&middot;</span><span
+                        class="meta-label">Overall rating</span>4.4&thinsp;/&thinsp;5.0
+                </p>
+                <blockquote class="student-feedback">
+                    &ldquo;TA encouraged us to think [about the] subtleties of various steps in proofs which otherwise
+                    seemed trivial to us. He always cleared our doubts very quickly and in a very efficient and detailed
+                    manner.&rdquo;
+                </blockquote>
+            </article>
+
+            <article class="course-feature">
+                <div class="course-feature-header">
+                    <span class="course-code">SI 416</span>
+                    <span class="course-title">Optimization</span>
+                    <span class="course-term">Spring 2021&ndash;22 (hybrid)</span>
+                </div>
+                <p class="course-meta">
+                    <span class="meta-label">Responses</span>27 students<span class="meta-sep">&middot;</span><span
+                        class="meta-label">Overall rating</span>3.7&thinsp;/&thinsp;5.0
+                </p>
+                <blockquote class="student-feedback">
+                    &ldquo;Tutorials were well organized and contained [a] variety of problems.&rdquo;
+                </blockquote>
+            </article>
+        </section>
+
+        <section class="teaching-block">
+            <h3>Other teaching and mentoring</h3>
+
+            <p>
+                <strong>Masterminds Program (Ministry of Education, UAE), 2023&ndash;24 and 2024&ndash;25.</strong>
+                Mathematics trainer (combinatorics, number theory) for the
+                <a href="http://competitions.ae/masterminds/" target="_blank">UAE IMO selection camp</a>.
+                [<a href="https://www.imo-official.org/country_team_r.aspx?code=UAE" target="_blank">UAE results at the
+                    IMO</a>]
+            </p>
+
+            <p>
+                <strong>Mathematics Training and Talent Search Programme (MTTS), 2023.</strong>
+                Mentor for the
+                <a href="https://mtts.org.in/programme/ofcm2023" target="_blank">Online Foundation Course in
+                    Mathematics</a>
+                and the
+                <a href="https://mtts.org.in/training-programmes/online-short-courses/online-short-courses-overview"
+                    target="_blank">Online Short Course in Linear Algebra: Application View</a>.
+                Contributed to the MTTS Self Assessment Team's question bank for foundational topics (Fall 2023).
+            </p>
+
+            <p>
+                <strong>Study-Help Room, IIT Bombay, 2023.</strong>
+                Co-organized a weekly Friday drop-in math help session for BS and MSc students, run by
+                PhD volunteers to address learning gaps from the COVID-19 pandemic.
+            </p>
+
+            <p>
+                <strong>TA Skill Enhancement &amp; Training (TASET), IIT Bombay, Autumn 2022&ndash;23.</strong>
+                Master TA for <a href="http://www.ppcclt.iitb.ac.in/ta-orientation-and-training/" target="_blank">TA 101
+                    &mdash; TASET</a>,
+                conducted by <a href="http://www.ppcclt.iitb.ac.in/" target="_blank">PPCCLT</a>.
+            </p>
+
+            <p>
+                <strong>NPTEL Online Certification, 2020.</strong>
+                TA for <a href="https://onlinecourses.nptel.ac.in/noc20_ma39/preview" target="_blank">MA 39 &mdash; A
+                    basic course in number theory</a>.
+            </p>
+        </section>
+
+        <section class="activity-block">
+            <h2>Project Supervision</h2>
+
+            <h4>Executive M.Tech.</h4>
+            <ul class="dated-list">
+                <li>
+                    <span class="date-col">Oct 2025&ndash;</span>
+                    <span class="entry-content">
+                        <strong>Rayipalli Prakash</strong>
+                        (School of Artificial Intelligence and Data Science)
+                        &mdash; <em>GNN-Based Automatic Calorie Identification from Food Images</em>.
+                    </span>
+                </li>
+                <li>
+                    <span class="date-col">Oct 2025&ndash;</span>
+                    <span class="entry-content">
+                        <strong>Md. Parvez Rahaman</strong>
+                        (School of Artificial Intelligence and Data Science)
+                        &mdash; <em>AI-Based Text Summarization and Tone Rewriting System Using BART and T5</em>.
+                    </span>
+                </li>
+            </ul>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <hr class="footer-line">
+            <div class="footer-content">
+                <span class="copyright">&copy; 2026 Brahadeesh Sankarnarayanan</span>
+                <span class="lab-foot">CAT Lab &bull; IIT Jodhpur</span>
+                <span class="updated">Last updated: May 2026</span>
             </div>
         </div>
-        <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="research.html">Research</a></li>
-            <li><a href="publications.html">Publications</a></li>
-            <li><a href="teaching.html">Teaching</a></li>
-            <li><a href="activities.html">Activities</a></li>
-            <li><a href="blog.html">Blog</a></li>
-        </ul>
-    </div>
-</nav>
+    </footer>
 
-<main class="container">
-    <h2>Teaching</h2>
-
-    <ul class="teaching-list">
-        <li class="teaching-item">
-            <div class="course-info">
-                <span class="course-main">MA 212: Combinatorics and Graph Theory (Teaching Assistant)</span>
-                <span class="course-date">Fall 2025</span>
-            </div>
-            <span class="course-desc">IIT Bombay — Led weekly tutorials and graded examinations.</span>
-        </li>
-
-        <li class="teaching-item">
-            <div class="course-info">
-                <span class="course-main">MA 401: Linear Algebra (Instructor)</span>
-                <span class="course-date">Spring 2025</span>
-            </div>
-            <span class="course-desc">IIT Bombay — Conducted remedial sessions for undergraduate students.</span>
-        </li>
-
-        <li class="teaching-item">
-            <div class="course-info">
-                <span class="course-main">CS 101: Introduction to Programming</span>
-                <span class="course-date">Fall 2024</span>
-            </div>
-            <span class="course-desc">IIT Bombay — Developed lab exercises and automated grading scripts.</span>
-        </li>
-    </ul>
-</main>
-
-<footer>
-    <div class="container">
-        <hr class="footer-line">
-        <div class="footer-content">
-            <span class="copyright">© 2026 Brahadeesh Sankarnarayanan</span>
-            <span class="lab-foot">CAT Lab • IIT Bombay</span>
-            <span class="updated">Last updated: May 2026</span>
-        </div>
-    </div>
-</footer>
+    <script>
+        function toggleFeedback(btn) {
+            const content = btn.previousElementSibling;
+            const isOpen = content.style.maxHeight && content.style.maxHeight !== "0px";
+            if (isOpen) {
+                content.style.maxHeight = "0px";
+                btn.innerHTML = btn.dataset.label;
+            } else {
+                if (!btn.dataset.label) btn.dataset.label = btn.innerHTML;
+                content.style.maxHeight = content.scrollHeight + "px";
+                btn.innerHTML = "Show less &uarr;";
+            }
+        }
+    </script>
 </body>
+
 </html>

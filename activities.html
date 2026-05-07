@@ -1,94 +1,341 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Teaching | Brahadeesh Sankarnarayanan</title>
-
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lmodern@0.0.3/dist/lmodern.css">
+    <title>Activities | Brahadeesh Sankarnarayanan</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
 
     <script>
-      window.MathJax = {
-        tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] },
-        chtml: { matchFontHeight: true, displayAlign: 'left' }
-      };
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']]
+            },
+            svg: {
+                fontCache: 'global'
+            }
+        };
     </script>
     <script type="text/javascript" id="MathJax-script" async
-      src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
-    </script>
+        src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+        </script>
 
     <link rel="stylesheet" href="style.css">
-    <link rel="icon" type="image/x-icon" href="k7-logo.svg">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lmodern@0.0.3/dist/lmodern.css">
+    <link rel="icon" type="image/png" href="k7-torus.png">
 </head>
+
 <body>
 
-<nav>
-    <div class="container">
-        <div class="logo-area">
-            <img src="k7-torus.svg" alt="CAT Lab Logo" class="lab-logo-img">
-            <div class="lab-name">
-                <span class="lab-title">CAT Lab</span>
-                <span class="lab-subtitle">Combinatorial Applications & Techniques</span>
-            </div>
-        </div>
-        <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="research.html">Research</a></li>
-            <li><a href="publications.html">Publications</a></li>
-            <li><a href="teaching.html">Teaching</a></li>
-            <li><a href="activities.html">Activities</a></li>
-            <li><a href="blog.html">Blog</a></li>
-        </ul>
-    </div>
-</nav>
-
-<main class="container">
-    <h2>Professional Activities</h2>
-
-    <section class="activity-block">
-        <h3>Organization</h3>
-        <div class="pub-row">
-            <div class="pub-header">
-                <span class="pub-title">Graduate Student Combinatorics Conference (GSCC)</span>
-            </div>
-            <div class="pub-split">
-                <div class="pub-meta"><div>2026</div><div>Lead Organizer</div></div>
-                <div class="abstract-text">Coordinated logistics, abstract submissions, and funding for over 100 international participants.</div>
-            </div>
-        </div>
-    </section>
-
-    <section class="activity-block">
-        <h3>Selected Talks</h3>
-        <ul class="teaching-list">
-            <li class="teaching-item">
-                <div class="course-info">
-                    <span class="course-main">"Rotation Systems of $K_7$ on the Torus"</span>
-                    <span class="course-date">Oct 2025</span>
+    <nav>
+        <div class="container">
+            <div class="logo-area">
+                <img src="k7-torus.png" alt="CAT Lab Logo" class="lab-logo-img">
+                <div class="lab-name">
+                    <span class="lab-title">CAT Lab</span>
+                    <span class="lab-subtitle">Combinatorial Applications &amp;&nbsp;Techniques</span>
                 </div>
-                <span class="course-desc">Discrete Math Seminar, IIT Bombay</span>
-            </li>
-        </ul>
-    </section>
-
-    <section class="activity-block">
-        <h3>Reviewing & Writing</h3>
-        <p class="service-text">
-            <strong>Reviewer for:</strong> MathSciNet, zbMATH Open, Journal of Combinatorial Theory (Series B).<br>
-            <strong>Expository Writing:</strong> Regular contributor to the [CAT Lab Blog], focusing on topological graph theory and $6$-regular triangulations.
-        </p>
-    </section>
-</main>
-
-<footer>
-    <div class="container">
-        <hr class="footer-line">
-        <div class="footer-content">
-            <span class="copyright">© 2026 Brahadeesh Sankarnarayanan</span>
-            <span class="lab-foot">CAT Lab • IIT Bombay</span>
-            <span class="updated">Last updated: May 2026</span>
+            </div>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="research.html">Research</a></li>
+                <li><a href="publications.html">Publications</a></li>
+                <li><a href="teaching.html">Teaching</a></li>
+                <li><a href="activities.html">Activities</a></li>
+                <li><a href="blog.html">Blog</a></li>
+            </ul>
         </div>
-    </div>
-</footer>
+    </nav>
+
+    <main class="container">
+        <h2>Activities</h2>
+
+        <section class="activity-block">
+            <h3>Talks</h3>
+
+            <h4>Technical</h4>
+            <ul class="dated-list">
+                <li>
+                    <span class="date-col">2025-12-01</span>
+                    <span class="entry-content">
+                        Nonstandard analysis: a gentle introduction. Discussion Meeting on Number
+                        Theory and Combinatorics (Evolve Back, Coorg).
+                    </span>
+                </li>
+                <li>
+                    <span class="date-col">2025-05-15</span>
+                    <span class="entry-content">
+                        <a href="assets/GPA 2025.pdf" target="_blank">Bisection-closed families, tournaments, and
+                            symmetric designs</a>.
+                        Geometry, Probability, and Algorithms (ICTS Bengaluru).
+                        [<a href="https://www.youtube.com/watch?v=MkbJERF0P9I" target="_blank">recording</a>]
+                    </span>
+                </li>
+                <li>
+                    <span class="date-col">2025-04-28</span>
+                    <span class="entry-content">
+                        <a href="assets/IITJ-final.pdf" target="_blank">Sunflowers and symmetric designs</a>.
+                        Research seminar (IIT Jodhpur).
+                    </span>
+                </li>
+                <li>
+                    <span class="date-col">2024-11-21</span>
+                    <span class="entry-content">
+                        <a href="assets/ISI-Bangalore final.pdf" target="_blank">Sunflowers and symmetric designs</a>.
+                        RA Seminar (ISI Bangalore Centre, Theoretical Statistics and Mathematics Unit).
+                    </span>
+                </li>
+                <li>
+                    <span class="date-col">2024-06-01</span>
+                    <span class="entry-content">
+                        <a href="assets/Brahadeesh Sankarnarayanan-slides.pdf" target="_blank">Some recent work on
+                            fractional intersecting families</a>.
+                        Meru Combinatorics Conference (GEHU, Bhimtal).
+                    </span>
+                </li>
+                <li>
+                    <span class="date-col">2024-05-29</span>
+                    <span class="entry-content">
+                        <a href="assets/IPDF.pdf" target="_blank">Sunflowers, tournaments, and symmetric designs</a>.
+                        IPDF Seminar (IIT Bombay).
+                    </span>
+                </li>
+                <li>
+                    <span class="date-col">2024-03-02</span>
+                    <span class="entry-content">
+                        <a href="assets/palakkad.pdf" target="_blank">Some recent work on fractional intersecting
+                            families</a>.
+                        CSE Research Symposium (IIT Palakkad).
+                    </span>
+                </li>
+            </ul>
+
+            <h4>Popular &amp; expository</h4>
+            <ul class="dated-list">
+                <li>
+                    <span class="date-col">2025-12-22</span>
+                    <span class="entry-content">
+                        Counting the Infinite. Guest Lecture on the occasion of National Mathematics Day
+                        (&ldquo;Prime Minister College of Excellence&rdquo; Government College Makroniya
+                        Bujurg, Sagar, Madhya Pradesh).
+                    </span>
+                </li>
+            </ul>
+        </section>
+
+        <section class="activity-block">
+            <h3>Events organized</h3>
+
+            <ul class="dated-list">
+                <li>
+                    <span class="date-col">2026-03-08</span>
+                    <span class="entry-content">
+                        Career Opportunities Beyond Academia: One-day interaction session with industry
+                        professionals; talks by <a href="https://s-s-sawant.github.io/" target="_blank">Sagar Sawant</a>
+                        and <a href="https://priya-ms.github.io/" target="_blank">Priyanka Magar-Sawant</a>
+                        (mathematicians at
+                        <a href="https://raphe.in/" target="_blank">Raphe mPhibr Pvt. Ltd.</a>)
+                        on transitioning from academia to industry research (IIT Jodhpur).
+                    </span>
+                </li>
+                <li>
+                    <span class="date-col">2026-02-26</span>
+                    <span class="entry-content">
+                        <a href="assets/lean-workshop-poster.pdf" target="_blank">An Introductory Workshop on the Lean
+                            Theorem Prover</a>.
+                        Three-day workshop on the
+                        Lean theorem prover,
+                        led by <a href="https://krea.edu.in/sias/dr-t-v-h-prathamesh/" target="_blank">T. V. H.
+                            Prathamesh</a> (Krea University); co-organized with <a
+                            href="https://sites.google.com/view/dilpreetkaur" target="_blank">Dilpreet Kaur</a> and <a
+                            href="https://sites.google.com/view/kritigoel/home" target="_blank">Kriti Goel</a>
+                        (IIT Jodhpur).
+                    </span>
+                </li>
+            </ul>
+        </section>
+
+        <section class="activity-block">
+            <h3>Professional service</h3>
+
+            <h4>Reviewing</h4>
+            <p>
+                I review papers regularly for the following journals, conferences, and databases:
+            </p>
+            <ul class="plain-list">
+                <li><a href="https://link.springer.com/journal/13226" target="_blank">Indian Journal of Pure and Applied
+                        Mathematics</a></li>
+                <li><a href="https://link.springer.com/journal/236" target="_blank">Acta Informatica</a></li>
+                <li><a href="https://link.springer.com/journal/12044" target="_blank">Proceedings &ndash; Mathematical
+                        Sciences</a></li>
+                <li><a href="https://link.springer.com/conference/caldam" target="_blank">Conference on Algorithms and
+                        Discrete Applied Mathematics (CALDAM)</a></li>
+                <li><a href="resources.html#reviews-mathscinet">MathSciNet</a></li>
+                <li><a href="resources.html#reviews-zbmath">zbMATH Open</a></li>
+            </ul>
+            <h4>Memberships</h4>
+            <p>
+                I am an Affiliate Member of the
+                <a href="https://www.ams.org" target="_blank">American Mathematical Society</a>.
+            </p>
+            <p>
+                I am a Life Member of the
+                <a href="https://www.mtai.org.in/" target="_blank">Mathematics Teachers' Association (India)</a>, which supports mathematics education and conducts the Indian Olympiad Qualifier in Mathematics (IOQM).
+
+            </p>
+            <p>
+                I served on the Advisory Board of
+                <a href="https://www.cell.com/heliyon/mathematics" target="_blank">Heliyon Mathematics</a>,
+                a Cell Press publication, from September 2024 to February 2025.
+            </p>
+        </section>
+
+        <section class="activity-block">
+            <h3>Awards &amp; honors</h3>
+            <ul class="dated-list">
+                <li>
+                    <span class="date-col">2024</span>
+                    <span class="entry-content">
+                        <a href="https://www.math.iitb.ac.in/JoinUs/apply.php?id=postdoc" target="_blank">Institute
+                            Post-Doctoral Fellowship</a>, IIT Bombay.
+                    </span>
+                </li>
+                <li>
+                    <span class="date-col">2018</span>
+                    <span class="entry-content">
+                        <a href="https://nbhm.dae.gov.in/phd.html" target="_blank">NBHM Research Award</a>, National
+                        Board for Higher Mathematics.
+                    </span>
+                </li>
+                <li>
+                    <span class="date-col">2017</span>
+                    <span class="entry-content">
+                        <a href="https://csirnet.nta.nic.in/about-joint-csir-ugc/" target="_blank">Joint CSIR&ndash;UGC
+                            National Eligibility Test</a>
+                        for Junior Research Fellowship (CSIR&ndash;HRDG); All-India Rank 20 (Mathematical Science).
+                    </span>
+                </li>
+                <li>
+                    <span class="date-col">2017</span>
+                    <span class="entry-content">
+                        <a href="https://www.iiserb.ac.in/doaa/awards" target="_blank">Director's Gold Medal</a>, IISER
+                        Bhopal.
+                        Awarded for outstanding all-round achievement and leadership in the BS&ndash;MS graduating class
+                        in all disciplines.
+                    </span>
+                </li>
+                <li>
+                    <span class="date-col">2016</span>
+                    <span class="entry-content">
+                        Invited to Rashtrapati Bhavan for the &ldquo;In-Residence&rdquo; Programme for Scholars from
+                        IITs, IISERs, and IISc Bangalore.
+                        [<a href="https://pib.gov.in/newsite/PrintRelease.aspx?relid=146454" target="_blank">press
+                            release</a>]
+                        [<a href="https://youtu.be/KqRLwAS0qTc" target="_blank">NDTV interview</a>]
+                    </span>
+                </li>
+                <li>
+                    <span class="date-col">2015, 2016</span>
+                    <span class="entry-content">
+                        IASc&ndash;INSA&ndash;NASI Summer Research Fellowship.
+                    </span>
+                </li>
+                <li>
+                    <span class="date-col">2015</span>
+                    <span class="entry-content">
+                        Member of the Indian contingent at the
+                        <a href="https://www.ambassadorsclub.org.il/world-science-conference-israel-2015/"
+                            target="_blank">World Science Conference, Israel</a>.
+                        [<a href="https://youtu.be/gKP3QXRK45o" target="_blank">my interview of Nobel laureate Robert
+                            Aumann</a>]
+                    </span>
+                </li>
+                <li>
+                    <span class="date-col">2012</span>
+                    <span class="entry-content">
+                        <a href="https://online-inspire.gov.in/Account/INSPIREProgramme" target="_blank">INSPIRE
+                            Scholarship for Higher Education (SHE)</a>,
+                        Department of Science and Technology. Awarded for the BS&ndash;MS programme at IISER Bhopal.
+                    </span>
+                </li>
+            </ul>
+        </section>
+
+        <section class="activity-block">
+            <h3>Institutional service</h3>
+
+            <h4>IIT Jodhpur</h4>
+            <ul class="dated-list">
+                <li>
+                    <span class="date-col">2025&ndash;</span>
+                    <span class="entry-content">
+                        Faculty Advisor, <a href="https://sites.google.com/math.iitj.ac.in/maths-society-iitj/home"
+                            target="_blank">Mathematics Society</a>,
+                        Board of Departmental Societies.
+                    </span>
+                </li>
+                <li>
+                    <span class="date-col">2025&ndash;</span>
+                    <span class="entry-content">
+                        Member, Departmental Undergraduate Committee (DUGC).
+                    </span>
+                </li>
+                <li>
+                    <span class="date-col">2025</span>
+                    <span class="entry-content">
+                        Member, Department-level committee for projection of new B.S. program in Mathematics and
+                        Computing.
+                    </span>
+                </li>
+            </ul>
+
+            <h4>IIT Bombay</h4>
+            <ul class="dated-list">
+                <li>
+                    <span class="date-col">2023</span>
+                    <span class="entry-content">
+                        Coordinator,
+                        <a href="https://sites.google.com/iitb.ac.in/students-seminar-mathiitb"
+                            target="_blank">Students' Seminar</a>,
+                        Department of Mathematics.
+                    </span>
+                </li>
+            </ul>
+
+            <h4>IISER Bhopal</h4>
+            <ul class="dated-list">
+                <li>
+                    <span class="date-col">2016</span>
+                    <span class="entry-content">
+                        President, <a href="https://students.iiserb.ac.in" target="_blank">Students Activity
+                            Council</a>.
+                    </span>
+                </li>
+                <li>
+                    <span class="date-col">2013&ndash;2015</span>
+                    <span class="entry-content">
+                        Coordinator, <a href="https://sites.google.com/view/maths-club-iiser-bhopal/" target="_blank">Mathematics Club</a>.
+                    </span>
+                </li>
+            </ul>
+        </section>
+
+    </main>
+
+    <footer>
+        <div class="container">
+            <hr class="footer-line">
+            <div class="footer-content">
+                <span class="copyright">&copy; 2026 Brahadeesh Sankarnarayanan</span>
+                <span class="lab-foot">CAT Lab &bull; IIT Jodhpur</span>
+                <span class="updated">Last updated: May 2026</span>
+            </div>
+        </div>
+    </footer>
 </body>
+
 </html>

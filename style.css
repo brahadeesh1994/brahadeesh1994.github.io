@@ -1,15 +1,20 @@
-/* --- Hierarchical LaTeX Theme --- */
+/* ============================================================
+   Brahadeesh Sankarnarayanan — Personal Website Stylesheet
+   ============================================================
+   Hierarchical LaTeX-inspired theme. Latin Modern Roman body text,
+   minimal color, dotted-line separators throughout.
+   ============================================================ */
 
-@import url('https://cdn.jsdelivr.net/npm/lmodern@0.0.3/dist/lmodern.css');
+
+/* ============================================================
+   VARIABLES & BASE
+   ============================================================ */
 
 :root {
     --text: #000000;
     --grey: #444444;
     --border: #dddddd;
     --bg: #ffffff;
-    
-    /* ADJUST THIS TO CHANGE COLUMN WIDTHS */
-    --meta-width: 200px; 
 }
 
 body {
@@ -27,7 +32,11 @@ body {
     padding: 0 50px;
 }
 
-/* --- Navigation --- */
+
+/* ============================================================
+   NAVIGATION
+   ============================================================ */
+
 nav {
     padding: 40px 0;
     border-bottom: 1px solid var(--border);
@@ -37,63 +46,25 @@ nav {
 nav .container {
     display: flex;
     justify-content: space-between;
-    align-items: baseline;
+    align-items: center;
 }
 
-.logo {
-    font-size: 1.4rem;
-    font-weight: bold;
-}
-
-nav ul { 
-    display: flex; 
-    list-style: none; 
-    margin: 0; 
-    gap: 30px; 
+nav ul {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    gap: 30px;
     padding: 0;
 }
 
-nav a { 
-    text-decoration: none; 
+nav a {
+    text-decoration: none;
     color: var(--text);
     font-size: 1.1rem;
 }
 
-/* --- Section Headers --- */
-h2 { 
-    font-size: 1.8rem;
-    font-weight: bold;
-    margin: 80px 0 40px 0;
-    border-bottom: 1px solid var(--text);
-    padding-bottom: 10px;
-}
 
-/* --- Thesis Image / Calling Card --- */
-
-.thesis-figure {
-    margin: 30px 0;
-    padding: 15px;
-    border: 1px solid var(--border);
-    background-color: #fafafa; /* Very subtle off-white to make the image pop */
-    text-align: center;
-}
-
-.thesis-img {
-    max-width: 100%;
-    height: auto;
-    display: block;
-    margin: 0 auto 15px auto;
-}
-
-.figure-caption {
-    font-size: 11pt;
-    color: var(--grey);
-    font-style: italic; /* A rare exception for italics to denote a caption */
-    line-height: 1.4;
-    margin: 0;
-}
-
-/* --- CAT Lab Branding --- */
+/* --- CAT Lab branding (left side of nav) --- */
 
 .logo-area {
     display: flex;
@@ -102,10 +73,9 @@ h2 {
 }
 
 .lab-logo-img {
-    height: 50px; /* Small, like a formal seal */
+    height: 80px;
     width: auto;
-    /* If your image has a white background, this keeps it clean */
-    border: 1px solid var(--border); 
+    border: none;
     padding: 2px;
 }
 
@@ -128,173 +98,217 @@ h2 {
     margin-top: 4px;
 }
 
-/* Adjust Nav for the larger logo area */
-nav .container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center; /* Centered vertically */
-}
 
-/* --- Publications Layout --- */
-.pub-row {
-    margin-bottom: 70px;
-}
+/* ============================================================
+   SECTION HEADERS
+   ============================================================ */
 
-.pub-header {
-    margin-bottom: 15px;
-}
-
-.pub-authors {
-    display: block;
-    font-size: 1.2rem;
-    color: var(--text);
-}
-
-.pub-title {
-    display: block;
-    font-size: 1.3rem;
+h2 {
+    font-size: 1.8rem;
     font-weight: bold;
-    margin-top: 5px;
+    margin: 80px 0 40px 0;
+    border-bottom: 1px solid var(--text);
+    padding-bottom: 10px;
 }
 
-/* --- Split Section (Metadata & Abstract) --- */
-.pub-split {
-    display: grid;
-    /* Uses the variable from the top */
-    grid-template-columns: var(--meta-width) 1fr; 
-    gap: 40px;
-    margin-top: 20px;
+
+/* ============================================================
+   THESIS FIGURE / CALLING CARD
+   ============================================================ */
+
+.thesis-figure {
+    margin: 30px 0;
+    padding: 15px;
+    border: 1px solid var(--border);
+    background-color: #fafafa;
+    text-align: center;
 }
 
-.pub-meta {
+.thesis-img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto 15px auto;
+}
+
+.figure-caption {
     font-size: 11pt;
     color: var(--grey);
-    line-height: 1.4; /* Tighter line height for metadata */
-}
-
-/* Fixed the weird vertical spacing here */
-.pub-meta div {
-    margin-bottom: 4px; 
-}
-
-.pub-meta a {
-    color: var(--text);
-    text-decoration: underline;
-    margin-right: 15px;
-    display: inline-block;
-    margin-top: 8px; /* Separates the DOI/arXiv row slightly */
-}
-
-.abstract-text {
-    font-size: 12pt;
-    text-align: justify;
+    font-style: italic;
+    line-height: 1.4;
+    margin: 0;
 }
 
 
-/* --- Minimalist Teaching List --- */
+/* ============================================================
+   HOME PAGE
+   ============================================================ */
 
-.teaching-list {
+/* --- Hero / Profile section --- */
+
+.profile-section {
+    display: grid;
+    grid-template-columns: 1fr 200px;
+    gap: 40px;
+    align-items: start;
+    margin-bottom: 60px;
+}
+
+.profile-name {
+    font-size: 2rem;
+    font-weight: bold;
+    margin: 0 0 5px 0;
+    line-height: 1.2;
+}
+
+.profile-subtitle {
+    font-size: 1rem;
+    color: var(--grey);
+    font-style: italic;
+    margin: 0 0 25px 0;
+}
+
+.profile-photo {
+    width: 100%;
+    height: auto;
+    display: block;
+    border: 1px solid var(--border);
+    margin: 0 0 20px 0;
+}
+
+.contact-links {
     list-style: none;
     padding: 0;
-    margin-top: 30px;
+    margin: 0;
+    font-size: 11pt;
 }
 
-.teaching-item {
-    margin-bottom: 15px; /* Compact spacing */
-    line-height: 1.4;
+.contact-links li {
+    padding: 6px 0;
+    border-bottom: 1px dotted var(--border);
 }
 
-.course-info {
-    display: flex;
-    justify-content: space-between;
+.contact-links li:last-child {
+    border-bottom: none;
+}
+
+.contact-links a {
+    color: var(--text);
+    text-decoration: none;
+}
+
+.contact-links a:hover {
+    text-decoration: underline;
+    color: #0056b3;
+}
+
+
+/* --- Lab members --- */
+
+.lab-subhead {
+    font-size: 1.1rem;
+    font-weight: bold;
+    font-variant: small-caps;
+    letter-spacing: 1px;
+    margin: 30px 0 12px 0;
+}
+
+.lab-members {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    font-size: 12pt;
+}
+
+.lab-members li {
+    padding: 6px 0;
+    border-bottom: 1px dotted var(--border);
+}
+
+.lab-members li:last-child {
+    border-bottom: none;
+}
+
+
+/* --- Inquiry checklist (Working with me) --- */
+
+.inquiry-checklist {
+    margin: 12px 0 16px 0;
+    padding-left: 25px;
+}
+
+.inquiry-checklist li {
+    margin-bottom: 8px;
+    line-height: 1.5;
+}
+
+.inquiry-checklist li:last-child {
+    margin-bottom: 0;
+}
+
+
+/* --- News list --- */
+
+.news-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.news-list > li {
+    padding: 14px 0;
+    border-bottom: 1px dotted var(--border);
+    display: grid;
+    grid-template-columns: 130px 1fr;
+    gap: 20px;
     align-items: baseline;
 }
 
-.course-main {
-    font-size: 13pt; /* Clean reading size */
+.news-list > li:last-child {
+    border-bottom: none;
 }
 
-.course-date {
-    font-size: 12pt;
+.news-date {
     color: var(--grey);
-    text-align: right;
-    min-width: 120px;
-}
-
-.course-desc {
-    display: block;
-    font-size: 11pt; /* Slightly smaller for the "sub-line" */
-    color: var(--grey);
-    margin-top: 2px;
-}
-
-/* --- Activities Layout --- */
-
-.activity-block {
-    margin-bottom: 60px; /* Big gap between major sections */
-}
-
-.activity-block h3 {
-    border-bottom: 1px solid var(--border);
-    padding-bottom: 5px;
-    margin-bottom: 25px;
-    font-variant: small-caps; /* Gives it a formal "Journal" header look */
-    letter-spacing: 1px;
-}
-
-.service-text {
-    font-size: 13pt;
-    line-height: 1.8;
-}
-
-/* --- Blog Section --- */
-
-.blog-post-entry {
-    margin-bottom: 40px;
-    border-left: 2px solid var(--border); /* A subtle vertical line for "Notes" feel */
-    padding-left: 20px;
-}
-
-.blog-date {
     font-size: 11pt;
-    color: var(--grey);
-    font-family: 'Latin Modern Roman', serif;
     text-transform: uppercase;
     letter-spacing: 1px;
+    font-variant: small-caps;
 }
 
-.blog-title {
-    display: block;
-    font-size: 1.5rem;
-    font-weight: bold;
-    margin: 5px 0;
+.news-content {
+    margin: 0;
+    line-height: 1.5;
 }
 
-.blog-title a {
+
+/* --- Contact section (bottom of home page) --- */
+
+.contact-section address {
+    font-style: normal;
+    line-height: 1.7;
+    margin: 0 0 18px 0;
+}
+
+.contact-section .profile-list {
+    margin: 25px 0 0 0;
+    line-height: 1.8;
+    color: var(--grey);
+}
+
+.contact-section .profile-list a {
     color: var(--text);
-    text-decoration: none;
-}
-
-.blog-title a:hover {
     text-decoration: underline;
 }
 
-.blog-excerpt {
-    font-size: 13pt;
-    line-height: 1.6;
-    color: #444;
+.contact-section .profile-list a:hover {
+    color: #0056b3;
 }
 
-.read-more {
-    font-size: 11pt;
-    font-weight: bold;
-    text-decoration: none;
-    color: var(--text);
-    display: inline-block;
-    margin-top: 10px;
-}
 
-/* --- Research Page Specifics --- */
+/* ============================================================
+   RESEARCH PAGE
+   ============================================================ */
 
 .intro-text {
     font-size: 14pt;
@@ -332,59 +346,758 @@ nav .container {
     font-size: 13pt;
     line-height: 1.7;
     margin-bottom: 15px;
-    text-align: justify;
 }
 
-/* --- Responsive Adjustments --- */
 
-@media (max-width: 768px) {
-    .container {
-        width: 95%; /* Give it more breathing room on small screens */
-        padding: 0 15px;
-    }
+/* ============================================================
+   PUBLICATIONS PAGE — Compact layout
+   ============================================================ */
 
-    /* Stack the Navigation */
-    nav .container {
-        flex-direction: column;
-        gap: 15px;
-        text-align: center;
-    }
+/* --- Pub row container --- */
 
-    nav ul {
-        gap: 15px;
-    }
-
-    /* Stack the Two-Column Grids */
-    .pub-split, .profile-section, .research-header {
-        display: block; /* Changes grid/flex to vertical stack */
-    }
-
-    .pub-meta, .research-affiliation {
-        margin-bottom: 10px;
-        text-align: left;
-        border-bottom: 1px dotted var(--border);
-        padding-bottom: 5px;
-    }
-
-    .profile-sidebar {
-        margin-top: 40px;
-    }
-
-    .course-info {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-
-    .course-date {
-        text-align: left;
-        margin-top: 5px;
-    }
+.pub-row {
+    margin-bottom: 32px;
+    padding-bottom: 24px;
+    border-bottom: 1px dotted var(--border);
 }
 
-/* --- Footer Styling --- */
+.pub-row:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+}
+
+
+/* --- The visible lines per paper --- */
+
+.pub-authors {
+    font-size: 1.05rem;
+    color: var(--grey);
+    margin: 0 0 4px 0;
+    line-height: 1.4;
+}
+
+.pub-title {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: var(--text);
+    margin: 0 0 8px 0;
+    line-height: 1.35;
+}
+
+.pub-journal {
+    font-size: 12pt;
+    color: var(--text);
+    margin: 0 0 6px 0;
+    line-height: 1.55;
+}
+
+.pub-journal a {
+    color: var(--text);
+    text-decoration: underline;
+}
+
+.pub-journal a:hover {
+    color: #0056b3;
+    text-decoration: none;
+}
+
+.pub-taxonomy {
+    font-size: 10.5pt;
+    color: var(--grey);
+    line-height: 1.5;
+    margin: 0;
+}
+
+.pub-taxonomy strong {
+    color: var(--text);
+    font-variant: small-caps;
+    letter-spacing: 0.3px;
+}
+
+.pub-addendum {
+    font-size: 11pt;
+    color: var(--grey);
+    font-style: italic;
+    margin: 8px 0 0 0;
+    line-height: 1.5;
+}
+
+.pub-addendum a {
+    color: var(--text);
+}
+
+.pub-addendum a:hover {
+    color: #0056b3;
+}
+
+
+/* --- Errata: inline toggle + collapsible panel --- */
+
+.errata-toggle {
+    display: inline;
+    background: none;
+    border: none;
+    color: var(--text);
+    cursor: pointer;
+    padding: 0;
+    margin-left: 4px;
+    font-family: inherit;
+    font-size: inherit;
+    font-style: italic;
+    text-decoration: underline;
+}
+
+.errata-toggle:hover {
+    color: #0056b3;
+}
+
+.errata-panel {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
+}
+
+.errata-inner {
+    margin: 8px 0 0 20px;
+    padding: 4px 0 4px 15px;
+    border-left: 2px solid var(--border);
+}
+
+.errata-list {
+    list-style: none;
+    padding: 0;
+    margin: 4px 0 0 0;
+    font-size: 11pt;
+    color: var(--grey);
+    line-height: 1.6;
+}
+
+.errata-list li {
+    padding: 2px 0;
+}
+
+.errata-list li::before {
+    content: "—";
+    margin-right: 8px;
+    color: var(--border);
+}
+
+
+/* --- Abstract: toggle + collapsible panel --- */
+
+.abstract-toggle {
+    display: inline-block;
+    background: none;
+    border: none;
+    color: var(--text);
+    cursor: pointer;
+    padding: 0;
+    margin: 10px 0 0 0;
+    font-family: inherit;
+    font-size: 10pt;
+    text-decoration: underline;
+}
+
+.abstract-toggle:hover {
+    color: #0056b3;
+}
+
+.abstract-panel {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease-out;
+}
+
+.abstract-inner {
+    margin: 12px 0 0 20px;
+    padding: 8px 0 8px 15px;
+    border-left: 2px solid var(--border);
+    font-size: 12pt;
+    color: var(--grey);
+    line-height: 1.6;
+    overflow-wrap: break-word;
+}
+
+/* MathJax fixes scoped to abstract-inner */
+
+.abstract-inner mjx-container[display="true"] {
+    margin: 1em 0 !important;
+}
+
+.abstract-inner mjx-container:not([display="true"]) {
+    vertical-align: baseline !important;
+    position: relative;
+    top: 0.05em;
+}
+
+.abstract-inner mjx-sub {
+    vertical-align: -0.25em !important;
+}
+
+
+/* ============================================================
+   ACTIVITIES PAGE
+   ============================================================ */
+
+.activity-block {
+    margin-bottom: 60px;
+}
+
+.activity-block h3,
+.teaching-block h3 {
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 5px;
+    margin-bottom: 25px;
+    font-variant: small-caps;
+    letter-spacing: 1px;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.activity-block h4 {
+    font-size: 12pt;
+    font-weight: bold;
+    font-variant: small-caps;
+    letter-spacing: 0.5px;
+    margin: 25px 0 10px 0;
+    color: var(--grey);
+}
+
+.activity-block h4:first-of-type {
+    margin-top: 0;
+}
+
+.service-text {
+    font-size: 13pt;
+    line-height: 1.8;
+}
+
+
+/* --- Dated list (talks, honors, service, project supervision) --- */
+
+.dated-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 15px 0;
+}
+
+.dated-list li {
+    display: grid;
+    grid-template-columns: 110px 1fr;
+    gap: 20px;
+    padding: 8px 0;
+    border-bottom: 1px dotted var(--border);
+    align-items: baseline;
+    line-height: 1.5;
+}
+
+.dated-list li:last-child {
+    border-bottom: none;
+}
+
+.dated-list .date-col {
+    color: var(--grey);
+    font-size: 11pt;
+    font-variant: small-caps;
+    letter-spacing: 0.5px;
+    white-space: nowrap;
+}
+
+
+/* --- Review list (MathSciNet / zbMATH entries) --- */
+
+.review-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 15px 0;
+}
+
+.review-list li {
+    padding: 8px 0;
+    border-bottom: 1px dotted var(--border);
+    line-height: 1.5;
+    font-size: 12pt;
+}
+
+.review-list li:last-child {
+    border-bottom: none;
+}
+
+
+/* --- Resource list (hard-to-find papers) --- */
+
+.resource-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.resource-list li {
+    padding: 12px 0;
+    border-bottom: 1px dotted var(--border);
+    line-height: 1.5;
+    font-size: 12pt;
+}
+
+.resource-list li:last-child {
+    border-bottom: none;
+}
+
+
+/* --- Plain bulleted list (service items) --- */
+
+.plain-list {
+    margin: 8px 0 15px 0;
+    padding-left: 25px;
+}
+
+.plain-list li {
+    margin-bottom: 4px;
+    line-height: 1.5;
+}
+
+
+/* ============================================================
+   TEACHING PAGE
+   ============================================================ */
+
+.teaching-block {
+    margin-bottom: 70px;
+}
+
+
+/* --- Plain course list (no detailed feedback) --- */
+
+.course-list {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 0 0 20px 0;
+    font-size: 12pt;
+}
+
+.course-list td {
+    padding: 6px 0;
+    border-bottom: 1px dotted var(--border);
+    vertical-align: baseline;
+    color: var(--text);
+}
+
+.course-list tr:last-child td {
+    border-bottom: none;
+}
+
+.course-list .course-code {
+    color: var(--grey);
+    font-variant: small-caps;
+    letter-spacing: 0.5px;
+    width: 100px;
+    white-space: nowrap;
+    padding-right: 20px;
+}
+
+.course-list .course-term {
+    color: var(--grey);
+    font-size: 11pt;
+    text-align: right;
+    width: 200px;
+    white-space: nowrap;
+}
+
+
+/* --- Featured course (with evaluation data) --- */
+
+.course-feature {
+    margin: 0 0 35px 0;
+}
+
+.course-feature-header {
+    display: flex;
+    align-items: baseline;
+    padding: 6px 0;
+    font-size: 12pt;
+}
+
+.course-feature-header .course-code {
+    flex: 0 0 100px;
+    padding-right: 20px;
+    color: var(--grey);
+    font-variant: small-caps;
+    letter-spacing: 0.5px;
+    white-space: nowrap;
+}
+
+.course-feature-header .course-title {
+    flex: 1;
+    color: var(--text);
+}
+
+.course-feature-header .course-term {
+    flex: 0 0 200px;
+    text-align: right;
+    color: var(--grey);
+    font-size: 11pt;
+    white-space: nowrap;
+}
+
+.course-desc {
+    margin: 0 0 6px 0;
+    line-height: 1.6;
+    font-size: 12pt;
+}
+
+.course-meta {
+    margin: 0;
+    font-size: 11pt;
+    color: var(--grey);
+    line-height: 1.5;
+}
+
+.meta-label {
+    font-variant: small-caps;
+    letter-spacing: 0.5px;
+    color: var(--text);
+    font-size: 10pt;
+    margin-right: 3px;
+}
+
+.meta-sep {
+    margin: 0 8px;
+    color: var(--border);
+}
+
+
+/* --- Course feedback panel --- */
+
+.feedback-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease-out;
+}
+
+.feedback-inner {
+    padding: 0 0 10px 0;
+}
+
+.feedback-inner h4 {
+    font-size: 11pt;
+    font-variant: small-caps;
+    letter-spacing: 0.5px;
+    font-weight: bold;
+    margin: 18px 0 8px 0;
+    color: var(--text);
+}
+
+.feedback-inner h4:first-child {
+    margin-top: 0;
+}
+
+.metric-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 10px 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4px 30px;
+    font-size: 11pt;
+    color: var(--grey);
+}
+
+.student-feedback {
+    margin: 8px 0;
+    padding-left: 15px;
+    border-left: 2px solid var(--border);
+    font-style: italic;
+    font-size: 11pt;
+    color: var(--grey);
+    line-height: 1.5;
+}
+
+.feedback-toggle {
+    display: inline-block;
+    background: none;
+    border: none;
+    color: var(--text);
+    cursor: pointer;
+    padding: 0;
+    margin-top: 8px;
+    font-family: inherit;
+    font-size: 10pt;
+    text-decoration: underline;
+}
+
+.feedback-toggle:hover {
+    color: #0056b3;
+}
+
+
+/* --- Teaching list (used by Activities page for talks) --- */
+
+.teaching-list {
+    list-style: none;
+    padding: 0;
+}
+
+.teaching-list li {
+    padding: 8px 0;
+    border-bottom: 1px dotted var(--border);
+    color: var(--text);
+}
+
+.teaching-list li:last-child {
+    border-bottom: none;
+}
+
+.course-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 15px;
+}
+
+.course-main {
+    flex: 1;
+}
+
+.course-date {
+    color: var(--grey);
+    font-size: 11pt;
+    white-space: nowrap;
+}
+
+.teaching-list .course-desc {
+    display: block;
+    margin: 4px 0 0 0;
+    color: var(--grey);
+    font-size: 11pt;
+}
+
+
+/* ============================================================
+   BLOG PAGES
+   ============================================================ */
+
+/* --- Blog index --- */
+
+.blog-intro {
+    font-size: 12pt;
+    color: var(--text);
+    line-height: 1.6;
+    margin: 0 0 35px 0;
+    max-width: 700px;
+}
+
+.blog-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.blog-entry {
+    padding: 22px 0;
+    border-bottom: 1px dotted var(--border);
+}
+
+.blog-entry:last-child {
+    border-bottom: none;
+}
+
+.blog-entry-meta {
+    font-size: 10pt;
+    color: var(--grey);
+    margin-bottom: 6px;
+}
+
+.blog-date {
+    font-variant: small-caps;
+    letter-spacing: 0.5px;
+}
+
+.blog-category {
+    margin-left: 14px;
+    font-size: 9.5pt;
+    font-variant: small-caps;
+    letter-spacing: 0.5px;
+}
+
+.blog-category::before {
+    content: "\00B7";
+    margin-right: 14px;
+    color: var(--border);
+}
+
+.blog-entry-title {
+    margin: 4px 0 8px 0;
+    font-size: 1.25rem;
+    font-weight: bold;
+    line-height: 1.3;
+}
+
+.blog-entry-title a {
+    color: var(--text);
+    text-decoration: none;
+}
+
+.blog-entry-title a:hover {
+    color: #0056b3;
+    text-decoration: underline;
+}
+
+.blog-entry-excerpt {
+    margin: 0;
+    font-size: 12pt;
+    color: var(--grey);
+    line-height: 1.5;
+    max-width: 700px;
+}
+
+
+/* --- Blog post page --- */
+
+.blog-post-container {
+    max-width: 720px;
+}
+
+.blog-back {
+    font-size: 11pt;
+    margin: 0 0 25px 0;
+}
+
+.blog-back a {
+    color: var(--grey);
+    text-decoration: none;
+}
+
+.blog-back a:hover {
+    color: var(--text);
+    text-decoration: underline;
+}
+
+.blog-post-header {
+    margin: 10px 0 30px 0;
+    padding-bottom: 18px;
+    border-bottom: 1px solid var(--border);
+}
+
+.blog-post-header h1 {
+    font-size: 2rem;
+    margin: 0 0 10px 0;
+    line-height: 1.2;
+    font-weight: bold;
+}
+
+.blog-post-meta {
+    margin: 0;
+    font-size: 11pt;
+    color: var(--grey);
+}
+
+.blog-post-body {
+    font-size: 12pt;
+    line-height: 1.7;
+}
+
+.blog-post-body p {
+    margin: 0 0 18px 0;
+}
+
+.blog-post-body h2 {
+    font-size: 1.5rem;
+    margin: 32px 0 12px 0;
+    border-bottom: none;
+    font-variant: normal;
+    letter-spacing: 0;
+}
+
+.blog-post-body h3 {
+    font-size: 1.2rem;
+    margin: 24px 0 10px 0;
+}
+
+.blog-post-body a {
+    color: var(--text);
+    text-decoration: underline;
+}
+
+.blog-post-body a:hover {
+    color: #0056b3;
+}
+
+.blog-post-body code {
+    font-family: 'Roboto Mono', monospace;
+    font-size: 0.92em;
+    background: #f5f5f5;
+    padding: 1px 5px;
+    border-radius: 2px;
+}
+
+.blog-post-body pre {
+    background: #f8f8f8;
+    border: 1px solid var(--border);
+    padding: 14px 16px;
+    overflow-x: auto;
+    font-size: 11pt;
+    line-height: 1.5;
+    margin: 18px 0;
+}
+
+.blog-post-body pre code {
+    background: none;
+    padding: 0;
+    border-radius: 0;
+}
+
+.blog-post-body blockquote {
+    margin: 18px 0;
+    padding: 4px 0 4px 20px;
+    border-left: 3px solid var(--border);
+    color: var(--grey);
+    font-style: italic;
+}
+
+.blog-post-body ul,
+.blog-post-body ol {
+    margin: 14px 0 18px 0;
+    padding-left: 28px;
+}
+
+.blog-post-body ul li,
+.blog-post-body ol li {
+    margin-bottom: 6px;
+    line-height: 1.6;
+}
+
+.blog-post-body img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 22px auto;
+}
+
+.blog-post-body figure {
+    margin: 24px 0;
+    text-align: center;
+}
+
+.blog-post-body figcaption {
+    font-size: 10pt;
+    color: var(--grey);
+    margin-top: 8px;
+    font-style: italic;
+}
+
+.blog-post-body hr {
+    margin: 32px 0;
+    border: none;
+    border-top: 1px solid var(--border);
+}
+
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
 
 footer {
-    margin-top: 80px; /* Space between content and footer */
+    margin-top: 80px;
     padding-bottom: 40px;
     color: var(--grey);
 }
@@ -399,11 +1112,115 @@ footer {
     display: flex;
     justify-content: space-between;
     font-size: 11pt;
-    font-family: 'Latin Modern Roman', serif;
 }
 
-/* On mobile, stack the footer items */
+
+/* ============================================================
+   RESPONSIVE — Mobile (≤ 768px)
+   ============================================================
+   Single consolidated media query, placed last so mobile rules
+   override desktop rules regardless of source order.
+   ============================================================ */
+
 @media (max-width: 768px) {
+
+    /* --- Container & navigation --- */
+
+    .container {
+        width: 95%;
+        padding: 0 15px;
+    }
+
+    nav .container {
+        flex-direction: column;
+        gap: 15px;
+        text-align: center;
+    }
+
+    nav ul {
+        gap: 15px;
+    }
+
+    /* --- Two-column layouts: stack vertically --- */
+
+    .profile-section,
+    .research-header {
+        display: block;
+    }
+
+    .profile-sidebar {
+        margin-top: 40px;
+    }
+
+    .research-affiliation {
+        margin-bottom: 10px;
+        text-align: left;
+        border-bottom: 1px dotted var(--border);
+        padding-bottom: 5px;
+    }
+
+    /* --- Home page news list --- */
+
+    .news-list > li {
+        grid-template-columns: 1fr;
+        gap: 4px;
+    }
+
+    /* --- Activities: dated list --- */
+
+    .dated-list li {
+        grid-template-columns: 1fr;
+        gap: 4px;
+    }
+
+    /* --- Publications: abstract panel --- */
+
+    .abstract-inner {
+        margin-left: 8px;
+        padding-left: 10px;
+    }
+
+    /* --- Teaching: course feature header --- */
+
+    .course-feature-header {
+        flex-wrap: wrap;
+        row-gap: 4px;
+    }
+
+    .course-feature-header .course-term {
+        flex: 0 0 100%;
+        text-align: left;
+        padding-left: 100px;
+    }
+
+    .course-meta .meta-sep {
+        margin: 0 6px;
+    }
+
+    .metric-list {
+        grid-template-columns: 1fr;
+    }
+
+    .course-list .course-term,
+    .course-list .course-code {
+        width: auto;
+    }
+
+    /* --- Teaching list (course-info row) --- */
+
+    .course-info {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 4px;
+    }
+
+    .course-date {
+        text-align: left;
+        margin-top: 5px;
+    }
+
+    /* --- Footer --- */
+
     .footer-content {
         flex-direction: column;
         gap: 10px;
@@ -411,3 +1228,6 @@ footer {
     }
 }
 
+h3, h4 {
+    scroll-margin-top: 80px;
+}

@@ -8,32 +8,31 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lmodern@0.0.3/dist/lmodern.css">
 
     <script>
-      window.MathJax = {
+    window.MathJax = {
         tex: {
-          inlineMath: [['$', '$'], ['\\(', '\\)']],
-          processEscapes: true
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']]
         },
-        chtml: {
-            matchFontHeight: true,
-            displayAlign: 'left'
+        svg: {
+        fontCache: 'global'
         }
-      };
+    };
     </script>
     <script type="text/javascript" id="MathJax-script" async
-      src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
     </script>
 
     <link rel="stylesheet" href="style.css">
-    <link rel="icon" type="image/x-icon" href="k7-logo.svg">
+    <link rel="icon" type="image/png" href="k7-torus.png">
 </head>
 <body>
 <nav>
     <div class="container">
         <div class="logo-area">
-            <img src="k7-torus.svg" alt="CAT Lab Logo" class="lab-logo-img">
+            <img src="k7-torus.png" alt="CAT Lab Logo" class="lab-logo-img">
             <div class="lab-name">
                 <span class="lab-title">CAT Lab</span>
-                <span class="lab-subtitle">Combinatorial Applications & Techniques</span>
+                <span class="lab-subtitle">Combinatorial Applications &amp;&nbsp;Techniques</span>
             </div>
         </div>
         <ul>
@@ -48,43 +47,146 @@
 </nav>
 
 <main class="container">
-    <div class="profile-section">
-        
+    <section class="profile-section">
         <div class="bio-text">
-            <h2>About Me</h2>
-            <p>
-                I am a researcher at <strong>IIT Bombay</strong> specializing in the structural properties of <strong>6-regular triangulations</strong>. My work focuses on the intersection of topological graph theory and algorithmic complexity.
-            </p>
-            
-            <div class="thesis-figure">
-                <img src="thesis-viz.png" alt="6-regular triangulation embedding" class="thesis-img">
-                <p class="figure-caption">Figure 1: A 5-list coloring of a 6-regular triangulation on a torus, a central object of my current research.</p>
-            </div>
+            <h1 class="profile-name">Brahadeesh Sankarnarayanan</h1>
+            <p class="profile-subtitle">Assistant Professor (Grade II), Department of Mathematics, IIT Jodhpur</p>
 
             <p>
-                My current project involves developing linear-time algorithms for list-coloring problems on surfaces with non-zero Euler characteristics.
+                I work in combinatorics, with current interests in spectral extremal graph theory,
+                intersection graphs of paths, and combinatorial matrix theory. My past work covers
+                graph coloring on surfaces, intersecting set systems, and the rank of structured matrices
+                arising from tournaments. See the <a href="research.html">Research</a> and
+                <a href="publications.html">Publications</a> pages for details.
+            </p>
+
+            <p>
+                I completed my BS&ndash;MS dual degree in mathematics at
+                <a href="https://maths.iiserb.ac.in/" target="_blank">IISER Bhopal</a> in 2017, and
+                defended my PhD in combinatorics at
+                <a href="https://www.iitb.ac.in/" target="_blank">IIT Bombay</a> in 2024 under the
+                supervision of
+                <a href="https://homepages.iitb.ac.in/~niranj/" target="_blank">Niranjan Balachandran</a>.
+                I subsequently held positions as an Institute Postdoctoral Fellow at IIT Bombay
+                (until February 2025) and as a Research Associate at
+                <a href="https://www.iith.ac.in/" target="_blank">IIT Hyderabad</a> with
+                <a href="https://people.iith.ac.in/rajeshkannan/" target="_blank">M.&nbsp;Rajesh Kannan</a>
+                (until September 2025), before joining IIT Jodhpur in September 2025.
             </p>
         </div>
 
         <div class="profile-sidebar">
-            <img src="headshot.jpg" alt="Brahadeesh Sankarnarayanan" class="profile-photo">
-            
+            <img src="headshot.jpg" alt="Brahadeesh Sankarnarayanan" class="profile-photo" loading="lazy">
+
             <ul class="contact-links">
-                <li><a href="mailto:email@iitb.ac.in">email [at] iitb.ac.in</a></li>
-                <li><a href="#">Google Scholar</a></li>
-                <li><a href="#">GitHub</a></li>
-                <li><a href="#">CV (PDF)</a></li>
+                <li><a href="mailto:brahadeesh@iitj.ac.in">Email</a></li>
+                <li><a href="https://scholar.google.com/citations?user=EkZ13RYAAAAJ" target="_blank">Google Scholar</a></li>
+                <li><a href="https://arxiv.org/a/sankarnarayanan_b_1.html" target="_blank">arXiv</a></li>
+                <li><a href="https://orcid.org/0000-0001-9191-1253" target="_blank">ORCID</a></li>
+                <li><a href="assets/CV-2.pdf" target="_blank">CV (PDF)</a></li>
+                <li><a href="resources.html">Resources</a></li>
             </ul>
         </div>
-    </div>
+    </section>
+
+    <h2>CAT Lab</h2>
+    <p>
+        The CAT Lab is my research group at IIT Jodhpur, focused on extremal and structural problems in combinatorics.
+        See the <a href="research.html">Research</a> page for current projects.
+    </p>
+
+    <figure class="thesis-figure">
+        <img src="k7-torus.png" alt="Embedding of K_7 as a 6-regular triangulation of the torus" class="thesis-img">
+        <figcaption class="figure-caption">
+            The lab logo is a combinatorial embedding of \(K_7\) as a \(6\)-regular triangulation of the
+            torus. Such embeddings have been known since Heawood (1890); the specific
+            rotation system shown here is one I presented in my PhD thesis, where it features as a
+            recurring example.
+        </figcaption>
+    </figure>
+
+    <h3 class="lab-subhead">Lab members</h3>
+    <ul class="lab-members">
+        <ul class="lab-members">
+            <li><strong>Vishnu Kumar</strong> &mdash; PhD student, enrolled Autumn 2025&ndash;26.</li>
+            <li><strong>Yash Chawda</strong> &mdash; PhD student, enrolled Spring 2025&ndash;26.</li>
+        </ul>
+    </ul>
+
+    <h2>News &amp; Updates</h2>
+    <ul class="news-list">
+        <li>
+            <span class="news-date">May 2026</span>
+            <p class="news-content">Launched the new lab website.</p>
+        </li>
+        <li>
+            <span class="news-date">January 2026</span>
+            <p class="news-content">
+                Paper <em>5-list coloring toroidal 6-regular triangulations in linear time</em>
+                appeared in <em>Discrete Applied Mathematics</em>.
+                <a href="publications.html#BalachandranSankarnarayanan2026">[entry]</a>
+            </p>
+        </li>
+        <li>
+            <span class="news-date">September 2025</span>
+            <p class="news-content">
+                Joined the Department of Mathematics at IIT Jodhpur as Assistant Professor.
+            </p>
+        </li>
+    </ul>
+
+    <h2>Working with me</h2>
+    <p>
+        I am happy to hear from prospective postdocs, students, and visitors interested in working
+        in combinatorics. The lab does not currently have funded positions, but I am open to hosting
+        candidates with independent funding &mdash; in particular, candidates eligible for the
+        National Postdoctoral Fellowship (NPDF). I do not currently have funding for paid student
+        internships, but I expect to in the future and will update this page when that happens.
+    </p>
+    <p>
+        I receive a steady volume of generic inquiries that show no engagement with my actual work.
+        To help me distinguish genuine inquiries from these, please include the following in your
+        message:
+    </p>
+    <ul class="inquiry-checklist">
+        <li>A subject line beginning with <strong>Postdoc inquiry</strong> or <strong>Internship inquiry</strong>, followed by a one-line description.</li>
+        <li>A short paragraph (not just a CV) describing your research interests and recent work.</li>
+        <li>A specific paper or research thread of mine that motivated the inquiry, and what you found interesting about it.</li>
+        <li>One or two questions or problems &mdash; in my area or yours &mdash; that you are currently thinking about.</li>
+    </ul>
+    <section class="contact-section">
+        <h2>Contact</h2>
+        <address>
+            Department of Mathematics<br>
+            Indian Institute of Technology Jodhpur<br>
+            NH 62 Nagaur Road<br>
+            Karwar 342030<br>
+            Jodhpur District<br>
+            Rajasthan, India
+        </address>
+        <p>
+            Email: <a href="mailto:brahadeesh@iitj.ac.in">brahadeesh [at] iitj [dot] ac [dot] in</a><br>
+            Office Extn. 1469
+        </p>
+        <p class="profile-list">
+            Other profiles:
+            <a href="https://mathscinet.ams.org/mathscinet/MRAuthorID/1329130" target="_blank">MathSciNet</a>
+            &middot;
+            <a href="https://zbmath.org/authors/?q=ai:sankarnarayanan.brahadeesh" target="_blank">zbMATH Open</a>
+            &middot;
+            <a href="https://www.mathgenealogy.org/id.php?id=321981" target="_blank">Mathematics Genealogy Project</a>
+            &middot;
+            <a href="https://oeis.org/history?user=Brahadeesh%20Sankarnarayanan" target="_blank">OEIS</a>
+        </p>
+    </section>
 </main>
 
 <footer>
     <div class="container">
         <hr class="footer-line">
         <div class="footer-content">
-            <span class="copyright">© 2026 Brahadeesh Sankarnarayanan</span>
-            <span class="lab-foot">CAT Lab • IIT Bombay</span>
+            <span class="copyright">&copy; 2026 Brahadeesh Sankarnarayanan</span>
+            <span class="lab-foot">CAT Lab &bull; IIT Jodhpur</span>
             <span class="updated">Last updated: May 2026</span>
         </div>
     </div>
