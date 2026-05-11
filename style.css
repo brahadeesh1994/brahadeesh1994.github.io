@@ -172,7 +172,7 @@ h2 {
     width: 100%;
     height: auto;
     display: block;
-    border: 1px solid var(--border);
+    border: none ; /* 1px solid var(--border) */
     margin: 0 0 20px 0;
 }
 
