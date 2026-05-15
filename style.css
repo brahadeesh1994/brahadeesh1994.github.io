@@ -1137,12 +1137,18 @@ footer {
         text-align: center;
     }
 
+    nav .container ul {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px 20px;
+    }
+
     nav ul {
     flex-wrap: wrap;
     justify-content: center;
     gap: 10px 20px;
     }
-    
+
     /* --- Two-column layouts: stack vertically --- */
 
     .profile-section,
