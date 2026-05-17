@@ -285,6 +285,21 @@ h2 {
     margin-top: 10px;
 }
 
+.updates-more {
+    text-align: right;
+    font-size: 11pt;
+    margin: 8px 0 0 0;
+}
+
+.updates-more a {
+    color: var(--grey);
+    text-decoration: none;
+}
+
+.updates-more a:hover {
+    color: var(--text);
+    text-decoration: underline;
+}
 
 /* --- Contact section (bottom of home page) --- */
 
