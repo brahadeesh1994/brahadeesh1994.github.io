@@ -281,6 +281,10 @@ h2 {
     line-height: 1.5;
 }
 
+.news-list li div .news-content + .news-content {
+    margin-top: 10px;
+}
+
 
 /* --- Contact section (bottom of home page) --- */
 
