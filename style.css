@@ -1263,3 +1263,44 @@ footer {
 h3, h4 {
     scroll-margin-top: 80px;
 }
+
+
+/* ============================================================
+   DARK MODE
+   ============================================================ */
+
+@media (prefers-color-scheme: dark) {
+
+    :root {
+        --text:   #dcdcdc;
+        --grey:   #909090;
+        --border: #2c2c2c;
+        --bg:     #141414;
+    }
+
+    .thesis-figure {
+        background-color: #1e1e1e;
+    }
+
+    .blog-post-body code {
+        background: #252525;
+    }
+
+    .blog-post-body pre {
+        background: #1e1e1e;
+    }
+
+    .contact-links a:hover,
+    .pub-journal a:hover,
+    .pub-addendum a:hover,
+    .abstract-toggle:hover,
+    .errata-toggle:hover,
+    .feedback-toggle:hover,
+    .blog-entry-title a:hover,
+    .blog-back a:hover,
+    .updates-more a:hover,
+    .blog-post-body a:hover,
+    .contact-section .profile-list a:hover {
+        color: #6ba3d6;
+    }
+}
