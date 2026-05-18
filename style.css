@@ -1285,7 +1285,7 @@ h4 {
     }
 
     .thesis-img {
-        filter: brightness(0) invert(1);
+        filter: invert(1);
     }
 
     .blog-post-body code {
@@ -1305,7 +1305,7 @@ h4 {
     }
 
     .lab-logo-img {
-        filter: brightness(0) invert(1);
+        filter: invert(1);
     }
 
     .contact-links a:hover,
