@@ -79,6 +79,11 @@ nav a {
     padding: 2px;
 }
 
+a.logo-link {
+    text-decoration: none;
+    color: inherit;
+}
+
 .lab-name {
     display: flex;
     flex-direction: column;
