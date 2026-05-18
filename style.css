@@ -1290,6 +1290,10 @@ h3, h4 {
         background: #1e1e1e;
     }
 
+    a {
+    color: #6ba3d6;
+    }
+
     .contact-links a:hover,
     .pub-journal a:hover,
     .pub-addendum a:hover,
