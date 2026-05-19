@@ -78,7 +78,7 @@ nav a {
 }
 
 .lab-logo-img {
-    max-height: 120px;
+    height: 120px;
     width: auto;
     border: none;
     padding: 2px;
@@ -135,7 +135,7 @@ h2 {
 }
 
 .thesis-img {
-    max-width: 100%;
+    max-width: 60%;
     height: auto;
     display: block;
     margin: 0 auto 15px auto;
