@@ -1275,6 +1275,11 @@ h4 {
         background-color: #1e1e1e;
     }
 
+    .profile-photo {
+        filter: brightness(0.88);
+        border: 1px solid var(--border);
+    }
+
     .blog-post-body code {
         background: #252525;
     }

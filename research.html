@@ -77,8 +77,11 @@
                     Given a graph \(G\), a set \(S\) of vertices is \(\triangle\)-convex if every vertex
                     that forms a triangle with two vertices of \(S\) already belongs to \(S\). This gives
                     rise to natural analogues of classical convexity parameters, among them the
-                    Carath&eacute;odory number \(c_\triangle(G)\), which measures the maximum size of a
-                    set from which no single element can be removed without shrinking the convex hull.
+                    Carath&eacute;odory number \(c_\triangle(G)\), defined as the size of a largest
+                    Carath&eacute;odory-independent set, where a set \(S\) is Carath&eacute;odory-independent if
+                    \[
+                        \operatorname{Hull}(S) \setminus \bigcup_{a \in S} \operatorname{Hull}(S \setminus \{a\}) \neq \emptyset.
+                    \]
                     Vishnu Kumar and I study the bound \(c_\triangle(G) \leq t + 1\) for graphs with
                     \(t\) triangles, providing a new proof via a component-counting argument: given a
                     Carath&eacute;odory-independent set \(S\), we partition the triangles of \(G\)
@@ -89,7 +92,7 @@
             </div>
         </section>
 
-        <section class="research-block">
+        <section class="research-block" id="majority-coloring-game">
             <div class="research-header">
                 <span class="research-title">Majority coloring game on trees</span>
                 <span class="research-affiliation">IIT Jodhpur &middot; with Yash Chawda</span>
@@ -106,6 +109,10 @@
                     \(\mu_g(T)\) for binary and ternary trees using a configuration-based strategy, in
                     which the first player aims to prevent a small family of local obstruction patterns
                     from arising.
+                </p>
+                <p>
+                    An interactive <a href="tools/tree-coloring-explorer.html">Tree Coloring Explorer</a>
+                    built by Yash is available for experimenting with majority colorings on trees.
                 </p>
             </div>
         </section>
