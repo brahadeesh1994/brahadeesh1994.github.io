@@ -161,6 +161,7 @@
                     <option value="4" selected>4 Colors</option>
                 </select>
                 <button id="randomBtn">Regenerate</button>
+                <button id="clearColorsBtn">Clear all colors</button>
                 <button id="editBtn">Edit</button>
                 <div id="builderControls" class="builder-controls">
                     <button onclick="addChild()">Add child</button>
@@ -544,6 +545,13 @@ function toggleRandomBtn() {
     let btn = document.getElementById("randomBtn");
     btn.style.display = (currentType === "rand3" || currentType === "rand4") ? "inline-block" : "none";
 }
+
+function clearAllColors() {
+    for (let id in nodes) nodes[id].color = 0;
+    draw();
+}
+
+document.getElementById("clearColorsBtn").onclick = clearAllColors;
 
 document.getElementById("randomBtn").onclick = function () {
     initTree(currentType);
