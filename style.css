@@ -38,23 +38,27 @@ body {
    ============================================================ */
 
 nav {
-    padding: 40px 0;
+    padding: 30px 0 0 0;
     border-bottom: 1px solid var(--border);
     margin-bottom: 50px;
 }
 
 nav .container {
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
     align-items: center;
 }
 
 nav ul {
     display: flex;
     list-style: none;
-    margin: 0;
+    margin: 20px 0 0 0;
     gap: 30px;
-    padding: 0;
+    padding: 15px 0 25px 0;
+    justify-content: center;
+    flex-wrap: wrap;
+    width: 100%;
+    border-top: 1px solid var(--border);
 }
 
 nav a {
@@ -69,11 +73,12 @@ nav a {
 .logo-area {
     display: flex;
     align-items: center;
+    justify-content: center;
     gap: 15px;
 }
 
 .lab-logo-img {
-    height: 80px;
+    max-height: 120px;
     width: auto;
     border: none;
     padding: 2px;
@@ -1156,22 +1161,8 @@ footer {
         padding: 0 15px;
     }
 
-    nav .container {
-        flex-direction: column;
-        gap: 15px;
-        text-align: center;
-    }
-
-    nav .container ul {
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 10px 20px;
-    }
-
     nav ul {
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 10px 20px;
+        gap: 8px 16px;
     }
 
     /* --- Two-column layouts: stack vertically --- */
