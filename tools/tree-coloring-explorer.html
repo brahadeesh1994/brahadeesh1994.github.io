@@ -162,6 +162,9 @@
                 </select>
                 <button id="randomBtn">Regenerate</button>
                 <button id="clearColorsBtn">Clear all colors</button>
+                <button onclick="zoomBy(1.3)" title="Zoom in">+</button>
+                <button onclick="zoomBy(1/1.3)" title="Zoom out">&#x2212;</button>
+                <button onclick="resetView()" title="Reset view">Fit</button>
                 <button id="editBtn">Edit</button>
                 <div id="builderControls" class="builder-controls">
                     <button onclick="addChild()">Add child</button>
@@ -217,6 +220,21 @@ let currentType = "rand3";
 // Builder state
 let builderMode = false, selectedNode = null, nextId = 0;
 let draggingNode = null;
+
+// View transform (zoom + pan)
+let viewScale   = 1.0;
+let viewOffsetX = 0;
+let viewOffsetY = 0;
+let isPanning   = false;
+let panStart    = { sx: 0, sy: 0, ox: 0, oy: 0 };
+
+const MIN_SCALE = 0.15;
+const MAX_SCALE = 6.0;
+
+function resetView() {
+    viewScale = 1.0; viewOffsetX = 0; viewOffsetY = 0;
+    draw();
+}
 
 // ---------- DARK MODE ----------
 
@@ -374,6 +392,7 @@ function initTree(type) {
     init(tree);
     tidyLayout(tree);
     fitTreeToCanvas();
+    viewScale = 1.0; viewOffsetX = 0; viewOffsetY = 0;
     draw();
     toggleRandomBtn();
 }
@@ -385,6 +404,8 @@ function draw() {
     activeColors = (dark ? darkColors : lightColors).slice(0, colorCount + 1);
 
     ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.save();
+    ctx.setTransform(viewScale, 0, 0, viewScale, viewOffsetX, viewOffsetY);
 
     // Edges
     ctx.strokeStyle = dark ? "rgba(180, 180, 200, 0.55)" : "rgba(80, 80, 100, 0.7)";
@@ -417,6 +438,8 @@ function draw() {
         ctx.textAlign = "center";
         ctx.fillText(+id + 1, n.x, n.y);
     }
+
+    ctx.restore();
 }
 
 // ---------- INTERACTION ----------
@@ -436,6 +459,11 @@ canvas.onmousedown = function (e) {
             return;
         }
     }
+    // Clicked empty canvas: start pan
+    let r = canvas.getBoundingClientRect();
+    isPanning = true;
+    panStart = { sx: e.clientX - r.left, sy: e.clientY - r.top, ox: viewOffsetX, oy: viewOffsetY };
+    canvas.style.cursor = 'grabbing';
 };
 
 canvas.onmousemove = function (e) {
@@ -444,18 +472,33 @@ canvas.onmousemove = function (e) {
         nodes[draggingNode].x = x;
         nodes[draggingNode].y = y;
         draw();
+        return;
     }
+    if (isPanning) {
+        let r = canvas.getBoundingClientRect();
+        viewOffsetX = panStart.ox + (e.clientX - r.left - panStart.sx);
+        viewOffsetY = panStart.oy + (e.clientY - r.top  - panStart.sy);
+        draw();
+        return;
+    }
+    // Update cursor to hint that vertices are clickable
+    let { x, y } = getMouse(e);
+    let overNode = Object.keys(nodes).some(id => dist(nodes[id], x, y) < 14);
+    canvas.style.cursor = overNode ? 'pointer' : 'grab';
 };
 
 canvas.onmouseup = function () {
     draggingNode = null;
+    if (isPanning) { isPanning = false; canvas.style.cursor = 'grab'; }
 };
 
 // ---------- HELPERS ----------
 
 function getMouse(e) {
     let r = canvas.getBoundingClientRect();
-    return { x: e.clientX - r.left, y: e.clientY - r.top };
+    let sx = e.clientX - r.left, sy = e.clientY - r.top;
+    // Convert from screen space to world space
+    return { x: (sx - viewOffsetX) / viewScale, y: (sy - viewOffsetY) / viewScale };
 }
 
 function dist(n, x, y) {
@@ -513,6 +556,32 @@ function resumeBuilder() {
     selectedNode = null;
     document.getElementById("builderControls").style.display = "flex";
     document.getElementById("editBtn").style.display = "none";
+    draw();
+}
+
+// ---------- ZOOM ----------
+
+canvas.addEventListener('wheel', function (e) {
+    e.preventDefault();
+    let r  = canvas.getBoundingClientRect();
+    let sx = e.clientX - r.left, sy = e.clientY - r.top;
+    // World point under the cursor stays fixed after zoom
+    let wx = (sx - viewOffsetX) / viewScale;
+    let wy = (sy - viewOffsetY) / viewScale;
+    let factor = e.deltaY < 0 ? 1.12 : 1 / 1.12;
+    viewScale = Math.max(MIN_SCALE, Math.min(MAX_SCALE, viewScale * factor));
+    viewOffsetX = sx - wx * viewScale;
+    viewOffsetY = sy - wy * viewScale;
+    draw();
+}, { passive: false });
+
+function zoomBy(factor) {
+    let cx = canvas.width / 2, cy = canvas.height / 2;
+    let wx = (cx - viewOffsetX) / viewScale;
+    let wy = (cy - viewOffsetY) / viewScale;
+    viewScale = Math.max(MIN_SCALE, Math.min(MAX_SCALE, viewScale * factor));
+    viewOffsetX = cx - wx * viewScale;
+    viewOffsetY = cy - wy * viewScale;
     draw();
 }
 
