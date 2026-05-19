@@ -24,7 +24,7 @@
 
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lmodern@0.0.3/dist/lmodern.css">
-    <link rel="icon" type="image/png" href="k7-torus.png">
+    <link rel="icon" type="image/svg+xml" href="k7-torus-favicon.svg">
 </head>
 
 <body>
@@ -33,7 +33,10 @@
         <div class="container">
             <a href="index.html" class="logo-link">
                 <div class="logo-area">
-                    <img src="k7-torus.png" alt="CAT Lab Logo" class="lab-logo-img">
+                    <picture>
+                        <source srcset="k7-torus-dark.svg" media="(prefers-color-scheme: dark)">
+                        <img src="k7-torus-light.svg" alt="CAT Lab Logo" class="lab-logo-img">
+                    </picture>
                     <div class="lab-name">
                         <span class="lab-title">CAT Lab</span>
                         <span class="lab-subtitle">Combinatorial Applications &amp;&nbsp;Techniques</span>

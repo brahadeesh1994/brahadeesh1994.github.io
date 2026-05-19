@@ -1284,10 +1284,6 @@ h4 {
         background-color: #1e1e1e;
     }
 
-    .thesis-img {
-        filter: invert(1);
-    }
-
     .blog-post-body code {
         background: #252525;
     }
@@ -1302,10 +1298,6 @@ h4 {
 
     a:visited {
         color: #a98fd4;
-    }
-
-    .lab-logo-img {
-        filter: invert(1);
     }
 
     .contact-links a:hover,
