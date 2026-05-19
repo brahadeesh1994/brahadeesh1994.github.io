@@ -161,6 +161,7 @@
                     <option value="4" selected>4 Colors</option>
                 </select>
                 <button id="randomBtn">Regenerate</button>
+                <button id="editBtn">Edit</button>
                 <div id="builderControls" class="builder-controls">
                     <button onclick="addChild()">Add child</button>
                     <button onclick="deleteNode()">Delete</button>
@@ -469,6 +470,7 @@ function startBuilder() {
     edges = [];
     selectedNode = 0;
     nextId = 1;
+    document.getElementById("editBtn").style.display = "none";
     draw();
 }
 
@@ -501,11 +503,23 @@ function finishBuilder() {
     selectedNode = null;
     fitTreeToCanvas();
     draw();
+    document.getElementById("builderControls").style.display = "none";
+    document.getElementById("editBtn").style.display = "inline-block";
+}
+
+function resumeBuilder() {
+    builderMode = true;
+    selectedNode = null;
+    document.getElementById("builderControls").style.display = "flex";
+    document.getElementById("editBtn").style.display = "none";
+    draw();
 }
 
 // ---------- UI BINDINGS ----------
 
 document.getElementById("builderControls").style.display = "none";
+document.getElementById("editBtn").style.display = "none";
+document.getElementById("editBtn").onclick = resumeBuilder;
 
 document.getElementById("graphSelect").onchange = function () {
     let val = this.value;
@@ -516,6 +530,7 @@ document.getElementById("graphSelect").onchange = function () {
         startBuilder();
     } else {
         builderUI.style.display = "none";
+        document.getElementById("editBtn").style.display = "none";
         initTree(val);
     }
 };
