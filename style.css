@@ -240,6 +240,13 @@ h2 {
     border-bottom: none;
 }
 
+.lab-group-label {
+    font-size: 10.5pt;
+    color: var(--grey);
+    font-style: italic;
+    margin: 16px 0 2px 0;
+}
+
 
 /* --- Inquiry checklist (Working with me) --- */
 
@@ -1273,11 +1280,6 @@ h4 {
 
     .thesis-figure {
         background-color: #1e1e1e;
-    }
-
-    .profile-photo {
-        filter: brightness(0.88);
-        border: 1px solid var(--border);
     }
 
     .blog-post-body code {
