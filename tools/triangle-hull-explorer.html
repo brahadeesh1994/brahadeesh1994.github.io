@@ -439,12 +439,31 @@ function computeBlockLayout(blockTree, n) {
     let maxBUnit  = Math.max(...blockTree.map(b => bUnit(b.vertices.length)));
     let blockNR   = blockTree.map(b => safeMaxR * bUnit(b.vertices.length) / maxBUnit);
 
-    // ---- vertex positions ----
-    let posAcc = Array.from({length: n}, () => []);
+    // ---- vertex placement ----
+    // Map every vertex to the list of blocks containing it.
+    let vertexBlocks = Array.from({length: n}, () => []);
+    for (let bi = 0; bi < blockTree.length; bi++)
+        for (let v of blockTree[bi].vertices) vertexBlocks[v].push(bi);
+
+    let layout = Array(n).fill(null);
+
+    // Pass 1: cutvertices (appearing in more than one block) are placed at the
+    // centroid of their blocks' centers.  This replaces the old approach of
+    // averaging two circle-edge positions, which could push the cutvertex
+    // outside the safe-radius zone and into a neighbouring block's territory.
+    for (let v = 0; v < n; v++) {
+        if (vertexBlocks[v].length > 1) {
+            let ax = 0, ay = 0;
+            for (let bi of vertexBlocks[v]) { ax += bx[bi]; ay += by[bi]; }
+            layout[v] = [ax / vertexBlocks[v].length, ay / vertexBlocks[v].length];
+        }
+    }
+
+    // Pass 2: non-cutvertices (appearing in exactly one block) are placed on
+    // their block's circle.  Already-placed cutvertices are skipped.
     for (let bi = 0; bi < blockTree.length; bi++) {
-        let blk = blockTree[bi];
-        let cx = bx[bi], cy = by[bi], r = blockNR[bi];
-        let k = blk.vertices.length, cut = blk.parentCut;
+        let blk = blockTree[bi], cut = blk.parentCut;
+        let cx = bx[bi], cy = by[bi], r = blockNR[bi], k = blk.vertices.length;
 
         let parentAngle = (bi === 0 || blk.parentBlock < 0)
             ? -Math.PI / 2
@@ -456,27 +475,97 @@ function computeBlockLayout(blockTree, n) {
 
         for (let vi = 0; vi < k; vi++) {
             let v = sorted[vi];
-            let a = parentAngle + vi * (2 * Math.PI / k);
-            posAcc[v].push([cx + r * Math.cos(a), cy + r * Math.sin(a)]);
+            if (layout[v] !== null) continue;
+            layout[v] = [
+                cx + r * Math.cos(parentAngle + vi * 2 * Math.PI / k),
+                cy + r * Math.sin(parentAngle + vi * 2 * Math.PI / k)
+            ];
         }
     }
 
-    // Cutvertices land between their two adjacent blocks (average of both proposed positions).
-    return posAcc.map(pts => {
-        if (!pts.length) return [0.5, 0.5];
-        return [
-            pts.reduce((s, p) => s + p[0], 0) / pts.length,
-            pts.reduce((s, p) => s + p[1], 0) / pts.length
-        ];
-    });
+    return layout;
 }
 
 function makeRandom() {
-    let n=parseInt(sv("nInput")||10), p=parseFloat(sv("pInput")||0.35);
-    let layout=Array.from({length:n},()=>[0.08+0.84*Math.random(),0.08+0.84*Math.random()]);
-    let edges=[];
-    for (let i=0;i<n;i++) for (let j=i+1;j<n;j++) if (Math.random()<p) edges.push([i,j]);
-    return {name:`G(${n},\u2009${p.toFixed(2)})`, n, edges, layout};
+    let n = parseInt(sv("nInput") || 10);
+    let p = parseFloat(sv("pInput") || 0.35);
+    let edges = [];
+    for (let i = 0; i < n; i++)
+        for (let j = i+1; j < n; j++)
+            if (Math.random() < p) edges.push([i, j]);
+    let layout = frLayout(n, edges);
+    return { name: `G(${n},\u2009${p.toFixed(2)})`, n, edges, layout };
+}
+
+// Fruchterman-Reingold force-directed layout.
+// Vertices repel each other; edges attract adjacent vertices.
+// Weak gravity toward the centre keeps disconnected components from drifting.
+// ~180 iterations with exponential cooling; normalised to [0.08,0.92]² at end.
+function frLayout(n, edges) {
+    if (n === 0) return [];
+    if (n === 1) return [[0.5, 0.5]];
+    if (n === 2) return edges.length ? [[0.35, 0.5],[0.65, 0.5]] : [[0.3, 0.5],[0.7, 0.5]];
+
+    // Initialise on a circle (avoids degenerate all-same-point start)
+    let pos = Array.from({length: n}, (_, i) => [
+        0.5 + 0.3 * Math.cos(2 * Math.PI * i / n - Math.PI / 2),
+        0.5 + 0.3 * Math.sin(2 * Math.PI * i / n - Math.PI / 2)
+    ]);
+
+    let k  = Math.sqrt(0.64 / n);  // ideal edge length; 0.64 ≈ 0.8² working area
+    let kk = k * k;
+    let temp = 0.12, COOL = 0.91, ITERS = 180, GRAVITY = 0.025;
+
+    for (let iter = 0; iter < ITERS; iter++) {
+        let dx = Array(n).fill(0), dy = Array(n).fill(0);
+
+        // Repulsion: every pair pushes apart
+        for (let i = 0; i < n; i++) {
+            for (let j = i+1; j < n; j++) {
+                let ex = pos[i][0] - pos[j][0], ey = pos[i][1] - pos[j][1];
+                let d  = Math.sqrt(ex*ex + ey*ey) || 1e-6;
+                let f  = kk / d;
+                dx[i] += ex/d*f; dy[i] += ey/d*f;
+                dx[j] -= ex/d*f; dy[j] -= ey/d*f;
+            }
+        }
+
+        // Attraction: edges pull endpoints together
+        for (let [u, v] of edges) {
+            let ex = pos[u][0] - pos[v][0], ey = pos[u][1] - pos[v][1];
+            let d  = Math.sqrt(ex*ex + ey*ey) || 1e-6;
+            let f  = d*d / k;
+            dx[u] -= ex/d*f; dy[u] -= ey/d*f;
+            dx[v] += ex/d*f; dy[v] += ey/d*f;
+        }
+
+        // Gravity toward centre (holds disconnected components together)
+        for (let i = 0; i < n; i++) {
+            dx[i] += (0.5 - pos[i][0]) * GRAVITY;
+            dy[i] += (0.5 - pos[i][1]) * GRAVITY;
+        }
+
+        // Apply displacement, clamped by temperature
+        for (let i = 0; i < n; i++) {
+            let d = Math.sqrt(dx[i]*dx[i] + dy[i]*dy[i]) || 1e-6;
+            let s = Math.min(d, temp) / d;
+            pos[i][0] += dx[i] * s;
+            pos[i][1] += dy[i] * s;
+        }
+
+        temp *= COOL;
+    }
+
+    // Centre and scale uniformly to fit [0.08, 0.92]²
+    let minX=Infinity, maxX=-Infinity, minY=Infinity, maxY=-Infinity;
+    for (let [x, y] of pos) {
+        if (x < minX) minX=x; if (x > maxX) maxX=x;
+        if (y < minY) minY=y; if (y > maxY) maxY=y;
+    }
+    let cx = (minX+maxX)/2, cy = (minY+maxY)/2;
+    let span = Math.max(maxX-minX, maxY-minY, 0.01);
+    let sc = 0.76 / span;
+    return pos.map(([x, y]) => [0.5 + (x-cx)*sc, 0.5 + (y-cy)*sc]);
 }
 
 const STATIC = {
