@@ -337,23 +337,140 @@ function makeRandomFullBinaryTree() {
     return {name:"Triangulated full binary tree (random)", n, edges, layout:lay};
 }
 function makeRandomBlockGraph() {
-    let nb=parseInt(sv("blockNum")||4), mk=parseInt(sv("blockSize")||3);
-    mk=Math.max(2,mk);
-    let nid=0, es=new Set();
-    function addK(vs){ for(let i=0;i<vs.length;i++) for(let j=i+1;j<vs.length;j++) es.add(`${Math.min(vs[i],vs[j])},${Math.max(vs[i],vs[j])}`); }
-    let fk=Math.min(mk,Math.max(3,2+Math.floor(Math.random()*(mk-1))));
-    let fv=Array.from({length:fk},()=>nid++); addK(fv);
-    let fr=[...fv];
-    for (let b=0;b<nb&&nid<30;b++){
-        let cut=fr[Math.floor(Math.random()*fr.length)];
-        let bk=2+Math.floor(Math.random()*(mk-1)), bv=[cut];
-        for (let i=1;i<bk&&nid<30;i++) bv.push(nid++);
-        addK(bv); bv.slice(1).forEach(v=>fr.push(v));
+    let numBlocks = parseInt(sv("blockNum") || 4);
+    let maxK      = parseInt(sv("blockSize") || 3);
+    maxK = Math.max(2, maxK);
+
+    let nextId = 0, edgeSet = new Set();
+    // blockTree[i] = { vertices, parentCut, parentBlock (index), children [] }
+    let blockTree = [];
+
+    function addClique(vs) {
+        for (let i=0;i<vs.length;i++) for (let j=i+1;j<vs.length;j++)
+            edgeSet.add(`${Math.min(vs[i],vs[j])},${Math.max(vs[i],vs[j])}`);
     }
-    let n=nid, edges=[...es].map(s=>s.split(',').map(Number));
-    let layout=Array.from({length:n},()=>[0.08+0.84*Math.random(),0.08+0.84*Math.random()]);
-    return {name:"Block graph (random)", n, edges, layout};
+
+    // First block: always at least K_3 so we get triangles.
+    let fk = Math.min(maxK, Math.max(3, 2 + Math.floor(Math.random() * (maxK - 1))));
+    let fv = Array.from({length: fk}, () => nextId++);
+    addClique(fv);
+    blockTree.push({ vertices: fv, parentCut: null, parentBlock: -1, children: [] });
+    let frontier = fv.map(v => ({ v, bi: 0 }));
+
+    for (let b = 0; b < numBlocks && nextId < 30; b++) {
+        let fi  = Math.floor(Math.random() * frontier.length);
+        let { v: cut, bi: pbi } = frontier[fi];
+        let bk  = 2 + Math.floor(Math.random() * (maxK - 1));
+        let bvs = [cut];
+        for (let i = 1; i < bk && nextId < 30; i++) bvs.push(nextId++);
+        addClique(bvs);
+        let bi = blockTree.length;
+        blockTree.push({ vertices: bvs, parentCut: cut, parentBlock: pbi, children: [] });
+        blockTree[pbi].children.push(bi);
+        bvs.slice(1).forEach(v => frontier.push({ v, bi }));
+    }
+
+    let n = nextId;
+    let edges = [...edgeSet].map(s => s.split(',').map(Number));
+    let layout = computeBlockLayout(blockTree, n);
+    return { name: "Block graph (random)", n, edges, layout };
 }
+
+// Compute a non-overlapping layout for a block graph given its block tree.
+//
+// Algorithm:
+//   1. Assign block centers with a tidy tree layout.  Abstract "unit radius"
+//      per block scales with clique size so larger blocks get more horizontal
+//      space than smaller ones.
+//   2. Compute the minimum Euclidean distance between any two block centers.
+//      Derive a safe per-block radius: max radius = 0.44 * minDist, with
+//      each block's radius scaled proportionally to its clique size.
+//      This guarantees no two block circles ever intersect, regardless of
+//      the tree's shape (chain, star, bushy, etc.).
+//   3. Place each block's vertices equally on its circle, cutvertex toward
+//      parent.  Cutvertices are averaged across their two adjacent blocks.
+function computeBlockLayout(blockTree, n) {
+
+    // ---- depths ----
+    let depths = Array(blockTree.length).fill(0), maxDepth = 0;
+    function setDepths(bi, d) {
+        depths[bi] = d; maxDepth = Math.max(maxDepth, d);
+        for (let c of blockTree[bi].children) setDepths(c, d + 1);
+    }
+    setDepths(0, 0);
+
+    // ---- tidy x-layout (abstract units, per-block size) ----
+    function bUnit(k) { return 0.5 + 0.18 * (k - 1); }
+    const GAP = 0.5;
+    let bxU = Array(blockTree.length);
+    let nextU = 0;
+    function assignU(bi) {
+        let ur = bUnit(blockTree[bi].vertices.length);
+        if (!blockTree[bi].children.length) {
+            bxU[bi] = nextU + ur; nextU += 2 * ur + GAP;
+        } else {
+            let su = nextU;
+            for (let c of blockTree[bi].children) assignU(c);
+            bxU[bi] = (su + nextU - GAP) / 2;
+        }
+    }
+    assignU(0);
+    let totalU = Math.max(nextU - GAP, 1);
+
+    // ---- normalised block centers [0.06,0.94] × [0.10,0.88] ----
+    const L=0.06, R=0.94, T=0.10, B=0.88, W=R-L, H=B-T;
+    let bx = blockTree.map((_, bi) => L + (bxU[bi] / totalU) * W);
+    let by = blockTree.map((_, bi) => T + (maxDepth > 0 ? depths[bi] / maxDepth : 0.5) * H);
+
+    // ---- safe radius ----
+    // Find the minimum centre-to-centre distance across ALL pairs of blocks.
+    // (For a single block use a fallback.)
+    let minDist = Infinity;
+    for (let i = 0; i < blockTree.length; i++)
+        for (let j = i + 1; j < blockTree.length; j++) {
+            let dx = bx[i] - bx[j], dy = by[i] - by[j];
+            minDist = Math.min(minDist, Math.sqrt(dx * dx + dy * dy));
+        }
+    if (!isFinite(minDist)) minDist = Math.min(W, H) * 0.45;
+
+    // Safe max radius: for any two blocks i,j
+    //   r_i + r_j ≤ 0.88 * minDist ≤ 0.88 * dist(i,j) < dist(i,j)  → no overlap
+    let safeMaxR  = minDist * 0.44;
+    let maxBUnit  = Math.max(...blockTree.map(b => bUnit(b.vertices.length)));
+    let blockNR   = blockTree.map(b => safeMaxR * bUnit(b.vertices.length) / maxBUnit);
+
+    // ---- vertex positions ----
+    let posAcc = Array.from({length: n}, () => []);
+    for (let bi = 0; bi < blockTree.length; bi++) {
+        let blk = blockTree[bi];
+        let cx = bx[bi], cy = by[bi], r = blockNR[bi];
+        let k = blk.vertices.length, cut = blk.parentCut;
+
+        let parentAngle = (bi === 0 || blk.parentBlock < 0)
+            ? -Math.PI / 2
+            : Math.atan2(by[blk.parentBlock] - cy, bx[blk.parentBlock] - cx);
+
+        let sorted = (cut !== null && cut !== undefined)
+            ? [cut, ...blk.vertices.filter(v => v !== cut)]
+            : [...blk.vertices];
+
+        for (let vi = 0; vi < k; vi++) {
+            let v = sorted[vi];
+            let a = parentAngle + vi * (2 * Math.PI / k);
+            posAcc[v].push([cx + r * Math.cos(a), cy + r * Math.sin(a)]);
+        }
+    }
+
+    // Cutvertices land between their two adjacent blocks (average of both proposed positions).
+    return posAcc.map(pts => {
+        if (!pts.length) return [0.5, 0.5];
+        return [
+            pts.reduce((s, p) => s + p[0], 0) / pts.length,
+            pts.reduce((s, p) => s + p[1], 0) / pts.length
+        ];
+    });
+}
+
 function makeRandom() {
     let n=parseInt(sv("nInput")||10), p=parseFloat(sv("pInput")||0.35);
     let layout=Array.from({length:n},()=>[0.08+0.84*Math.random(),0.08+0.84*Math.random()]);
