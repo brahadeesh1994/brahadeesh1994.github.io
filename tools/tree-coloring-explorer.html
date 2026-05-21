@@ -284,7 +284,13 @@ function buildRandomTree(maxDepth, maxNodes) {
         }
         return node;
     }
-    return make(1, true);
+    // Retry until the tree reaches at least depth 2.
+    let t;
+    do {
+        id = 0;
+        t = make(1, true);
+    } while (!t.children.some(c => c.children.length > 0));
+    return t;
 }
 
 function buildBinaryTree(d) {
