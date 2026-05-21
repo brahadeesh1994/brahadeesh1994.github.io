@@ -216,6 +216,7 @@ let activeColors = lightColors; // updated at the start of each draw()
 
 let nodes = {}, edges = [], tree = null;
 let currentType = "rand3";
+let vRadius = 12; // updated dynamically after each layout
 
 // Builder state
 let builderMode = false, selectedNode = null, nextId = 0;
@@ -265,11 +266,11 @@ window.addEventListener('resize', () => {
 
 // ---------- TREE GENERATORS ----------
 
-function buildRandomTree(maxDepth) {
+function buildRandomTree(maxDepth, maxNodes) {
     let id = 0;
     function make(depth, force = false) {
         let node = { id: id++, children: [] };
-        if (depth < maxDepth) {
+        if (depth < maxDepth && id < maxNodes) {
             let stop = !force && Math.random() < 0.2;
             if (!stop) {
                 let r = Math.random(), c;
@@ -277,7 +278,8 @@ function buildRandomTree(maxDepth) {
                 else if (r < 0.7) c = 3;
                 else if (r < 0.9) c = 4;
                 else c = 5 + Math.floor(Math.random() * 2);
-                for (let i = 0; i < c; i++) node.children.push(make(depth + 1));
+                for (let i = 0; i < c && id < maxNodes; i++)
+                    node.children.push(make(depth + 1));
             }
         }
         return node;
@@ -365,6 +367,29 @@ function fitTreeToCanvas() {
     }
 }
 
+// ---------- VERTEX RADIUS ----------
+
+// After layout, compute the minimum distance between any two nodes and derive
+// a radius that guarantees no two vertex circles ever overlap.
+// Checks all pairs (not just edges) because siblings can be closer than
+// parent-child pairs in a wide tree.
+function updateVertexRadius() {
+    let ids = Object.keys(nodes);
+    if (ids.length <= 1) { vRadius = 12; return; }
+    let minD = Infinity;
+    for (let i = 0; i < ids.length; i++) {
+        for (let j = i + 1; j < ids.length; j++) {
+            let dx = nodes[ids[i]].x - nodes[ids[j]].x;
+            let dy = nodes[ids[i]].y - nodes[ids[j]].y;
+            let d = Math.sqrt(dx * dx + dy * dy);
+            if (d < minD) minD = d;
+        }
+    }
+    // radius = 42% of minimum inter-node distance, capped at 12.
+    // Two circles of this radius are separated by at least 16% of minD.
+    vRadius = Math.max(6, Math.min(12, Math.floor(minD * 0.42)));
+}
+
 // ---------- INIT ----------
 
 function initTree(type) {
@@ -372,8 +397,8 @@ function initTree(type) {
     builderMode = false;
     selectedNode = null;
 
-    if (type === "rand3") tree = buildRandomTree(4);
-    else if (type === "rand4") tree = buildRandomTree(5);
+    if (type === "rand3") tree = buildRandomTree(4, 35);
+    else if (type === "rand4") tree = buildRandomTree(5, 55);
     else if (type === "binary4") tree = buildBinaryTree(4);
     else if (type === "ternary4") tree = buildKaryTree(3, 4);
     else return;
@@ -392,6 +417,7 @@ function initTree(type) {
     init(tree);
     tidyLayout(tree);
     fitTreeToCanvas();
+    updateVertexRadius();
     viewScale = 1.0; viewOffsetX = 0; viewOffsetY = 0;
     draw();
     toggleRandomBtn();
@@ -422,7 +448,7 @@ function draw() {
     for (let id in nodes) {
         let n = nodes[id];
         ctx.beginPath();
-        ctx.arc(n.x, n.y, 12, 0, 2 * Math.PI);
+        ctx.arc(n.x, n.y, vRadius, 0, 2 * Math.PI);
         ctx.fillStyle = activeColors[n.color % activeColors.length];
         ctx.fill();
         ctx.strokeStyle = (id == selectedNode)
@@ -433,7 +459,7 @@ function draw() {
 
         // Label: dark text on pastels (light mode), white on saturated fills (dark mode)
         ctx.fillStyle = dark ? "#eeeeee" : "#1a1a1a";
-        ctx.font = "11px 'Roboto Mono', monospace";
+        ctx.font = `${Math.max(7, vRadius - 1)}px 'Roboto Mono', monospace`;
         ctx.textBaseline = "middle";
         ctx.textAlign = "center";
         ctx.fillText(+id + 1, n.x, n.y);
@@ -448,7 +474,7 @@ canvas.onmousedown = function (e) {
     let { x, y } = getMouse(e);
     for (let id in nodes) {
         let n = nodes[id];
-        if (dist(n, x, y) < 14) {
+        if (dist(n, x, y) < vRadius + 2) {
             if (builderMode) {
                 selectedNode = parseInt(id);
                 draggingNode = id;
@@ -483,7 +509,7 @@ canvas.onmousemove = function (e) {
     }
     // Update cursor to hint that vertices are clickable
     let { x, y } = getMouse(e);
-    let overNode = Object.keys(nodes).some(id => dist(nodes[id], x, y) < 14);
+    let overNode = Object.keys(nodes).some(id => dist(nodes[id], x, y) < vRadius + 2);
     canvas.style.cursor = overNode ? 'pointer' : 'grab';
 };
 
