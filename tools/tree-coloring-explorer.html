@@ -284,12 +284,18 @@ function buildRandomTree(maxDepth, maxNodes) {
         }
         return node;
     }
-    // Retry until the tree reaches at least depth 2.
+    // Require the tree to reach at least (maxDepth - 1) levels below the root,
+    // i.e. at least depth 2 for a depth-3 tree and depth 3 for a depth-4 tree.
+    function actualDepth(node) {
+        if (!node.children.length) return 0;
+        return 1 + Math.max(...node.children.map(actualDepth));
+    }
+    let minDepth = maxDepth - 2; // depth-3 tree → min 2; depth-4 tree → min 3
     let t;
     do {
         id = 0;
         t = make(1, true);
-    } while (!t.children.some(c => c.children.length > 0));
+    } while (actualDepth(t) < minDepth);
     return t;
 }
 
