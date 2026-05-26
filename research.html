@@ -60,13 +60,40 @@
         <h2>Research</h2>
 
         <p class="intro-text">
-            I work in combinatorics. The sections below describe my research, both current
-            and past &mdash; covering list coloring of surface-embedded graphs, intersecting
-            set systems, the rank of structured matrices arising from tournaments, spectral
-            extremal graph theory, intersection graphs of paths, and (most recently)
-            graph convexity and majority coloring games. See the
+            I work in extremal combinatorics and graph theory. The sections below describe
+            my research, both current and past &mdash; covering majority coloring games,
+            graph convexity, spectral extremal graph theory, intersection graphs of paths,
+            fractional intersecting families, list coloring of surface-embedded graphs, and
+            the rank of structured matrices arising from tournaments. See the
             <a href="publications.html">Publications</a> page for the corresponding papers.
         </p>
+
+        <section class="research-block" id="majority-coloring-game">
+            <div class="research-header">
+                <span class="research-title">Majority coloring game on trees</span>
+                <span class="research-affiliation">IIT Jodhpur &middot; with Yash Chawda and
+                    Saraswati Girish Nanoti (IISc Bangalore)</span>
+            </div>
+            <div class="research-content">
+                <p>
+                    A majority coloring of a graph is a vertex coloring in which each vertex has at most
+                    half of its neighbors sharing its color; Lov&aacute;sz showed in 1966 that two colors
+                    always suffice for any finite graph. In the majority coloring game, two players
+                    alternately color vertices from a fixed palette while maintaining the majority
+                    condition, and the least number of colors for which the first player has a winning
+                    strategy is the majority game chromatic number \(\mu_g(G)\). While \(\mu_g(G)\) is
+                    unbounded in general, it is at most \(4\) for trees. Yash Chawda, Saraswati Girish
+                    Nanoti, and I study \(\mu_g(T)\) for binary and ternary trees using a
+                    configuration-based strategy, in which the first player aims to prevent a small
+                    family of local obstruction patterns from arising.
+                </p>
+                <p>
+                    An interactive <a href="tools/tree-coloring-explorer.html">Tree Coloring Explorer</a>
+                    built by Yash is available for experimenting with majority colorings on trees.
+                </p>
+            </div>
+        </section>
+
         <section class="research-block">
             <div class="research-header">
                 <span class="research-title">\(\triangle\)-convexity in graphs</span>
@@ -96,30 +123,6 @@
             </div>
         </section>
 
-        <section class="research-block" id="majority-coloring-game">
-            <div class="research-header">
-                <span class="research-title">Majority coloring game on trees</span>
-                <span class="research-affiliation">IIT Jodhpur &middot; with Yash Chawda</span>
-            </div>
-            <div class="research-content">
-                <p>
-                    A majority coloring of a graph is a vertex coloring in which each vertex has at most
-                    half of its neighbors sharing its color; Lov&aacute;sz showed in 1966 that two colors
-                    always suffice for any finite graph. In the majority coloring game, two players
-                    alternately color vertices from a fixed palette while maintaining the majority
-                    condition, and the least number of colors for which the first player has a winning
-                    strategy is the majority game chromatic number \(\mu_g(G)\). While \(\mu_g(G)\) is
-                    unbounded in general, it is at most \(4\) for trees. Yash Chawda and I study
-                    \(\mu_g(T)\) for binary and ternary trees using a configuration-based strategy, in
-                    which the first player aims to prevent a small family of local obstruction patterns
-                    from arising.
-                </p>
-                <p>
-                    An interactive <a href="tools/tree-coloring-explorer.html">Tree Coloring Explorer</a>
-                    built by Yash is available for experimenting with majority colorings on trees.
-                </p>
-            </div>
-        </section>
         <section class="research-block">
             <div class="research-header">
                 <span class="research-title">Brualdi&ndash;Hoffman-type extremal problems</span>
@@ -161,6 +164,28 @@
                     Such representations always exist, but finding optimal ones, or even tight bounds on their order,
                     does not seem to be an easy problem. Several questions in this area remain open.
                     See <a href="publications.html#BalachandranDasEtAl2026">Balachandran et al. (in preparation)</a>.
+                </p>
+            </div>
+        </section>
+
+        <section class="research-block">
+            <div class="research-header">
+                <span class="research-title">Fractional intersecting families</span>
+                <span class="research-affiliation">IIT Jodhpur &middot; with <a
+                        href="https://homepages.iitb.ac.in/~niranj/" target="_blank">Niranjan Balachandran</a></span>
+            </div>
+            <div class="research-content">
+                <p>
+                    A classical problem in extremal set theory asks for the maximum size of a family
+                    \(\mathcal{F}\) of subsets of \([n]\) subject to a prescribed intersection condition.
+                    A <em>fractional \(\theta\)-intersecting family</em> is a collection \(\mathcal{F}\)
+                    of subsets of \([n]\) such that for every \(A, B \in \mathcal{F}\), the ratio
+                    \(|A \cap B|\,/\,|A \cup B|\) belongs to a prescribed set \(\theta \subseteq [0,1]\).
+                    Balachandran, Mathew, and Mishra conjectured a tight upper bound on the maximum size
+                    of such families. I am continuing work toward a resolution of this conjecture,
+                    building on earlier partial results for special cases.
+                    See <a href="publications.html#BalachandranBhattacharyaEtAl2023b">Balachandran et al. (2023b)</a>
+                    and <a href="publications.html#BalachandranDasEtAl2025">Balachandran et al. (2025)</a>.
                 </p>
             </div>
         </section>
