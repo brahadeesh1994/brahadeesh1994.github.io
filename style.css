@@ -1365,36 +1365,79 @@ h4 {
     gap: 12px;
 }
 
-.photo-row a {
+/* Thumbnail is a button (the popover invoker) */
+.photo-thumb {
     flex: 1 1 0;
     min-width: 220px;
     max-width: 100%;
-    display: block;
+    padding: 0;
+    border: none;
+    background: none;
+    font: inherit;
     line-height: 0;
+    cursor: zoom-in;
 }
 
-.photo-row img {
+.photo-thumb img {
     width: 100%;
     height: 260px;
     object-fit: cover;
     border: 1px solid var(--border);
     background-color: #fafafa;
     display: block;
-    cursor: zoom-in;
+}
+
+/* Full-size overlay (native popover; UA styles centre it in the top layer) */
+.lightbox {
+    margin: auto;
+    padding: 0;
+    border: none;
+    background: transparent;
+    overflow: visible;
+}
+
+.lightbox::backdrop {
+    background-color: rgba(0, 0, 0, 0.85);
+}
+
+.lightbox-img {
+    display: block;
+    padding: 0;
+    border: none;
+    background: none;
+    font: inherit;
+    line-height: 0;
+    cursor: zoom-out;
+}
+
+.lightbox-img img {
+    display: block;
+    max-width: 95vw;
+    max-height: 95vh;
+    object-fit: contain;
+    border: 1px solid var(--border);
 }
 
 @media (max-width: 768px) {
-    .photo-row a {
+    .photo-thumb {
         flex-basis: 100%;
     }
 
-    .photo-row img {
+    .photo-thumb img {
         height: 220px;
     }
 }
 
 @media (prefers-color-scheme: dark) {
-    .photo-row img {
+    .photo-thumb img {
         background-color: #1e1e1e;
+    }
+}
+
+/* Fallback: on browsers without the Popover API, hide the overlays so they
+   don't render inline. Thumbnails then simply don't zoom on click. */
+@supports not selector(:popover-open) {
+    .lightbox {
+        display: none;
     }
 }
