@@ -1320,3 +1320,71 @@ h4 {
         color: #6ba3d6;
     }
 }
+
+/* ============================================================
+   PHOTOS PAGE
+   ============================================================ */
+
+.photo-intro {
+    font-size: 12pt;
+    color: var(--grey);
+    line-height: 1.6;
+    margin: 0 0 35px 0;
+    max-width: 700px;
+}
+
+.photo-event {
+    margin: 0 0 40px 0;
+    padding-bottom: 28px;
+    border-bottom: 1px dotted var(--border);
+}
+
+.photo-event:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+}
+
+.photo-caption {
+    margin: 0 0 14px 0;
+    line-height: 1.55;
+    font-size: 12pt;
+}
+
+.photo-caption .photo-date {
+    color: var(--grey);
+    font-size: 11pt;
+    font-variant: small-caps;
+    letter-spacing: 0.5px;
+    margin-right: 10px;
+    white-space: nowrap;
+}
+
+.photo-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.photo-row img {
+    flex: 1 1 0;
+    min-width: 220px;
+    max-width: 100%;
+    height: 260px;
+    object-fit: cover;
+    border: 1px solid var(--border);
+    background-color: #fafafa;
+    display: block;
+}
+
+@media (max-width: 768px) {
+    .photo-row img {
+        flex-basis: 100%;
+        height: 220px;
+    }
+}
+
+@media (prefers-color-scheme: dark) {
+    .photo-row img {
+        background-color: #1e1e1e;
+    }
+}
