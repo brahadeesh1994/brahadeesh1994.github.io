@@ -311,6 +311,11 @@ h2 {
     margin-top: 10px;
 }
 
+.news-list > li.student-activity {
+    border-left: 3px solid var(--grey);
+    padding-left: 12px;
+}
+
 .updates-more {
     text-align: right;
     font-size: 11pt;
