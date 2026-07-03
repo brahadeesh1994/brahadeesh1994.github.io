@@ -58,9 +58,20 @@
             border-color: var(--grey);
         }
 
+        .game-controls input[type="number"] {
+            font-family: "Latin Modern Roman", Georgia, serif;
+            font-size: 11pt;
+            padding: 5px 8px;
+            width: 56px;
+            background: var(--bg);
+            color: var(--text);
+            border: 1px solid var(--border);
+        }
+
         .builder-controls {
             display: flex;
             gap: 8px;
+            align-items: center;
         }
 
         .game-scroll {
@@ -126,14 +137,15 @@
 
         <p>
             A majority coloring of a graph assigns colors to vertices so that each vertex has at most half of its neighbors in the same color class.
-            This tool lets you experiment with majority colorings on trees.
+            This tool lets you experiment with majority colorings on trees and cycles.
             Click any vertex to cycle through the available colors.
             The goal is to find a valid majority coloring &mdash; one where for every vertex \(v\), at most \(\lfloor \deg(v)/2 \rfloor\) neighbors share \(v\)'s color &mdash; using as few colors as possible.
         </p>
 
         <p>
-            Select a tree type from the first dropdown and the number of colors from the second.
-            Use <em>Regenerate</em> to draw a fresh random tree, or choose <em>Your Tree</em> to build a custom tree: click a node to select it, then use <em>Add child</em> and <em>Delete</em> to modify the tree, and <em>Done</em> when finished.
+            Select a graph type from the first dropdown and the number of colors from the second.
+            Use <em>Regenerate</em> to draw a fresh random tree, choose <em>Your Tree</em> to build a custom tree, or choose <em>Cycle (C_n)</em>, <em>Path (P_n)</em>, or <em>Caterpillar</em> and set \(n\) to explore that family.
+            To build a custom tree: click a node to select it, then use <em>Add child</em> and <em>Delete</em> to modify the tree, and <em>Done</em> when finished.
         </p>
 
         <p>
@@ -148,6 +160,9 @@
                     <option value="custom">Your Tree</option>
                     <option value="binary4">Binary Tree (Depth 3)</option>
                     <option value="ternary4">Ternary Tree (Depth 3)</option>
+                    <option value="cycle">Cycle (C_n)</option>
+                    <option value="path">Path (P_n)</option>
+                    <option value="caterpillar">Caterpillar</option>
                 </select>
                 <select id="colorSelect">
                     <option value="2">2 Colors</option>
@@ -164,6 +179,11 @@
                     <button onclick="addChild()">Add child</button>
                     <button onclick="deleteNode()">Delete</button>
                     <button onclick="finishBuilder()">Done</button>
+                </div>
+                <div id="sizeControls" class="builder-controls">
+                    <label for="graphN">\(n=\)</label>
+                    <input type="number" id="graphN" min="3" max="60" step="1" value="6">
+                    <button id="sizeDrawBtn">Draw</button>
                 </div>
             </div>
 
@@ -184,7 +204,7 @@
             <div class="footer-content">
                 <span class="copyright">&copy; 2026 Brahadeesh Sankarnarayanan</span>
                 <span class="lab-foot">CAT Lab &bull; IIT Jodhpur</span>
-                <span class="updated">Last updated: June 2026</span>
+                <span class="updated">Last updated: July 2026</span>
             </div>
         </div>
     </footer>
@@ -317,6 +337,67 @@ function buildKaryTree(k, d) {
     return make(1);
 }
 
+// Builds C_n directly (not a tree): n vertices 0..n-1 placed evenly on a
+// circle, with edges i -- (i+1 mod n). Populates nodes/edges in place.
+function buildCycleGraph(n) {
+    nodes = {};
+    edges = [];
+    let R = 150; // arbitrary pre-fit radius; fitTreeToCanvas() rescales this
+    for (let i = 0; i < n; i++) {
+        let angle = (2 * Math.PI * i) / n - Math.PI / 2; // vertex 0 at top
+        nodes[i] = { x: R * Math.cos(angle), y: R * Math.sin(angle), color: 0 };
+        edges.push([i, (i + 1) % n]);
+    }
+}
+
+// Builds P_n directly (not a tree): n vertices 0..n-1 in a horizontal line,
+// with edges i -- (i+1). Populates nodes/edges in place.
+function buildPathGraph(n) {
+    nodes = {};
+    edges = [];
+    let spacing = 60; // arbitrary pre-fit spacing; fitTreeToCanvas() rescales this
+    for (let i = 0; i < n; i++) {
+        nodes[i] = { x: i * spacing, y: 0, color: 0 };
+        if (i > 0) edges.push([i - 1, i]);
+    }
+}
+
+// Builds a random caterpillar on n vertices as a {id, children} tree, so it
+// can flow through the same init()/tidyLayout() pipeline as the other tree
+// types below. A caterpillar is a tree in which deleting all leaves leaves
+// a path (the "spine"); this construction is a caterpillar by design:
+//   1. Lay down a spine v_0 - v_1 - ... - v_{s-1} as a chain.
+//   2. Attach each of the remaining n - s vertices as a pendant leaf
+//      ("leg") to a uniformly random spine vertex.
+// The spine length s is drawn from roughly n/2..n, biased toward long
+// spines with comparatively few legs, since that's the "classic" caterpillar
+// silhouette. NOTE: this is a convenient, reasonable-looking random
+// generator, not a uniform sample over all caterpillars on n vertices —
+// worth knowing if you want this for anything beyond visual exploration.
+function buildCaterpillarTree(n) {
+    let id = 0;
+    let minSpine = Math.max(1, Math.ceil(n / 2));
+    let s = minSpine + Math.floor(Math.random() * (n - minSpine + 1));
+    s = Math.max(1, Math.min(s, n));
+
+    let spineNodes = [];
+    for (let i = 0; i < s; i++) spineNodes.push({ id: id++, children: [] });
+
+    let legsLeft = n - s;
+    while (legsLeft > 0) {
+        let parent = spineNodes[Math.floor(Math.random() * s)];
+        parent.children.push({ id: id++, children: [] });
+        legsLeft--;
+    }
+
+    // Chain the spine into a tree rooted at spineNodes[0].
+    for (let i = 0; i < s - 1; i++) {
+        spineNodes[i].children.push(spineNodes[i + 1]);
+    }
+
+    return spineNodes[0];
+}
+
 // ---------- LAYOUT ----------
 
 let levelGap = 90;
@@ -397,15 +478,38 @@ function updateVertexRadius() {
 
 // ---------- INIT ----------
 
+// Reads, clamps (3..60), and normalizes the shared "n =" input used by the
+// cycle/path/caterpillar controls; writes the clamped value back to the box.
+function getGraphN(defaultN = 6) {
+    let input = document.getElementById("graphN");
+    let n = Math.round(parseFloat(input.value));
+    if (!Number.isFinite(n)) n = defaultN;
+    n = Math.max(3, Math.min(60, n));
+    input.value = n;
+    return n;
+}
+
 function initTree(type) {
     currentType = type;
     builderMode = false;
     selectedNode = null;
 
+    if (type === "cycle" || type === "path") {
+        if (type === "cycle") buildCycleGraph(getGraphN());
+        else buildPathGraph(getGraphN());
+        fitTreeToCanvas();
+        updateVertexRadius();
+        viewScale = 1.0; viewOffsetX = 0; viewOffsetY = 0;
+        draw();
+        toggleRandomBtn();
+        return;
+    }
+
     if (type === "rand3") tree = buildRandomTree(4, 35);
     else if (type === "rand4") tree = buildRandomTree(5, 55);
     else if (type === "binary4") tree = buildBinaryTree(4);
     else if (type === "ternary4") tree = buildKaryTree(3, 4);
+    else if (type === "caterpillar") tree = buildCaterpillarTree(getGraphN());
     else return;
 
     nodes = {};
@@ -619,22 +723,39 @@ function zoomBy(factor) {
 // ---------- UI BINDINGS ----------
 
 document.getElementById("builderControls").style.display = "none";
+document.getElementById("sizeControls").style.display = "none";
 document.getElementById("editBtn").style.display = "none";
 document.getElementById("editBtn").onclick = resumeBuilder;
 
 document.getElementById("graphSelect").onchange = function () {
     let val = this.value;
     let builderUI = document.getElementById("builderControls");
+    let sizeUI = document.getElementById("sizeControls");
     if (val === "custom") {
         builderUI.style.display = "flex";
+        sizeUI.style.display = "none";
         document.getElementById("randomBtn").style.display = "none";
         startBuilder();
+    } else if (val === "cycle" || val === "path" || val === "caterpillar") {
+        builderUI.style.display = "none";
+        sizeUI.style.display = "flex";
+        document.getElementById("editBtn").style.display = "none";
+        initTree(val);
     } else {
         builderUI.style.display = "none";
+        sizeUI.style.display = "none";
         document.getElementById("editBtn").style.display = "none";
         initTree(val);
     }
 };
+
+document.getElementById("sizeDrawBtn").onclick = function () {
+    initTree(currentType);
+};
+
+document.getElementById("graphN").addEventListener("change", function () {
+    initTree(currentType);
+});
 
 document.getElementById("colorSelect").onchange = function () {
     colorCount = parseInt(this.value);
