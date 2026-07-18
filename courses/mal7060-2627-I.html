@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MAL3040 (Autumn 2026&ndash;27) | Brahadeesh Sankarnarayanan</title>
+    <title>MAL7060 (Autumn 2026&ndash;27) | Brahadeesh Sankarnarayanan</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -68,58 +68,80 @@
 
         <p class="blog-back"><a href="../teaching.html">&larr; Teaching</a></p>
 
-        <h2>MAL3040: Statistics</h2>
+        <h2>MAL7060: Statistics for Data Science</h2>
         <p class="profile-subtitle">Autumn 2026&ndash;27 (Semester I) &middot; IIT Jodhpur</p>
-        <p class="profile-subtitle">Program elective for B.Sc.&ndash;B.Ed. 3rd-year students</p>
+        <p class="profile-subtitle">Offered for 2024-batch students of the Executive M.Tech.
+            programme in Data and Computational Sciences (DCS) carrying a backlog in this course</p>
 
         <section class="activity-block">
             <h3>Syllabus</h3>
 
-            <p>Prerequisite: Probability Theory.
+            <p>Prerequisite: Basic Probability and Statistics.
                 The topics to be covered are as follows:</p>
 
             <ol>
-                <li>Descriptive Statistics
+                <li>Probability Models and Sampling Techniques
                     <ul>
-                        <li>Classification and tabulation of data, graphical representation</li>
-                        <li>Measures of central tendency: mean, median, mode</li>
-                        <li>Measures of dispersion: range, variance, standard deviation,
-                            coefficient of variation</li>
-                        <li>Correlation coefficient</li>
+                        <li>Normal, chi-square, and \(t\) distributions</li>
+                        <li>Basic concepts of random sampling, sampling from a normal
+                            distribution</li>
+                        <li>Properties of the sample mean and sample variance</li>
                     </ul>
                 </li>
-                <li>Sampling Distributions
+                <li>Estimation
                     <ul>
-                        <li>Chi-square, \(t\), and \(F\) distributions</li>
-                        <li>Central limit theorem</li>
+                        <li>Point estimation: maximum likelihood estimator, Bayes estimator</li>
+                        <li>Methods of evaluating estimators: unbiasedness, mean squared error</li>
+                        <li>Interval estimation: confidence intervals for the mean and the variance
+                            of a normal population using the pivot technique</li>
                     </ul>
                 </li>
-                <li>Statistical Inference
+                <li>Testing of Hypotheses
                     <ul>
-                        <li>Point estimation, properties of point estimators: unbiasedness,
-                            consistency, efficiency, sufficiency</li>
-                        <li>Method of moments and maximum likelihood estimation</li>
-                        <li>Confidence interval estimation</li>
+                        <li>Basic concepts of statistical hypothesis testing, simple and composite
+                            hypotheses, critical regions</li>
+                        <li>Type-I and Type-II errors, size and power of a test</li>
+                        <li>UMP tests, Neyman&ndash;Pearson lemma</li>
+                        <li>Tests for one-sample and two-sample problems from normal
+                            populations</li>
                     </ul>
                 </li>
-                <li>Hypothesis Testing
+                <li>Association and Correlation Analysis
                     <ul>
-                        <li>Null and alternative hypotheses, Type I and Type II errors,
-                            power of a test, \(p\)-values</li>
-                        <li>One-sample tests for mean, variance, and proportion</li>
-                        <li>Two-sample tests, test for independence,
-                            chi-square goodness-of-fit test</li>
+                        <li>Categorical data, consistency of data, independence and association
+                            of attributes</li>
+                        <li>Measures of association: Pearson's and Yule's measures,
+                            Goodman&ndash;Kruskal's \(\gamma\), odds ratio</li>
+                        <li>Properties of the product moment correlation coefficient,
+                            Spearman's rank correlation coefficient</li>
                     </ul>
                 </li>
-                <li>Regression and Correlation
+                <li>Mixture Models and Latent Models
                     <ul>
-                        <li>Karl Pearson's correlation, rank correlation</li>
-                        <li>Simple linear regression and multiple regression</li>
+                        <li>Basic ideas, finite mixtures, continuous mixtures, conditional mixing
+                            distributions</li>
+                        <li>Latent models</li>
                     </ul>
                 </li>
-                <li>Demonstration Using R</li>
+                <li>Stochastic Processes
+                    <ul>
+                        <li>Definition and classification of general stochastic processes</li>
+                        <li>Poisson processes: interarrival and waiting time distributions,
+                            NHPP, compound Poisson process</li>
+                        <li>Renewal theory: distribution of \(N(t)\), Wald's equation,
+                            renewal reward processes</li>
+                        <li>Random walks</li>
+                    </ul>
+                </li>
             </ol>
+            <!-- NOTE: the official syllabus lists a learning outcome on "Markov chains and
+                 sequence models", but no Contents block covers Markov chains. Not added here,
+                 since it would be inventing syllabus content. Worth resolving with whoever owns
+                 the course proposal before the term starts. -->
 
+            <!-- Editions follow the IITJ catalogue rather than the official syllabus.
+                 Ross (Probability Models) and Agresti are not held by the library, so they
+                 carry no link; their edition/publisher details were supplied directly. -->
             <h4>Textbooks</h4>
             <ul class="plain-list">
                 <li>
@@ -129,47 +151,63 @@
                     [<a href="https://libraryopac.iitj.ac.in/cgi-bin/koha/opac-detail.pl?biblionumber=7989" target="_blank" rel="noopener">IITJ Library</a>]
                 </li>
                 <li>
-                    Robert V. Hogg, Joseph W. McKean and Allen T. Craig,
-                    <em>Introduction to Mathematical Statistics</em>,
-                    sixth edition, Dorling Kindersley India Pvt. Ltd., New Delhi, 2005.
-                    [<a href="https://libraryopac.iitj.ac.in/cgi-bin/koha/opac-detail.pl?biblionumber=8187" target="_blank" rel="noopener">IITJ Library</a>]
+                    Sheldon M. Ross,
+                    <em>Introduction to Probability Models</em>,
+                    eleventh edition, Academic Press, 2014.
+                </li>
+                <li>
+                    Alan Agresti,
+                    <em>An Introduction to Categorical Data Analysis</em>,
+                    third edition, John Wiley &amp; Sons, 2018.
                 </li>
             </ul>
             <h4>Reference Books</h4>
             <ul class="plain-list">
-                <li>
-                    George Casella and Roger L. Berger,
-                    <em>Statistical Inference</em>,
-                    second edition, Cengage Learning India Pvt. Ltd., New Delhi, 2002.
-                    [<a href="https://libraryopac.iitj.ac.in/cgi-bin/koha/opac-detail.pl?biblionumber=8372" target="_blank" rel="noopener">IITJ Library</a>]
-                </li>
                 <li>
                     Vijay K. Rohatgi and A. K. Md. Ehsanes Saleh,
                     <em>An Introduction to Probability and Statistics</em>,
                     second edition, Wiley India, New Delhi, 2001.
                     [<a href="https://libraryopac.iitj.ac.in/cgi-bin/koha/opac-detail.pl?biblionumber=8597" target="_blank" rel="noopener">IITJ Library</a>]
                 </li>
+                <li>
+                    Liliana Blanco Casta&ntilde;eda, Viswanathan Arunachalam and Selvamuthu Dharmaraja,
+                    <em>Introduction to Probability and Stochastic Processes with Applications</em>,
+                    Wiley, Hoboken, NJ, 2012.
+                    [<a href="https://libraryopac.iitj.ac.in/cgi-bin/koha/opac-detail.pl?biblionumber=7784" target="_blank" rel="noopener">IITJ Library</a>]
+                </li>
+                <li>
+                    Christopher M. Bishop,
+                    <em>Pattern Recognition and Machine Learning</em>,
+                    Springer, 2006.
+                    [<a href="https://libraryopac.iitj.ac.in/cgi-bin/koha/opac-detail.pl?biblionumber=8131" target="_blank" rel="noopener">IITJ Library</a>]
+                </li>
             </ul>
             <h4>Online Course Material</h4>
             <ul class="plain-list">
                 <li>
-                    G. Srinivasan,
-                    <em>Introduction to Probability and Statistics</em>,
-                    NPTEL Course Material, Department of Mathematics, IIT Madras, 2026.
-                    [<a href="https://nptel.ac.in/courses/111106112" target="_blank" rel="noopener">NPTEL</a>]
+                    Somesh Kumar,
+                    <em>Statistical Inference</em>,
+                    NPTEL Course Material, Department of Mathematics, IIT Kharagpur.
+                    [<a href="https://nptel.ac.in/courses/111105124" target="_blank" rel="noopener">NPTEL</a>]
+                </li>
+                <li>
+                    Selvamuthu Dharmaraja,
+                    <em>Stochastic Processes</em>,
+                    NPTEL Course Material, Department of Mathematics, IIT Delhi.
+                    [<a href="https://nptel.ac.in/courses/111102098" target="_blank" rel="noopener">NPTEL</a>]
                 </li>
             </ul>
         </section>
 
         <section class="activity-block">
             <h3>Lectures</h3>
-            <!-- TODO: day/time breakdown and lecture hall to be added closer to the start of
-                 semester. Follow MAL2040/MAL6150 pattern once known:
-                 "... in <strong>Slot CE</strong> in lecture hall <strong>XX000</strong>:"
-                 followed by a <ul class="plain-list"> of day/time entries. -->
-            <p>Classes are held in <strong>Slot CE</strong>.
-                Timings and the lecture hall will be announced closer to the start of the
-                semester.</p>
+            <!-- TODO: lecture hall not yet known; add once allotted, following MAL2040:
+                 "... in <strong>Slot YQ</strong> in lecture hall <strong>XX000</strong>:" -->
+            <p>Classes are held in <strong>Slot YQ</strong>:</p>
+            <ul class="plain-list">
+                <li>Saturday, 11:30 AM&ndash;1:00 PM</li>
+                <li>Sunday, 11:30 AM&ndash;1:00 PM</li>
+            </ul>
             <p>Please note timetable adjustments as per the Academic Calendar.</p>
         </section>
 
