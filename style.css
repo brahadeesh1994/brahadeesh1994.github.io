@@ -437,8 +437,7 @@ h2 {
 .map-embed {
     position: relative;
     width: 100%;
-    aspect-ratio: 16 / 9;
-    max-width: 640px;
+    aspect-ratio: 4 / 3;
     margin: 24px 0 0 0;
     border: 1px solid var(--border);
 }
@@ -501,8 +500,8 @@ h2 {
 /* --- Pub row container --- */
 
 .pub-row {
-    margin-bottom: 32px;
-    padding-bottom: 24px;
+    margin-bottom: 22px;
+    padding-bottom: 18px;
     border-bottom: 1px dotted var(--border);
 }
 
@@ -514,11 +513,25 @@ h2 {
 
 /* --- The visible content per paper --- */
 
-.pub-cite {
-    font-size: 12pt;
+.pub-authors {
+    font-size: 11.5pt;
+    color: var(--grey);
+    margin: 0 0 2px 0;
+    line-height: 1.5;
+}
+
+.pub-title {
+    font-size: 13.5pt;
     color: var(--text);
+    margin: 0 0 2px 0;
+    line-height: 1.45;
+}
+
+.pub-cite {
+    font-size: 11.5pt;
+    color: var(--grey);
     margin: 0 0 6px 0;
-    line-height: 1.55;
+    line-height: 1.5;
 }
 
 .pub-cite em {
@@ -549,6 +562,16 @@ h2 {
 
 .pub-addendum a:hover {
     color: #0056b3;
+}
+
+.pub-body {
+    border-left: 3px solid var(--grey);
+    padding-left: 12px;
+    margin-top: 10px;
+}
+
+.pub-body .pub-abstract {
+    margin-top: 0;
 }
 
 .pub-abstract {
@@ -606,8 +629,7 @@ h2 {
 
 .errata-inner {
     margin: 8px 0 0 20px;
-    padding: 4px 0 4px 15px;
-    border-left: 2px solid var(--border);
+    padding: 4px 0;
 }
 
 .errata-list {
@@ -626,7 +648,7 @@ h2 {
 .errata-list li::before {
     content: "—";
     margin-right: 8px;
-    color: var(--border);
+    color: var(--grey);
 }
 
 /* MathJax fixes scoped to pub-abstract */
@@ -868,7 +890,7 @@ h2 {
 
 .meta-sep {
     margin: 0 8px;
-    color: var(--border);
+    color: var(--grey);
 }
 
 
@@ -989,7 +1011,7 @@ h2 {
 .blog-category::before {
     content: "\00B7";
     margin-right: 14px;
-    color: var(--border);
+    color: var(--grey);
 }
 
 .blog-entry-title {
@@ -1281,6 +1303,7 @@ h4 {
 
 @media (prefers-color-scheme: dark) {
 
+
     :root {
         --text: #dcdcdc;
         --grey: #a8a8a8;
@@ -1288,6 +1311,10 @@ h4 {
         --bg: #141414;
     }
 
+    .pub-abstract {
+        color: var(--text);
+    }
+    
     .thesis-figure {
         background-color: #1e1e1e;
     }
