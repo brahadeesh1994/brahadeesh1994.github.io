@@ -530,13 +530,6 @@ h2 {
     line-height: 1.45;
 }
 
-/* The title text is wrapped in <em> in the markup; override the default italic
-   so it renders upright. Other <em> (e.g. the proceedings volume title in the
-   CALDAM entry) is inside .pub-cite and keeps its italics. */
-.pub-title em {
-    font-style: normal;
-}
-
 .pub-cite {
     font-size: 11.5pt;
     color: var(--grey);
