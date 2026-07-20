@@ -521,10 +521,20 @@ h2 {
 }
 
 .pub-title {
-    font-size: 13.5pt;
+    /* One point up from 13.5pt, and bold rather than italic, so the title is
+       the clear anchor of each entry against the grey authors/citation lines. */
+    font-size: 14.5pt;
+    font-weight: bold;
     color: var(--text);
     margin: 0 0 2px 0;
     line-height: 1.45;
+}
+
+/* The title text is wrapped in <em> in the markup; override the default italic
+   so it renders upright. Other <em> (e.g. the proceedings volume title in the
+   CALDAM entry) is inside .pub-cite and keeps its italics. */
+.pub-title em {
+    font-style: normal;
 }
 
 .pub-cite {
