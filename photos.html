@@ -712,6 +712,13 @@
 
             function render() {
                 var photo = photos[currentIndex];
+                imgEl.classList.add('lb-loading');
+                imgEl.onload = function () {
+                    imgEl.classList.remove('lb-loading');
+                };
+                imgEl.onerror = function () {
+                    imgEl.classList.remove('lb-loading');
+                };
                 imgEl.src = photo.src;
                 imgEl.alt = photo.caption;
                 var prefix = photo.event ? (photo.event + (photo.when ? ' (' + photo.when + ')' : '') + ' \u2014 ') : '';

@@ -145,7 +145,6 @@ a.logo-link {
 
 .lab-subtitle {
     font-size: 1rem;
-    text-transform: uppercase;
     color: var(--grey);
     margin-top: 4px;
 }
@@ -255,8 +254,6 @@ h2 {
 .lab-subhead {
     font-size: 1.1rem;
     font-weight: bold;
-    font-variant: small-caps;
-    letter-spacing: 1px;
     margin: 30px 0 12px 0;
 }
 
@@ -391,9 +388,6 @@ h2 {
 .news-date {
     color: var(--grey);
     font-size: 11pt;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    font-variant: small-caps;
 }
 
 .news-content {
@@ -466,24 +460,23 @@ h2 {
 }
 
 .research-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
     border-bottom: 1px solid var(--border);
     padding-bottom: 8px;
     margin-bottom: 20px;
 }
 
 .research-title {
+    display: block;
     font-size: 1.4rem;
     font-weight: bold;
 }
 
 .research-affiliation {
+    display: block;
     font-size: 11pt;
     color: var(--grey);
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
+    font-style: italic;
+    margin-top: 4px;
 }
 
 .research-content p {
@@ -599,8 +592,6 @@ h2 {
 
 .pub-taxonomy strong {
     color: var(--text);
-    font-variant: small-caps;
-    letter-spacing: 0.3px;
 }
 
 
@@ -684,8 +675,6 @@ h2 {
     border-bottom: 1px solid var(--border);
     padding-bottom: 5px;
     margin-bottom: 25px;
-    font-variant: small-caps;
-    letter-spacing: 1px;
     font-size: 1.2rem;
     font-weight: bold;
 }
@@ -693,8 +682,6 @@ h2 {
 .activity-block h4 {
     font-size: 12pt;
     font-weight: bold;
-    font-variant: small-caps;
-    letter-spacing: 0.5px;
     margin: 25px 0 10px 0;
     color: var(--grey);
 }
@@ -729,8 +716,6 @@ h2 {
 .dated-list .date-col {
     color: var(--grey);
     font-size: 11pt;
-    font-variant: small-caps;
-    letter-spacing: 0.5px;
     white-space: nowrap;
 }
 
@@ -819,8 +804,6 @@ h2 {
 
 .course-list .course-code {
     color: var(--grey);
-    font-variant: small-caps;
-    letter-spacing: 0.5px;
     width: 100px;
     white-space: nowrap;
     padding-right: 20px;
@@ -852,8 +835,6 @@ h2 {
     flex: 0 0 100px;
     padding-right: 20px;
     color: var(--grey);
-    font-variant: small-caps;
-    letter-spacing: 0.5px;
     white-space: nowrap;
 }
 
@@ -884,8 +865,6 @@ h2 {
 }
 
 .meta-label {
-    font-variant: small-caps;
-    letter-spacing: 0.5px;
     color: var(--text);
     font-size: 10pt;
     margin-right: 3px;
@@ -911,8 +890,6 @@ h2 {
 
 .feedback-inner h4 {
     font-size: 11pt;
-    font-variant: small-caps;
-    letter-spacing: 0.5px;
     font-weight: bold;
     margin: 18px 0 8px 0;
     color: var(--text);
@@ -999,16 +976,9 @@ h2 {
     margin-bottom: 6px;
 }
 
-.blog-date {
-    font-variant: small-caps;
-    letter-spacing: 0.5px;
-}
-
 .blog-category {
     margin-left: 14px;
     font-size: 9.5pt;
-    font-variant: small-caps;
-    letter-spacing: 0.5px;
 }
 
 .blog-category::before {
@@ -1233,16 +1203,8 @@ footer {
 
     /* --- Two-column layouts: stack vertically --- */
 
-    .profile-section,
-    .research-header {
+    .profile-section {
         display: block;
-    }
-
-    .research-affiliation {
-        margin-bottom: 10px;
-        text-align: left;
-        border-bottom: 1px dotted var(--border);
-        padding-bottom: 5px;
     }
 
     /* --- Home page news list --- */
@@ -1387,8 +1349,6 @@ h4 {
 .photo-caption .photo-date {
     color: var(--grey);
     font-size: 11pt;
-    font-variant: small-caps;
-    letter-spacing: 0.5px;
     margin-right: 10px;
     white-space: nowrap;
 }
@@ -1456,6 +1416,12 @@ h4 {
     object-fit: contain;
     margin: 0 auto;
     border: 1px solid var(--border);
+    opacity: 1;
+    transition: opacity 0.15s ease;
+}
+
+.lightbox-carousel .lb-image.lb-loading {
+    opacity: 0.25;
 }
 
 .lightbox-carousel .lb-caption {
