@@ -399,7 +399,7 @@ h2 {
     margin-top: 10px;
 }
 
-.news-list > li.student-activity {
+.news-list>li.student-activity {
     border-left: 3px solid var(--grey);
     padding-left: 12px;
 }
@@ -690,6 +690,13 @@ h2 {
     margin-top: 0;
 }
 
+.activity-block h5 {
+    font-size: 12pt;
+    font-weight: normal;
+    font-style: italic;
+    margin: 20px 0 8px 0;
+    color: var(--grey);
+}
 
 /* --- Dated list (talks, honors, service, project supervision) --- */
 
@@ -1257,10 +1264,10 @@ footer {
 }
 
 h3,
-h4 {
+h4,
+h5 {
     scroll-margin-top: 80px;
 }
-
 
 /* ============================================================
    DARK MODE
@@ -1279,7 +1286,7 @@ h4 {
     .pub-abstract {
         color: var(--text);
     }
-    
+
     .thesis-figure {
         background-color: #1e1e1e;
     }
