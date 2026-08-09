@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MAL3040 &middot; Lecture 3 | Brahadeesh Sankarnarayanan</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']]
+            },
+            svg: { fontCache: 'global' }
+        };
+    </script>
+    <script type="text/javascript" id="MathJax-script" async
+        src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+        </script>
+
+    <link rel="stylesheet" href="../../style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lmodern@0.0.3/dist/lmodern.css">
+    <link rel="icon" type="image/svg+xml" href="../../k7-torus-favicon.svg">
+</head>
+
+<body>
+
+    <nav>
+        <div class="container">
+            <a href="../../index.html" class="logo-link">
+                <div class="logo-area">
+                    <picture>
+                        <source srcset="../../k7-torus-dark.svg" media="(prefers-color-scheme: dark)">
+                        <img src="../../k7-torus-light.svg" alt="CAT Lab Logo" class="lab-logo-img">
+                    </picture>
+                    <div class="lab-name">
+                        <span class="lab-title">CAT Lab</span>
+                        <span class="lab-subtitle">Combinatorial Applications &amp;&nbsp;Techniques</span>
+                    </div>
+                </div>
+            </a>
+            <ul>
+                <li><a href="../../index.html">Home</a></li>
+                <li><a href="../../research.html">Research</a></li>
+                <li><a href="../../publications.html">Publications</a></li>
+                <li><a href="../../team.html">The Team</a></li>
+                <li><a href="../../photos.html">Photos</a></li>
+                <li><a href="../../updates.html">Updates</a></li>
+                <li><a href="../../join.html">Join Us</a></li>
+            </ul>
+            <div class="subnav-wrap">
+                <ul class="subnav">
+                    <li><a href="../../about.html">About PI</a></li>
+                    <li><a href="../../resources.html">Resources</a></li>
+                    <li><a href="../../teaching.html" class="subnav-active">Teaching</a></li>
+                    <li><a href="../../activities.html">Activities</a></li>
+                    <li><a href="../../blog.html">Blog</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container blog-post-container">
+
+        <p class="blog-back"><a href="../mal3040-2627-I.html">&larr; MAL3040</a></p>
+
+        <div class="blog-post-header">
+            <h1>Lecture 3: Descriptive Statistics I</h1>
+            <p class="blog-post-meta">2026-08-04 &middot; MAL3040 (Autumn 2026&ndash;27)</p>
+        </div>
+
+        <p>
+            In continuation from last class, let us recall some more basic definitions from probability theory.
+        </p>
+        <p>
+            Last time, we recalled the modern definition of probability: it is a function that assigns to each random event a real number between \(0\) and \(1\) in a &ldquo;reasonable&rdquo; manner.
+            Next, if \(B\) is an event such that \(p(B) > 0\), then we can ask for <strong>conditional probability</strong> that an event \(A\) occurs given that \(B\) has occurred.
+            This is denoted \(p(A | B)\), and is defined as \(p(A \cap B) / p(B)\).
+            <strong>Bayes's theorem</strong> expresses the probability of an event \(A\) in terms of the conditional probabilities with respect to an event \(B\) such that \(0 < p(B) < 1\), as follows: \(p(A)=p(A | B) p(B) + p(A | B^c) p(B^c)\).
+                Two events \(A\) and \(B\) are said to be <strong>mutually independent</strong> if, informally speaking, the occurrence of one does not depend on the occurrence of the other; mathematically, this means that \(p(A | B) = p(A)\) and \(p(B | A) = p(B)\).
+                However, this form requires that \(p(A) > 0\) and \(p(B) > 0\), so a cleaner formulation is to say that \(A\) and \(B\) are mutually independent if \(p(A \cap B) = p(A) p(B)\) (simply apply the definition of conditional probability to see where this expression comes from).
+        </p>
+
+        <h2>Visualizing data sets</h2>
+        <p>
+            Okay, time to move on to statistics.
+            Recall that statistics is the study of data, or observations.
+            The very first task, when working with a data set, is to <em>visualize</em> it in a useful manner.
+            For example, say we are given the following data set of salary packages (rounded to the nearest thousands) of ITEP BSc&ndash;BEd graduates from IIT Jodhpur along with the number of students at each salary level:
+        </p>
+        <table>
+            <caption>Table 1. Distribution of starting salaries</caption>
+            <tbody>
+                <tr>
+                    <th scope="row">Starting Salary</th>
+                    <td>47</td>
+                    <td>48</td>
+                    <td>49</td>
+                    <td>50</td>
+                    <td>51</td>
+                    <td>52</td>
+                    <td>53</td>
+                </tr>
+                <tr>
+                    <th scope="row">Frequency</th>
+                    <td>4</td>
+                    <td>1</td>
+                    <td>3</td>
+                    <td>5</td>
+                    <td>8</td>
+                    <td>10</td>
+                    <td>2</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <p> One way to visualize this data set is by plotting a <strong>frequency chart</strong> as follows:
+        </p>
+        <figure class="lecture-figure">
+            <img src="images/frequency-chart-line.png"
+                alt="Frequency chart of starting salaries">
+            <figcaption>Figure 1. Frequency chart of starting salaries.</figcaption>
+        </figure>
+        <p>
+            You can observe this chart and, at a glance, note any trends in the data set.
+            Sometimes, one would like to plot a <strong>relative frequency chart</strong>, where the \(y\)-axis is appropriately scaled: we divide each frequency by the total number of data points, \(4+1+3+5+8+10+2 = 33\).
+            This could be useful if you want to compare trends with, say the starting salary data of BTech graduates of IIT Jodhpur: since the BTech cohort is much larger than the BSc&ndash;BEd cohort, comparing absolute values on the same chart would probably not be very useful.
+        </p>
+        <figure class="lecture-figure">
+            <img src="images/relative-frequency-chart-line.png"
+                alt="Relative frequency chart of starting salaries">
+            <figcaption>Figure 2. Relative frequency chart of starting salaries.</figcaption>
+        </figure>
+        <p>
+            It is also possible that the data set is not given to you in neatly arranged buckets.
+            That is, perhaps your data includes precise salary packages of the graduates, rather than salary packages rounded to the nearest thousands.
+            In this case, one could plot every single data point individually, but such a plot would probably be very noisy, and not particularly informative.
+            It would be better to arrange the buckets appropriately ourselves, in which case we get a <strong>bar chart</strong> or a <strong>histogram</strong> as follows:
+        </p>
+        <figure class="lecture-figure">
+            <img src="images/histogram.png"
+                alt="Histogram of starting salaries">
+            <figcaption>Figure 3. Histogram of starting salaries.</figcaption>
+        </figure>
+        <p>
+            A natural question would be: how does one choose the bucket size in order to plot the histogram? As is often the case, the answer here is: it depends.
+            Choose too small a bucket size, and the plot will be too noisy.
+            Choose a large bucket size, and you miss any trends in the data.
+            An appropriate bin size is determined by the needs of the problem, and informed also by experience and testing.
+        </p>
+        <p>
+            Another sort of plot is a <strong>cumulative frequency plot</strong>, also called an <strong>ogive</strong>.
+            For instance, one might be interested in how many students receive a salary package of <em>at most</em> some amount.
+            In such a case, a cumulative frequency plot is the way to go, as shown below:
+        </p>
+        <figure class="lecture-figure">
+            <img src="images/cumulative-frequency-plot.png"
+                alt="Cumulative frequency plot of starting salaries">
+            <figcaption>Figure 5. Cumulative frequency plot of starting salaries.</figcaption>
+        </figure>
+        <p>
+            A popular type of chart, though perhaps overused in place of better ones, is the pie chart.
+            A pie chart divides a disc into sectors whose areas (equivalently, internal angles) are proportional to the relative frequencies.
+            It makes sense to use a pie chart when you do not have a natural ordering on your data types, or you do not wish to imply an ordering.
+            For example:
+        </p>
+        <figure class="lecture-figure">
+            <img src="images/pie-chart.png"
+                alt="Pie chart showing preferred extra-curricular activities">
+            <figcaption>Figure 4. Pie chart showing preferred extra-curricular activities.</figcaption>
+        </figure>
+        <p>
+            Lastly, we shall mention an interesting method of displaying tabular data, called a stem-and-leaf plot.
+            Here, you divide your data points into a &ldquo;stem&rdquo; and a &ldquo;leaf&rdquo; part as follows: the stem is the most significant digit, or a particular place value that is most significant, and the leaf is the rest.
+            For example, the data point \(634\) is split as \(6\) \(34\), where the stem is \(6\) and \(34\) is the leaf.
+            By arranging the data points in this manner, the stem-and-leaf plot allows one to quickly spot trends based on the most significant part of the data values.
+            For example:
+        </p>
+        <table>
+            <caption>Table 2. Distribution of scores on a 100-mark exam</caption>
+            <thead>
+                <tr>
+                    <th scope="col">Stem</th>
+                    <th scope="col">Leaves</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row">3</th>
+                    <td>1 4 6 8</td>
+                </tr>
+                <tr>
+                    <th scope="row">4</th>
+                    <td>2 2 4 5 7 7 9</td>
+                </tr>
+                <tr>
+                    <th scope="row">5</th>
+                    <td>1 3 3 5 5 7 7 9</td>
+                </tr>
+                <tr>
+                    <th scope="row">6</th>
+                    <td>1 3 3 5 5 7 9</td>
+                </tr>
+                <tr>
+                    <th scope="row">7</th>
+                    <td>2 4 6 8</td>
+                </tr>
+                <tr>
+                    <th scope="row">8</th>
+                    <td>1 4 7</td>
+                </tr>
+                <tr>
+                    <th scope="row">9</th>
+                    <td>2</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <p><strong>Key:</strong> \(5 \mid 7\) represents a score of \(57\).</p>
+
+        <h2>Some common statistics</h2>
+
+        <p>
+            The term &ldquo;statistics&rdquo; in the title of this section refers to any function on a data set.
+            This is different from the use of the word &ldquo;statistics&rdquo; as a branch of mathematics.
+            (The etymology of the word &ldquo;statistics&rdquo; is interesting in its own right: read Chapter 1 of the course textbook to learn more!)
+            We use statistics to understand the data better, and to estimate the &ldquo;true&rdquo; parameters of the population from which the sample data has been collected.
+        </p>
+        <p>
+            The first question that one would be interested in asking is, &lsquo;Where is the data centered?&rsquo;
+            There are several possible answers to this question.
+            The first is called the <strong>sample mean</strong>: given data points \(x_1,x_2,\dotsc,x_n\), the sample mean is defined as \(\bar{x} = (x_1 + x_2 + \dotsb + x_n) / n\).
+            Note that the sample mean weights each data point equally, namely by \(1/n\) if there are \(n\) points.
+            Another measure of the center is the <strong>sample median</strong>: arrange the data set in increasing order, as \(x_{(1)} \leq x_{(2)} \leq \dotsb \leq x_{(n)}\).
+            If \(n\) is odd, then the sample median is the middle term, and if \(n\) is even, then it is the mean of the two middle terms.
+        </p>
+        <p>
+            Note that the sample mean is more sensitive to outliers, as compared to the sample median.
+            For instance, suppose we have in hand the major exam scores of this class, and it turns out that one student has done outstandingly well &mdash; 90 marks out of 100 &mdash; whereas the rest of the class has scores between 30 and 60 only.
+            Should one use the mean or the median to determine where to place the middle grade in the course?
+            Suppose it later turned out that one question was graded incorrectly for a majority of the students, so all their marks get bumped up by another 10 points.
+            What changes do you expect to see in the mean and the median?
+            What if it turns out that the top-scoring student was caught using unfair means, and so their score was reduced to 50 marks?
+            How would the mean and the median change?
+        </p>
+        <p>
+            Next time, we shall continue the discussion by looking at another measure of the center, called the <strong>sample mode</strong>, and then discuss a measure of the spread in the data, called the <strong>sample variance</strong>.
+        </p>
+    </main>
+
+    <footer>
+        <div class="container">
+            <hr class="footer-line">
+            <div class="footer-content">
+                <span class="copyright">&copy; 2026 Brahadeesh Sankarnarayanan</span>
+                <span class="lab-foot">CAT Lab &bull; IIT Jodhpur</span>
+                <span class="updated">Last updated: August 2026</span>
+            </div>
+        </div>
+    </footer>
+
+</body>
+
+</html>

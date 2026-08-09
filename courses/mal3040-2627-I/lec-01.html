@@ -73,10 +73,8 @@
             <p class="blog-post-meta">2026-07-30 &middot; MAL3040 (Autumn 2026&ndash;27)</p>
         </div>
 
-        <!--
         <div class="blog-post-body">
-        
-            <p>Replace this body with the notes for the lecture. Inline mathematics
+<!--            <p>Replace this body with the notes for the lecture. Inline mathematics
                 works as usual, e.g. $\bar{x} = \frac{1}{n}\sum_{i=1}^{n} x_i$,
                 and display equations render on their own line:</p>
 
@@ -87,8 +85,122 @@
                 subsections. Content inside <code>.blog-post-body</code> inherits the
                 article typography.</p>
 
+            <h2>&sect;0.1 Why statistics?</h2>
+
+            <p>Last year, you took a first course in probability theory, in which you learned about the axiomatic foundations of probability theory, about random variables and probability distributions, and about the law of large numbers and the central limit theorem.
+                This course is a natural follow-up, where we will learn the fundamentals of statistical reasoning.
+            </p>
+            <p>What is statistical reasoning?
+                To put it simply, statistical reasoning is the mathematical formalization of our intuitive expectation about how the world around us works.
+                For example, suppose I take a standard deck of \(52\) cards.
+                What are the chances that if I pick a card at random from the deck, then I get a spade?
+                Well, there are \(13\) spades in the deck, so the chances ought to be \(13/52 = 1/4\).
+            </p>
+            <p>
+                Sure, but what do I really mean by &ldquo;chances&rdquo;?
+                It seems to be a layman's term for the notion of &ldquo;probability&rdquo;, which you studied in great detail last year.
+                Yet, we do have an intuitive understanding of what it means to ask for the chances of some event happening.
+                Roughly speaking, if there is an experiment (that is, some physical setup) whose possible outcomes are known, but it is not known beforehand which one will occur, then it makes sense to ask for the chances of observing any particular event of interest.
+                I cannot know beforehand which card will be picked when I select one at random, but I know it will be one among the \(52\) cards in the deck.
+                So, when I ask for the chances that I pick a spade, I want some quantitative measure by which I can judge which events are more &ldquo;likely&rdquo; to occur.
+            </p>
+                An intuitive proxy for the notion of likelihood of an event is the amount of surprise we might experience if a particular event is observed to occur.
+
+            </p>
+        -->
+            <p>
+                Welcome to <strong>MAL3040: Statistics</strong>.
+            </p>
+            <p>
+                Last year, you took a course in probability theory.
+                So, what is probability?
+                Before you tell me a formal definition, can you tell me what are the sort of entities to which you want to attach probabilities?
+            </p>
+            <p>
+                Well, if there are a number of possible outcomes, but you cannot know beforehand which one will occur, then it makes sense to ask what the chances are that any particular one occurs.
+                This intuitive notion of &ldquo;chance&rdquo; is formalized mathematically as the probability that any particular event happens.
+                Probability assigns a number to each such &ldquo;random&rdquo; event in a useful manner: it's some number between \(0\) and \(1\) such that the closer the number is to \(1\) the more you would &ldquo;expect&rdquo; that event to occur, and the closer it is to \(0\), the more you would be surprised if that event occurred.
+                Moreover, this assignment of numbers should be reasonable: if an event \(A\) can be broken down into two disjoint events \(B\) and \(C\), then the probability that \(A\) happens should be the sum of the probabilities that \(B\) happens and \(C\) happens, and so on.
+                You've seen all this before.
+            </p>
+            <p>
+                But there are two things I want to emphasize before we properly begin this course on statistics.
+                Firstly, statistics is the study of data.
+                One does <em>not</em> assign probabilities to individual data points.
+                For example, it makes sense to ask what is the probability that a randomly chosen student from this class is over five feet tall.
+                It does not make sense to pick a particular student and ask what is the probability that <em>that</em> student is over five feet tall: that student either is or isn't over five feet tall.
+                Once we measure their height, we will know the answer.
+                The fact that I have not yet measured their height does not mean that a probability can be assigned to it.
+            </p>
+            <p>
+                Indeed, one of the most common misconceptions I have seen is that if we lack the knowledge of whether or not a particular event has occurred, then that means that we can assign a probability of \(1/2\) to the two states, namely, that the event has occurred and the event has not occurred.
+                This is incorrect!
+                Please do not make this mistake in this class.
+                The rule of thumb that you should always carry forward is that probabilities live in the mathematical world, which models real-world phenomena.
+                Data and observations are gathered from samples collected from the real-world.
+                There are no probabilities there!
+                Instead, we may write down several functions of the data points in order to estimate the &ldquo;true&rdquo; parameters of the population we are studying, and in order to better predict future outcomes.
+                We will see several such functions&mdash;called <em>statistics</em>&mdash;in this course, such as the sample mean, sample variance, and so on.
+            </p>
+            <p>
+                To reiterate the previous point, since it goes against the commonly built intuitions about probability, consider the following example.
+                If I have a standard deck of \(52\) cards, the probability that when I pick a card at random I get a spade is \(13/52 = 1/4\).
+                This is perfectly reasonable.
+                However, if I ask you to pick a card at random, and you do so, then you either have a spade or you do not.
+                This is data. 
+                In fact, you can pick a card, note the suit, put the card back in the deck, and repeat this process any number of times.
+                The probability of picking a spade in any draw is always \(1/4\).
+                The data will be whatever you note down as the suit of the card you picked.
+                You may, of course, use the data collected from this experiment to draw inferences, which is what this course is about.
+                But note that there are no probabilities attached to the individual data points.
+                The probabilities only live on the side of the mathematical model.
+            </p>
+            <p>
+                The second point I want to emphasize is that statistical reasoning truly is a natural counterpart to probability theory.
+                A student may wonder why the probability theory does not suffice to draw conclusions about phenomena we might be interested in.
+                To answer this question, suppose that I have a fair coin, and I toss it a hundred times and note down the sequence of heads and tails.
+                I assure you that it is a fair coin, and I assure you that I have accurately noted down the sequence of heads and tails.
+                I now reveal to you that I saw \(50\) heads and \(50\) tails.
+                Would you be surprised?
+            </p>
+            <p>
+                Somewhat surprisingly, the answer is often mixed.
+                Those who are not surprised often justify their lack of surprise by saying, &lsquo;Well, this was one of the many possible values for the number of heads (and number of tails), so I am not surprised.&rsquo;
+                But, by the same reasoning, you should be equally unsurprised if you saw \(100\) heads and zero tails.
+                Yet, something tells you that a purportedly fair coin would not result in such a sequence of tosses.
+                So, there is more to the lack of surprise than the fact that this was one among the many possible outcomes that one could have observed.
+            </p>
+            <p>
+                Those who are surprised say that the equal number of heads and tails is suspicious.
+                They would have been less surprised if I had reported, say, \(60\) heads and \(40\) tails.
+                Let us see why this might be the case.
+                The feeling here is that \(50\) heads and \(50\) tails is too special: the outcome of a hundred tosses of a fair coin should result in more &ldquo;randomness&rdquo;.
+                However, the comparison is misplaced.
+                It is true that the probability of getting \(50\) heads and \(50\) tails is less than the probability of NOT getting \(50\) heads and \(50\) tails, but the same is true for any specific number of heads that I report.
+                The same reason should say that if I report any other specific distribution, say \(60\) heads and \(40\) tails, you should be surprised, because the probability of getting \(60\) heads and \(40\) tails is less than the probability of NOT getting \(60\) heads and \(40\) tails.
+                So, this can't be the full picture.
+            </p>
+            <p>
+                Perhaps, among all possible values of \(n \in [0,100]\) such that there are \(n\) appearances of one of the faces, and \(100-n\) appearances of the opposite face, the probability is maximized at a value of \(n\) other than \(n = 50\)?
+                This is easy to check, so let's do it.
+                To see exactly \(n\) heads, I need to pick \(n\) spots out of the \(100\), and demand that heads occur exactly there, and tails occur exactly elsewhere.
+                This is doable in precisely \(\binom{100}{n} \left(\frac{1}{2}\right)^{n} \left(\frac{1}{2}\right)^{100-n} = \binom{100}{n} \frac{1}{2^{100}}\) ways.
+                Now, is there any \(n \neq 50\) such that \(\binom{100}{50} < \binom{100}{n}\)?
+                Since the sequence of binomial coefficients \(\binom{100}{n}\) increases until \(\binom{100}{50}\) and then decreases symmetrically, we see that this inequality is false.
+                Hence, the probability is indeed maximized at \(n = 50\).
+            </p>
+            <p>
+                What was the reason for the initial surprise, then?
+                Well, what experience do we have with making a hundred coin tosses?
+                At best, we might have seen ten coin tosses in a row.
+                And in ten coin tosses, we have probably seen many more instances of getting an unequal number of heads and tails than an equal number of heads and tails, so we naively transport this intuition to a hundred coin tosses.
+            </p>
+            <p>
+                Rather than thinking of probability theory as being a weird subject with its own rules that have nothing to do with the real-world, it is better to take away from this example that the real-world is more subtle in its behavior than we initially thought.
+                So, the powerful tools of probability and statistics will be a crucial aid in understanding the world better.
+                In the next class, we will take this example forward by one more step, to see another place where our first impressions clash with the true behavior of the system.
+            </p>
         </div>
--->
     </main>
 
     <footer>

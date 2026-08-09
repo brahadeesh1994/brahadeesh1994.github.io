@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MAL3040 &middot; Lecture 2 | Brahadeesh Sankarnarayanan</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']]
+            },
+            svg: { fontCache: 'global' }
+        };
+    </script>
+    <script type="text/javascript" id="MathJax-script" async
+        src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+        </script>
+
+    <link rel="stylesheet" href="../../style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lmodern@0.0.3/dist/lmodern.css">
+    <link rel="icon" type="image/svg+xml" href="../../k7-torus-favicon.svg">
+</head>
+
+<body>
+
+    <nav>
+        <div class="container">
+            <a href="../../index.html" class="logo-link">
+                <div class="logo-area">
+                    <picture>
+                        <source srcset="../../k7-torus-dark.svg" media="(prefers-color-scheme: dark)">
+                        <img src="../../k7-torus-light.svg" alt="CAT Lab Logo" class="lab-logo-img">
+                    </picture>
+                    <div class="lab-name">
+                        <span class="lab-title">CAT Lab</span>
+                        <span class="lab-subtitle">Combinatorial Applications &amp;&nbsp;Techniques</span>
+                    </div>
+                </div>
+            </a>
+            <ul>
+                <li><a href="../../index.html">Home</a></li>
+                <li><a href="../../research.html">Research</a></li>
+                <li><a href="../../publications.html">Publications</a></li>
+                <li><a href="../../team.html">The Team</a></li>
+                <li><a href="../../photos.html">Photos</a></li>
+                <li><a href="../../updates.html">Updates</a></li>
+                <li><a href="../../join.html">Join Us</a></li>
+            </ul>
+            <div class="subnav-wrap">
+                <ul class="subnav">
+                    <li><a href="../../about.html">About PI</a></li>
+                    <li><a href="../../resources.html">Resources</a></li>
+                    <li><a href="../../teaching.html" class="subnav-active">Teaching</a></li>
+                    <li><a href="../../activities.html">Activities</a></li>
+                    <li><a href="../../blog.html">Blog</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container blog-post-container">
+
+        <p class="blog-back"><a href="../mal3040-2627-I.html">&larr; MAL3040</a></p>
+
+        <div class="blog-post-header">
+            <h1>Lecture 2: Recap of probability theory</h1>
+            <p class="blog-post-meta">2026-07-31 &middot; MAL3040 (Autumn 2026&ndash;27)</p>
+        </div>
+
+        
+        <div class="blog-post-body">
+<!---        
+            <p>Replace this body with the notes for the lecture. Inline mathematics
+                works as usual, e.g. $\bar{x} = \frac{1}{n}\sum_{i=1}^{n} x_i$,
+                and display equations render on their own line:</p>
+
+            <p>$$s^2 = \frac{1}{n-1}\sum_{i=1}^{n} (x_i - \bar{x})^2.$$</p>
+
+            <h2>Section heading</h2>
+            <p>Use <code>&lt;h2&gt;</code> for sections and <code>&lt;h3&gt;</code> for
+                subsections. Content inside <code>.blog-post-body</code> inherits the
+                article typography.</p>
+-->
+            <p>
+                Let us complete the discussion from last time, involving the \(100\) tosses of a fair coin.
+                We agreed at the end of last class, that one ought not to be surprised by my reporting the occurrence of \(50\) heads and \(50\) tails, because among all possible distributions of heads and tails, seeing \(50\) heads and \(50\) tails is most probable.
+                To be fair, though it is most probable, it is still a very small number: \(\binom{100}{50} \frac{1}{2^{100}} \approx 0.08\).
+                Some of you wondered why the probability is not simply \(1/101\), since there are \(101\) possibilities for the number of heads to occur, ranging from \(0\) to \(100\).
+                Good question!
+                Recall that the purpose of assigning a number to a random event is so that it is <em>useful</em>.
+                There is only one possible sequence of coin tosses that results in zero heads, but many possible sequences of coin tosses that result in \(20\), \(45\), or \(50\) heads.
+                By assigning \(1/101\) to each of these occurrences, you are giving a great deal of weightage to the occurrence of zero heads, and very little weightage to the occurrence of a large number of heads.
+                Is such an assignment valid?
+                Sure, nothing will go wrong literally, but it's simply not useful for you to do so: it won't help you make reasonable predictions about the future, or estimate which events are more likely to occur and what their consequences will be, and so on.
+                It is more accurate to weight the occurrence of a given number of heads by the total number of ways in which that could happen: this was the calculation we did last time.
+            </p>
+            <p>
+                Now, let's take the example forward.
+                Suppose I now reveal to you that the sequence of coin tosses that resulted in \(50\) heads and \(50\) tails was as follows:
+                \[
+                    H,H,H,\dotsc,H,T,T,T,\dotsc,T.
+                \]
+                Would you be surprised?
+            </p>
+            <p>
+                Of course! This is surely not a real sequence of \(100\) fair coin tosses.
+                But why do you feel so?
+                Some of you suggested that it's because you do not expect to see such a long run of heads followed by a long run of tails.
+                Very well.
+                But I can guarantee that you would be equally surprised if I reported that the sequence of heads and tails was:
+                \[
+                    H,T,H,T,H,T,H,T,\dotsc.
+                \]
+                This is equally suspicious. You would also not expect to see heads and tails alternate.
+                Okay, but what about this one?
+                \[
+                    H,H,T,T,H,H,T,T,H,H,T,T,\dotsc.
+                \]
+                They are not alternating, but this is also contrived.
+                These sorts of &ldquo;patterns&rdquo; are not to be expected when performing coin tosses.
+            </p>
+            <p>
+                I agree. You expect to see runs of heads and tails of various lengths, but distributed in such a way that long runs occur less often than short runs, and such that consecutive runs are not often of the same length, and so on.
+                There is some rough sense of randomness that we have, and these specific sequences do not obey them.
+                Another feature you might expect is scale-invariance: any subsequence of \(50\) coin tosses should look roughly similar.The run of \(50\) heads followed by \(50\) tails does not have this property, for instance.
+            </p>
+            <p>
+                Very well: but is there some mathematical explanation for this?
+                Here is the (perhaps surprising) observation: purely in terms of probabilities, each sequence that I wrote above is just as likely as the following &ldquo;random&rdquo; one:
+                \[
+                    H,H,T,H,H,H,T,T,T,H,T,T,T,T,H,H,T,H,T,H,H,T,T,T,\dotsc.
+                \]
+                Why? Well, each toss has a probability of \(1/2\) of showing up as either a head or a tail, so each such specific sequence occurs with probability exactly \(1/2^{100}\).
+                So, the mathematical explanation for the surprise cannot purely be because the outcome that we observed is less &ldquo;likely&rdquo; in the sense of having a smaller probability of happening, because that is just not true!
+                Each specific sequence of \(100\) coin tosses has the same probability of occurring: \(1/2^{100}\).
+                So, there is something more here that is informing our intuitions.
+                This is why probability theory alone is not enough: we will find out in this course how to justify our intuitions by statistical reasoning.
+            </p>
+            <p>
+                So much for the introduction.
+                Before stepping into Unit 1, let us quickly review some definitions that you would have seen in your probability theory course last year.
+                To begin with, you might have seen the axiomatic formulation of probability, but it's quite likely that when asked for a <em>definition</em> of probability you would be inclined to say that it is the number of favorable outcomes divided by the total number of outcomes.
+                This is the classical definition of probability, which is problematic for a number of reasons.
+                We will discuss them now, and I hope that after this class, you shall never supply this classical definition of probability when you are asked for its definition!
+            </p>
+            <p>
+                Firstly, the classical definition is only applicable under a special condition: you have to assume that each possible outcome is equally likely.
+                Well, what does it mean for the outcomes to be equally likely?
+                It means that they have the same probability.
+                This means that the definition is circular!
+                At the very least, it appeals to a certain intuitive notion&mdash;equally likely events&mdash;in defining probability when the very purpose of probability theory is to formalize these intuitions.
+                So, this definition is unacceptable at the very outset.
+            </p>
+            <p>
+                Even if we ignore this problem for the moment, here is another stumbling block.
+                Say I have a coin, and I want to know what the probability of a coin toss turning up heads is.
+                I toss it and compute the number of favorable events over the total number of events, and that answer is the probability, right?
+                Well, if I toss it once, then I either get a heads or I don't, so the probability is either \(0\) or \(1\)?
+                Maybe I should toss it more than once?
+                But if I toss it ten times, do I expect to see exactly \(5\) heads and \(5\) tails?
+                No!
+                So, is the probability not \(1/2\), then?
+                Even worse, if I decide I'm going to take whatever answer I get after \(10\) coin tosses, then I may very well get different answers for the probability for each run of \(10\) coin tosses.
+                So, does the probability keep changing?
+                Alright, alright.
+                Maybe what I really mean is that if I keep tossing the coin a large number of times, in the limit as the number of coin tosses tends to infinity, whatever the ratio tends to is my probability.
+                But now the question becomes, how do I know that this limit even exists?
+            </p>
+            <p>
+                All in all, these are respectable first steps towards an accurate and useful definition of probability, but it is time to discard them.
+                We shall define probability axiomatically, which means that probability is anything that satisfies certain properties, which we will specify below.
+            </p>
+            <p>
+                First, a <strong>random experiment</strong> is an experiment whose initial conditions can (in principle) be repeatedly setup, which has a known set of possible outcomes, and for which it is not possible to know beforehand which of the outcomes will occur.
+                We shall denote the set of all outcomes of a random experiment by the symbol \(\Omega\).
+                An <strong>event</strong> is a subset of \(\Omega\).
+                We shall denote the set of all events by \(\mathcal{S}\), and the pair \((\Omega,\mathcal{S})\) is called the sample space of the random experiment.
+                As an aside, what kinds of sets are in \(\mathcal{S}\)?
+                We want all reasonable events to be present in it.
+                So, both \(\emptyset\) and \(\Omega\) should be events.
+                Whenever \(A\) and \(B\) are events, I might be interested in asking for the probability that both \(A\) and \(B\) occur, that at least one of \(A\) and \(B\) occurs, or that \(A\) does not occur.
+                These correspond set-theoretically to \(A \cap B\), \(A \cup B\), and \(A^c\).
+                Thus, the collection \(\mathcal{S}\) of all events should be closed under such operations.
+                You might recall that this was called a <strong>\(\sigma\)-field</strong>: a collection \(\mathcal{S}\) of subsets of a set \(\Omega\) that contains the empty set, and such that whenever \(A \in \mathcal{S}\), we have \(A^c \in \mathcal{S}\), and whenever \(A_1,A_2,A_3,\dotsc \in \mathcal{S}\), we have \(\bigcup_{i = 1}^\infty A_i \in \mathcal{S}\).
+            </p>
+            <p>
+                Now, given a sample space \((\Omega,\mathcal{S})\) associated to a random experiment, a <strong>probability function</strong> \(p \colon \mathcal{S} \to [0,1]\) satisfies:
+            </p>
+                <ol>
+                    <li>\(p(\emptyset) = 0\);</li>
+                    <li>If \(A_1,A_2,A_3,\dotsc \in \mathcal{S}\) are pairwise mutually exclusive events, that is, \(A_i \cap A_j = \emptyset\) for all \(i \neq j\), then \(p\left( \bigcup_{i = 1}^\infty A_i \right) = \sum_{i = 1}^\infty p(A_i)\).</li>
+                </ol>
+            <p>
+                Thus, probability is a <em>function</em>, which assigns to each random event a real number between zero and one, in a &ldquo;compatible&rdquo; manner.
+                The initialization \(p(\emptyset) = 0\) is useful, but the truly crucial part of the definition is the second property, which tells you how probabilities should behave: they should add up for a collection of pairwise mutually exclusive events.
+            </p>
+            <p>
+                In the next class, we will recall a few more important concepts from probability theory, and then begin the study of descriptive statistics.
+            </p>
+        </div>
+
+    </main>
+
+    <footer>
+        <div class="container">
+            <hr class="footer-line">
+            <div class="footer-content">
+                <span class="copyright">&copy; 2026 Brahadeesh Sankarnarayanan</span>
+                <span class="lab-foot">CAT Lab &bull; IIT Jodhpur</span>
+                <span class="updated">Last updated: August 2026</span>
+            </div>
+        </div>
+    </footer>
+
+</body>
+
+</html>
