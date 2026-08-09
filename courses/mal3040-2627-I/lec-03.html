@@ -80,9 +80,9 @@
             Last time, we recalled the modern definition of probability: it is a function that assigns to each random event a real number between \(0\) and \(1\) in a &ldquo;reasonable&rdquo; manner.
             Next, if \(B\) is an event such that \(p(B) > 0\), then we can ask for <strong>conditional probability</strong> that an event \(A\) occurs given that \(B\) has occurred.
             This is denoted \(p(A | B)\), and is defined as \(p(A \cap B) / p(B)\).
-            <strong>Bayes's theorem</strong> expresses the probability of an event \(A\) in terms of the conditional probabilities with respect to an event \(B\) such that \(0 < p(B) < 1\), as follows: \(p(A)=p(A | B) p(B) + p(A | B^c) p(B^c)\).
-                Two events \(A\) and \(B\) are said to be <strong>mutually independent</strong> if, informally speaking, the occurrence of one does not depend on the occurrence of the other; mathematically, this means that \(p(A | B) = p(A)\) and \(p(B | A) = p(B)\).
-                However, this form requires that \(p(A) > 0\) and \(p(B) > 0\), so a cleaner formulation is to say that \(A\) and \(B\) are mutually independent if \(p(A \cap B) = p(A) p(B)\) (simply apply the definition of conditional probability to see where this expression comes from).
+            <strong>law of total probability</strong> expresses the probability of an event \(A\) in terms of the conditional probabilities with respect to an event \(B\) such that \(0 < p(B) < 1\), as follows: \(p(A)=p(A | B) p(B) + p(A | B^c) p(B^c)\).
+                Two events \(A\) and \(B\) are said to be <strong>independent</strong> if, informally speaking, the occurrence of one does not depend on the occurrence of the other; mathematically, this means that \(p(A | B) = p(A)\) and \(p(B | A) = p(B)\).
+                However, this form requires that \(p(A) > 0\) and \(p(B) > 0\), so a cleaner formulation is to say that \(A\) and \(B\) are independent if \(p(A \cap B) = p(A) p(B)\) (simply apply the definition of conditional probability to see where this expression comes from).
         </p>
 
         <h2>Visualizing data sets</h2>
@@ -160,7 +160,7 @@
         <figure class="lecture-figure">
             <img src="images/cumulative-frequency-plot.png"
                 alt="Cumulative frequency plot of starting salaries">
-            <figcaption>Figure 5. Cumulative frequency plot of starting salaries.</figcaption>
+            <figcaption>Figure 4. Cumulative frequency plot of starting salaries.</figcaption>
         </figure>
         <p>
             A popular type of chart, though perhaps overused in place of better ones, is the pie chart.
@@ -171,7 +171,7 @@
         <figure class="lecture-figure">
             <img src="images/pie-chart.png"
                 alt="Pie chart showing preferred extra-curricular activities">
-            <figcaption>Figure 4. Pie chart showing preferred extra-curricular activities.</figcaption>
+            <figcaption>Figure 5. Pie chart showing preferred extra-curricular activities.</figcaption>
         </figure>
         <p>
             Lastly, we shall mention an interesting method of displaying tabular data, called a stem-and-leaf plot.
