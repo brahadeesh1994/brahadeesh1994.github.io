@@ -777,6 +777,55 @@ h2 {
 .plain-list li {
     margin-bottom: 4px;
     line-height: 1.5;
+    /* Containing block for the assessment statistics panel below. */
+    position: relative;
+}
+
+
+/* --- Assessment statistics marker (course pages) --- */
+
+/* The panel is positioned against the list item rather than against the
+   marker itself, so that it always opens at the left margin of the entry
+   and never runs past the right edge of the container. */
+
+.stats {
+    font-size: 10.5pt;
+    color: var(--grey);
+    border-bottom: 1px dotted var(--grey);
+    cursor: help;
+    margin-left: 14px;
+    white-space: nowrap;
+}
+
+.stats::after {
+    content: attr(data-stats);
+    position: absolute;
+    left: 0;
+    top: 100%;
+    margin-top: 4px;
+    z-index: 10;
+    width: max-content;
+    max-width: 100%;
+    padding: 6px 10px;
+    font-size: 10.5pt;
+    line-height: 1.45;
+    white-space: normal;
+    color: var(--text);
+    background: var(--bg);
+    border: 1px solid var(--border);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.12s ease;
+}
+
+.stats:hover::after,
+.stats:focus::after {
+    opacity: 1;
+    visibility: visible;
+}
+
+.stats:focus {
+    outline: none;
 }
 
 
