@@ -25,7 +25,6 @@
         </script>
 
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lmodern@0.0.3/dist/lmodern.css">
     <link rel="icon" type="image/svg+xml" href="k7-torus-favicon.svg">
 </head>
 
@@ -67,30 +66,68 @@
     </nav>
 
     <main class="container">
-        <h2>Research</h2>
-
         <p class="intro-text">
             The sections below describe current and past research threads, including work that predates the lab.
             See the <a href="publications.html">Publications</a> page for the corresponding papers.
         </p>
 
+        <!--
+            Header convention for each research block:
+              line 1: institution (for past positions, also the position held and its years)
+              line 2: with collaborators, each linked to their entry on the Team page
+                      (team.html#their-name), followed by their current affiliation in
+                      parentheses; someone not on the Team page links to their homepage
+        -->
+
+        <h2>Current work</h2>
+
         <section class="research-block" id="majority-coloring-game">
             <div class="research-header">
+<<<<<<< Updated upstream
                 <span class="research-title">Majority coloring game on trees</span>
                 <span class="research-affiliation">IIT Jodhpur &middot; with Yash Chawda (IIT Jodhpur), Saraswati Girish Nanoti (IISc) and Eshwar Srinivasan (Amrita Vishwa Vidyapeetham, Coimbatore)</span>
                 <span class="research-affiliation">MATRIX-MFO Workshop group</span>
+=======
+                <span class="research-title">Majority coloring game</span>
+                <span class="research-affiliation">IIT Jodhpur</span>
+>>>>>>> Stashed changes
             </div>
             <div class="research-content">
                 <p>
-                    A majority coloring of a graph is a vertex coloring in which each vertex has at most half of its neighbors sharing its color;
-                    Lov&aacute;sz showed in 1966 that two colors always suffice for any finite graph.
-                    In the majority coloring game, two players alternately color vertices from a fixed palette while maintaining the majority condition, and the least number of colors for which the first player has a winning strategy is the majority game chromatic number \(\mu_g(G)\).
-                    While \(\mu_g(G)\) is unbounded in general, it is at most \(4\) for trees.
-                    Yash, Saraswati, Eshwar and I study \(\mu_g(T)\) for trees using a configuration-based strategy, in which the first player aims to prevent a small family of local obstruction patterns from arising.
-                    See <a href="publications.html#ChawdaNanotiEtAl2026a">Chawda et al. (2026a)</a> and <a href="publications.html#ChawdaNanotiEtAl2026b">Chawda et al. (2026b)</a>.
+                    A <em>majority coloring</em> of a graph is a vertex coloring in which each vertex has at most half of its neighbors sharing its color;
+                    Lov&aacute;sz (1966) showed that two colors always suffice for any finite graph.
+                    In the majority coloring game, introduced by Bosek&ndash;Grytczuk&ndash;Jak&oacute;bczak (2019), Alice and Bob alternately color the vertices of a graph from a fixed palette while maintaining the majority condition at each stage.
+                    Alice's goal is to obtain a majority coloring of the graph, and Bob's goal is to prevent Alice from doing so.
+                    The smallest palette size on which Alice has a winning strategy on the graph \(G\) is called the <em>majority game chromatic number</em> \(\mu_g(G)\).
+                    It is known that \(\mu_g(G)\) is unbounded even on the class of bipartite graphs.
+                </p>
+
+                <h3 class="research-subhead">Trees</h3>
+                <span class="research-affiliation">with <a href="team.html#yash-chawda">Yash Chawda</a> (IIT Jodhpur) and <a href="team.html#saraswati-girish-nanoti">Saraswati Girish Nanoti</a> (IISc)</span>
+                <p>
+                    For trees \(T\), it is known that \(\mu_g(T)\) is at most \(4\), but it is not known whether this bound is tight.
+                    Yash, Saraswati and I study \(\mu_g(T)\) for trees \(T\) using a configuration-based strategy, in which Alice aims to prevent a small family of local obstruction patterns from arising.
+                    We also study the computational complexity of the pre-coloring extension problem for majority coloring and its game version.
+                    See <a href="publications.html#ChawdaNanotiEtAl2026a">Chawda&ndash;Nanoti&ndash;Sankarnarayanan (2026)</a>.
                 </p>
                 <p>
                     An interactive <a href="tools/tree-coloring-explorer.html">Tree Coloring Explorer</a> built by Yash is available for experimenting with majority colorings on trees.
+                </p>
+
+                <h3 class="research-subhead">The strong majority coloring game and structural results</h3>
+                <span class="research-affiliation">with <a href="team.html#yash-chawda">Yash Chawda</a> (IIT Jodhpur), <a href="team.html#saraswati-girish-nanoti">Saraswati Girish Nanoti</a> (IISc) and <a href="team.html#eshwar-srinivasan">Eshwar Srinivasan</a> (Amrita Vishwa Vidyapeetham, Coimbatore)</span>
+                <p>
+                    A strong majority coloring of a graph, introduced by Kalinowski&ndash;Kamyczura&ndash;Pil&sacute;niak&ndash;Wo&zacute;niak (2026), is a vertex coloring in which no color appears on more than half the neighbors of any vertex.
+                    Yash, Saraswati, Eshwar and I initiate the study of the game version of strong majority coloring.
+                    We also look at some structural reasons for why it seems not so straightforward to answer whether or not \(\mu_g(T) \leq 3\) for all trees \(T\).
+                    See <a href="publications.html#ChawdaNanotiEtAl2026b">Chawda&ndash;Nanoti&ndash;Sankarnarayanan&ndash;Srinivasan (2026)</a>.
+                </p>
+
+                <h3 class="research-subhead">Random graphs, as well as cycles, wheels and fans</h3>
+                <span class="research-affiliation">with <a href="team.html#katie-clinch">Katie Clinch</a> (University of Queensland), <a href="team.html#stijn-cambie">Stijn Cambie</a> (KU Leuven Kulak), <a href="team.html#annika-heckel">Annika Heckel</a> (Uppsala University), <a href="team.html#gabrielle-zwaneveld">Gabri&euml;lle Zwaneveld</a> (University of Amsterdam), <a href="team.html#yelena-yuditsky">Yelena Yuditsky</a> (University of Leeds) and <a href="team.html#allan-lo">Allan Lo</a> (University of Birmingham)</span>
+                <p>
+                    During the MATRIX-MFO Tandem Workshop: Combinatorial Interchange, this research group worked on computing the majority game chromatic number for random graphs, as well as for cycles, wheels and fans.
+                    See <a href="publications.html#CambieClinchEtAl2026">Cambie&ndash;Clinch&ndash;Heckel&ndash;Lo&ndash;Sankarnarayanan&ndash;Yuditsky&ndash;Zwaneveld (2026)</a>.
                 </p>
             </div>
         </section>
@@ -98,7 +135,8 @@
         <section class="research-block">
             <div class="research-header">
                 <span class="research-title">\(\triangle\)-convexity in graphs</span>
-                <span class="research-affiliation">IIT Jodhpur &middot; with Vishnu (IIT Jodhpur)</span>
+                <span class="research-affiliation">IIT Jodhpur</span>
+                <span class="research-affiliation">with <a href="team.html#vishnu-kumar">Vishnu Kumar</a> (IIT Jodhpur)</span>
             </div>
             <div class="research-content">
                 <p>
@@ -109,7 +147,7 @@
                     \]
                     Vishnu and I study the bound \(c_\triangle(G) \leq t + 1\) for graphs with \(t\) triangles, providing a new proof via a component-counting argument:
                     given a Carath&eacute;odory-independent set \(S\), we partition the triangles of \(G\) according to the connected components of the induced subgraph \(G[S]\) and count them directly.
-                    The same method is expected to extend to exchange numbers and to extremal characterizations.
+                    The same method also extends to exchange numbers and to extremal characterizations.
                     See <a href="publications.html#KumarSankarnarayanan2026">Kumar&ndash;Sankarnarayanan (2026)</a>.
                 </p>
                 <p>
@@ -120,6 +158,7 @@
 
         <section class="research-block">
             <div class="research-header">
+<<<<<<< Updated upstream
                 <span class="research-title">List colorings of graphs on surfaces</span>
                 <span class="research-affiliation">IIT Jodhpur</span>
             </div>
@@ -175,23 +214,90 @@
         
         <section class="research-block">
             <div class="research-header">
+=======
+>>>>>>> Stashed changes
                 <span class="research-title">Fractional intersecting families</span>
-                <span class="research-affiliation">IIT Jodhpur &middot; with Niranjan Balachandran</span>
+                <span class="research-affiliation">IIT Jodhpur</span>
             </div>
             <div class="research-content">
                 <p>
                     A classical problem in extremal set theory asks for the maximum size of a family \(\mathcal{F}\) of subsets of \([n]\) subject to a prescribed intersection condition.
-                    A <em>fractional \(\theta\)-intersecting family</em> is a collection \(\mathcal{F}\) of subsets of \([n]\) such that for every \(A, B \in \mathcal{F}\), the ratio \(|A \cap B|\,/\,|A \cup B|\) belongs to a prescribed set \(\theta \subseteq [0,1]\).
-                    Balachandran, Mathew, and Mishra conjectured a tight upper bound on the maximum size of such families.
-                    I am continuing work toward a resolution of this conjecture, building on earlier partial results for special cases.
+                    For a fraction \(\theta \in (0,1)\), a <em>fractional \(\theta\)-intersecting family</em> is a collection \(\mathcal{F}\) of subsets of \([n]\) such that \(|A \cap B| \in \{\theta|A|, \theta|B|\}\) for every pair of distinct sets \(A, B \in \mathcal{F}\).
+                    Balachandran, Mathew, and Mishra conjectured that every such family has size at most linear in \(n\).
+                    I am continuing work toward a resolution of this conjecture.
+                    This builds on earlier partial results for special cases, in particular <a href="publications.html#BalachandranDasEtAl2025">Balachandran&ndash;Das&ndash;Sankarnarayanan (2025)</a>.
                 </p>
             </div>
         </section>
 
         <section class="research-block">
             <div class="research-header">
+<<<<<<< Updated upstream
+=======
+                <span class="research-title">List colorings of graphs on surfaces</span>
+                <span class="research-affiliation">IIT Jodhpur</span>
+            </div>
+            <div class="research-content">
+                <p>
+                    In list coloring, each vertex \(v\) of a graph \(G\) is given its own list \(L(v)\) of allowed colors, and one asks for a proper coloring in which every vertex receives a color from its list.
+                    The choice number \(\operatorname{ch}(G)\) is the least \(k\) such that such a coloring exists whenever every list has at least \(k\) colors.
+                    Always \(\chi(G) \leq \operatorname{ch}(G)\), and in general the gap between the two can be arbitrarily large.
+                    For planar graphs, the Four Color Theorem gives \(\chi(G) \leq 4\), while Thomassen showed that \(\operatorname{ch}(G) \leq 5\) and Mirzakhani and Voigt independently showed that this bound cannot be improved.
+                </p>
+                <p>
+                    I study how large this gap can be for graphs embedded on other surfaces, and also look at efficient list coloring algorithms for such graph classes.
+                    One such class that I focus on is the collection of graphs arising as the \(1\)-skeleta of regular maps on closed surfaces.
+                </p>
+            </div>
+        </section>
+
+        <h2>Past work</h2>
+
+        <section class="research-block">
+            <div class="research-header">
+                <span class="research-title">Brualdi&ndash;Hoffman-type extremal problems</span>
+                <span class="research-affiliation">IIT Hyderabad &middot; Research Associate &middot; May&ndash;September 2025</span>
+                <span class="research-affiliation">with <a href="https://people.iith.ac.in/rajeshkannan" target="_blank" rel="noopener">M.&nbsp;Rajesh Kannan</a> (IIT Hyderabad)</span>
+            </div>
+            <div class="research-content">
+                <p>
+                    The classical Tur&aacute;n-type extremal problem asks for the maximum number of edges in an \(F\)-free graph on \(n\) vertices, along with a characterization of the extremal graphs, where \(F\) is a fixed graph (or class of graphs).
+                    The spectral version, studied systematically by Nikiforov, asks for bounds on the maximum spectral radius of an \(F\)-free graph on \(n\) vertices.
+                    One can also pose analogous questions for \(F\)-free graphs on \(m\) edges; this is the <strong>Brualdi&ndash;Hoffman-type variant</strong>.
+                </p>
+                <p>
+                    The triangle case (\(F = K_3\)) has received considerable attention in the recent literature.
+                    M.&nbsp;Rajesh Kannan and I focused on the case \(F = K_4\), the next case in the complete-graph progression.
+                </p>
+            </div>
+        </section>
+
+        <section class="research-block">
+            <div class="research-header">
+                <span class="research-title">Intersection graphs of paths</span>
+                <span class="research-affiliation">IIT Bombay &middot; Institute Postdoctoral Fellow &middot; September 2024&ndash;February 2025</span>
+                <span class="research-affiliation">with <a href="team.html#niranjan-balachandran">Niranjan Balachandran</a> (IIT Bombay), <a href="team.html#shagnik-das">Shagnik Das</a> (National Taiwan University) and <a href="team.html#umesh-shankar">Umesh Shankar</a> (IIT Madras)</span>
+            </div>
+            <div class="research-content">
+                <p>
+                    The problem of representing a graph as the intersection graph of a collection of geometric or combinatorial objects is well studied &mdash; both theoretically and from computational and practical standpoints.
+                    Our focus was on representing a given graph optimally (in a precise sense) as the vertex-intersection graph of a collection of paths.
+                </p>
+                <p>
+                    Such representations always exist, but finding optimal ones, or even tight bounds on their order, does not seem to be an easy problem.
+                    Several questions in this area remain open.
+                    See <a href="publications.html#BalachandranDasEtAl2025x">Balachandran&ndash;Das&ndash;Sankarnarayanan&ndash;Shankar (in preparation)</a>.
+                </p>
+            </div>
+        </section>
+
+        <section class="research-block">
+            <div class="research-header">
+>>>>>>> Stashed changes
                 <span class="research-title">Doctoral research</span>
-                <span class="research-affiliation">IIT Bombay &middot; Advised by Niranjan Balachandran</span>
+                <span class="research-affiliation">IIT Bombay &middot; PhD &middot; 2018&ndash;2024</span>
+                <span class="research-affiliation">advised by <a href="team.html#niranjan-balachandran">Niranjan Balachandran</a> (IIT Bombay)</span>
+                <span class="research-affiliation">with <a href="team.html#srimanta-bhattacharya">Srimanta Bhattacharya</a> (IIT Palakkad), <a href="team.html#shagnik-das">Shagnik Das</a> (National Taiwan University), <a href="team.html#krishn-vishwas-kher">Krishn Vishwas Kher</a> (IIT Hyderabad) and <a href="team.html#rogers-mathew">Rogers Mathew</a> (IIT Hyderabad)</span>
             </div>
             <div class="research-content">
                 <p>
@@ -206,18 +312,18 @@
                 <p>
                     <strong>Extremal set theory.</strong>
                     I studied a fractional variant of \(L\)-intersecting set systems and made progress on tight upper bounds for the sizes of such families.
-                    See <a href="publications.html#BalachandranBhattacharyaEtAl2023b">Balachandran et al. (2023b)</a> and <a href="publications.html#BalachandranDasEtAl2025">Balachandran et al. (2025)</a>.
+                    See <a href="publications.html#BalachandranBhattacharyaEtAl2023b">Balachandran&ndash;Bhattacharya&ndash;Kher&ndash;Mathew&ndash;Sankarnarayanan (2023)</a> and <a href="publications.html#BalachandranDasEtAl2025">Balachandran&ndash;Das&ndash;Sankarnarayanan (2025)</a>.
                 </p>
                 <p>
                     <strong>Combinatorial matrix theory.</strong>
                     I studied the ranks of a class of symmetric, zero-diagonal matrices that arise from tournaments on \([n]\).
                     These matrices have rank at least linear in \(n\) with high probability, and I characterized their rank in several extremal cases.
                     The constructions also yield bisection-closed families that improve previous bounds, connecting back to extremal set theory.
-                    See <a href="publications.html#BalachandranBhattacharyaEtAl2023a">Balachandran et al. (2023a)</a>, <a href="publications.html#BalachandranBhattacharyaEtAl2024">Balachandran et al. (2024)</a>, and <a href="publications.html#BalachandranSankarnarayanan2024">Balachandran&ndash;Sankarnarayanan (2024)</a>.
+                    See <a href="publications.html#BalachandranBhattacharyaEtAl2023a">Balachandran&ndash;Bhattacharya&ndash;Sankarnarayanan (2023)</a>, <a href="publications.html#BalachandranBhattacharyaEtAl2024">Balachandran&ndash;Bhattacharya&ndash;Sankarnarayanan (2024)</a>, and <a href="publications.html#BalachandranSankarnarayanan2024">Balachandran&ndash;Sankarnarayanan (2024)</a>.
                 </p>
                 <p>
                     Full thesis:
-                    <a href="assets/PhD-Thesis.pdf" target="_blank"><em>Some problems in combinatorics: Excursions in graph colorings and extremal set theory</em></a>.
+                    <a href="assets/PhD-Thesis.pdf" target="_blank" rel="noopener"><em>Some problems in combinatorics: Excursions in graph colorings and extremal set theory</em></a>.
                 </p>
             </div>
         </section>
@@ -228,8 +334,8 @@
             </div>
             <div class="research-content">
                 <p>
-                    Prior to my PhD, I briefly worked as a project assistant with <a href="https://home.iiserb.ac.in/~bkumar/" target="_blank" rel="noopener">Kumar Balasubramanian</a> at IISER Bhopal, studying a small amount of \(p\)-adic representation theory;
-                    see <a href="publications.html#BalasubramanianSenthil-RaaniEtAl2019">Balasubramanian et al. (2019)</a>.
+                    Prior to my PhD, I briefly worked as a project assistant with <a href="team.html#kumar-balasubramanian">Kumar Balasubramanian</a> at IISER Bhopal, studying a small amount of \(p\)-adic representation theory;
+                    see <a href="publications.html#BalasubramanianSenthil-RaaniEtAl2019">Balasubramanian&ndash;Senthil Raani&ndash;Sankarnarayanan (2019)</a>.
                     My Master's thesis, also at IISER Bhopal, was on automorphic forms and Tate's thesis, guided by <a href="https://sites.google.com/view/karamhomepage" target="_blank" rel="noopener">Karam Deo Shankhadhar</a>.
                     During my undergraduate studies, I also explored some number theory under <a href="https://www.niser.ac.in/~brundaban.sahu/" target="_blank" rel="noopener">Brundaban Sahu</a> at NISER Bhubaneswar.
                 </p>
@@ -243,7 +349,11 @@
             <div class="footer-content">
                 <span class="copyright">&copy; 2026 Brahadeesh Sankarnarayanan</span>
                 <span class="lab-foot">CAT Lab &bull; IIT Jodhpur</span>
+<<<<<<< Updated upstream
                 <span class="updated">Last updated: October 2026</span>
+=======
+                <span class="updated">Last updated: November 2026</span>
+>>>>>>> Stashed changes
             </div>
         </div>
     </footer>
