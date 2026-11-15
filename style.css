@@ -5,6 +5,45 @@
    minimal color, dotted-line separators throughout.
    ============================================================ */
 
+/* ============================================================
+   FONTS: Latin Modern Roman, served from the site's own fonts/ folder
+   (Latin Modern 10pt fonts by GUST, under the GUST Font License;
+   see fonts/GUST-FONT-LICENSE.txt)
+   ============================================================ */
+
+@font-face {
+    font-family: "Latin Modern Roman";
+    src: url("fonts/LatinModernRoman-Regular.woff2") format("woff2");
+    font-style: normal;
+    font-weight: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Latin Modern Roman";
+    src: url("fonts/LatinModernRoman-Bold.woff2") format("woff2");
+    font-style: normal;
+    font-weight: bold;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Latin Modern Roman";
+    src: url("fonts/LatinModernRoman-Italic.woff2") format("woff2");
+    font-style: italic;
+    font-weight: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Latin Modern Roman";
+    src: url("fonts/LatinModernRoman-BoldItalic.woff2") format("woff2");
+    font-style: italic;
+    font-weight: bold;
+    font-display: swap;
+}
+
+
 
 /* ============================================================
    VARIABLES & BASE
@@ -273,6 +312,11 @@ h2 {
     border-bottom: none;
 }
 
+.lab-members li:target,
+.member-card:target {
+    background-color: var(--border);
+}
+
 .member-project {
     display: block;
     margin-top: 4px;
@@ -280,11 +324,28 @@ h2 {
     font-size: 0.95em;
 }
 
-.lab-group-label {
-    font-size: 13pt;
+.member-detail {
+    display: block;
+    margin-top: 2px;
     color: var(--grey);
-    font-style: italic;
-    margin: 20px 0 4px 0;
+    font-size: 0.95em;
+}
+
+.member-thesis {
+    display: block;
+    font-size: 11pt;
+    color: var(--grey);
+    margin-top: 3px;
+    line-height: 1.4;
+}
+
+.lab-group-label {
+    font-size: 12pt;
+    font-weight: bold;
+    color: var(--text);
+    margin: 22px 0 10px 0;
+    padding-bottom: 4px;
+    border-bottom: 1px solid var(--border);
 }
 
 
@@ -485,6 +546,12 @@ h2 {
     margin-bottom: 15px;
 }
 
+.research-content .research-subhead {
+    font-size: 1.15rem;
+    font-weight: bold;
+    margin: 30px 0 2px 0;
+}
+
 
 /* ============================================================
    PUBLICATIONS PAGE — Compact layout
@@ -511,6 +578,10 @@ h2 {
     color: var(--grey);
     margin: 0 0 2px 0;
     line-height: 1.5;
+}
+
+.pub-authors a {
+    color: inherit;
 }
 
 .pub-title {
@@ -581,6 +652,14 @@ h2 {
 .pub-abstract strong {
     color: var(--text);
     font-style: normal;
+}
+
+.pub-abstract .problem-name {
+    font-variant: small-caps;
+}
+
+.pub-abstract .problem-name mjx-container {
+    font-variant: normal;
 }
 
 .pub-taxonomy {
@@ -726,6 +805,20 @@ h2 {
     white-space: nowrap;
 }
 
+.dated-list .talk-title {
+    display: block;
+}
+
+.dated-list .talk-meta {
+    display: block;
+    color: var(--grey);
+    font-size: 11pt;
+    margin-top: 2px;
+}
+
+.dated-list .talk-meta a {
+    color: inherit;
+}
 
 /* --- Review list (MathSciNet / zbMATH entries) --- */
 
