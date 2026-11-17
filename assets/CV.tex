@@ -1,97 +1,187 @@
+% !TEX program = xelatex
 %-------------------------
-% Faculty CV -- Brahadeesh Sankarnarayanan
-% Based on a template by Zoe Kearney (MIT-licensed), based in turn on
-% https://www.overleaf.com/latex/templates/coles-resume-template/qhpynjcvjpcj
-% Style follows: https://theprofessorisin.com/2016/08/19/dr-karens-rules-of-the-academic-cv/
+% Curriculum Vitae -- Brahadeesh Sankarnarayanan
+%
+% One source, two versions:
+%   \fulltrue  : full CV (complete record of academic activities)
+%   \fullfalse : short CV (selection for grant panels, letter writers, hosts)
+% Change the switch below and recompile to obtain the other version.
+% Material that appears only in the full CV is wrapped in \iffull ... \fi;
+% material that appears only in the short CV is wrapped in \iffull\else ... \fi.
+%-------------------------
+
+\documentclass[a4paper,10pt]{article}
+
+\newif\iffull
+\fulltrue
+% For command-line builds: pdflatex "\def\buildshort{}\input{cv}" gives the short CV.
+\ifdefined\buildshort \fullfalse \fi
+
+% Fonts. Compile with XeLaTeX: the Hindi title in Expository Writing is then
+% typeset in Devanagari. With pdflatex the CV still compiles, and the Hindi
+% title is left out.
+\usepackage{iftex}
+\newif\ifhavedevanagari % declared here so that pdflatex can skip the block below
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{lmodern}
+  \newcommand{\hindititle}[1]{}
+\else
+  \usepackage{fontspec}
+  % Latin Modern is fontspec's default; it is loaded from TeX Live's own font
+  % files, which also works on macOS, where XeLaTeX cannot find it by name.
+  % Use the first Devanagari font found on this computer; if none is found,
+  % the Hindi title is left out rather than stopping the build.
+  \newcommand{\hindititle}[1]{}
+  \def\trydevanagari#1#2{%
+    \ifhavedevanagari\else
+      \IfFontExistsTF{#1}{%
+        \newfontfamily\devanagarifont{#1}[Script=Devanagari, Scale=#2]%
+        \havedevanagaritrue}{}%
+    \fi}
+  \trydevanagari{Devanagari Sangam MN}{0.92}% macOS
+  \trydevanagari{Kohinoor Devanagari}{0.92}% macOS
+  \trydevanagari{Nirmala UI}{0.92}% Windows
+  \trydevanagari{Mangal}{0.92}% Windows
+  \trydevanagari{Noto Serif Devanagari}{0.92}% Linux
+  \trydevanagari{FreeSerif}{0.92}% Linux
+  \ifhavedevanagari
+    \renewcommand{\hindititle}[1]{{\devanagarifont #1} \\}
+  \fi
+\fi
+\usepackage{microtype}
+\usepackage[a4paper, left=2.3cm, right=2.3cm, top=2.3cm, bottom=2.5cm, footskip=1.2cm]{geometry}
+\usepackage[nobottomtitles*]{titlesec}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+\usepackage{hyperref}
+
+\definecolor{linkblue}{RGB}{0,51,119}
+\definecolor{dategrey}{gray}{0.30}
+\hypersetup{
+  colorlinks=true,
+  linkcolor=linkblue,
+  urlcolor=linkblue,
+  citecolor=linkblue,
+  pdftitle={Curriculum Vitae -- Brahadeesh Sankarnarayanan},
+  pdfauthor={Brahadeesh Sankarnarayanan}
+}
+\urlstyle{same}
+
 %------------------------
-
-% Document class and font size
-\documentclass[a4paper,9pt]{extarticle}
-\usepackage[T1]{fontenc}
-% Packages
-\usepackage[utf8]{inputenc} % For input encoding
-\usepackage{geometry} % For page margins
-\geometry{a4paper, margin=1in} % Set paper size and margins
-\usepackage{titlesec} % For section title formatting
-\usepackage{enumitem} % For itemized list formatting
-\usepackage{hyperref} % For hyperlinks
-	\hypersetup{
-		colorlinks=true,
-		linkcolor=red,
-		urlcolor=blue,
-		citecolor=magenta
-	}
-	\urlstyle{same}
-
+% DOI, arXiv, MR and Zbl links
+%------------------------
 \makeatletter
 \newcommand{\doitext}{doi:}
-
-\newcommand*{\doi}{% 
-  \begingroup 
-  \lccode`\~=`\#\relax 
+\newcommand*{\doi}{%
+  \begingroup
+  \lccode`\~=`\#\relax
   \lowercase{\def~{\#}}%
   \lccode`\~=`\_\relax
   \lowercase{\def~{\textunderscore}}%
-  \lccode`\~=`\<\relax 
+  \lccode`\~=`\<\relax
   \lowercase{\def~{\textless}}%
-  \lccode`\~=`\>\relax 
+  \lccode`\~=`\>\relax
   \lowercase{\def~{\textgreater}}%
-  \lccode`\~=0\relax 
-  \catcode`\#=\active 
-  \catcode`\_=\active 
-  \catcode`\<=\active 
-  \catcode`\>=\active 
+  \lccode`\~=0\relax
+  \catcode`\#=\active
+  \catcode`\_=\active
+  \catcode`\<=\active
+  \catcode`\>=\active
   \@doi
 }
-
-\def\@doi#1{% 
+\def\@doi#1{%
   \let\#\relax
   \let\_\relax
-  \let\textless\relax 
-  \let\textgreater\relax 
-  \edef\x{\toks0={{#1}}}% 
+  \let\textless\relax
+  \let\textgreater\relax
+  \edef\x{\toks0={{#1}}}%
   \x
   \edef\#{\@percentchar23}%
   \edef\_{_}%
   \edef\textless{\@percentchar3C}%
   \edef\textgreater{\@percentchar3E}%
-  \edef\x{\toks1={\noexpand\href{https://doi.org/#1}}}% 
+  \edef\x{\toks1={\noexpand\href{https://doi.org/#1}}}%
   \x
   \edef\x{\endgroup\the\toks1 {\doitext\the\toks0}}%
   \x
 }
 \makeatother
 
+% Identifiers wrapped in \fullids appear only in the full CV.
+\newcommand{\fullids}[1]{\iffull#1\fi}
 \newcommand{\arXiv}[1]{\href{https://arxiv.org/abs/#1}{arXiv:#1}}
 \newcommand{\MR}[1]{\href{https://mathscinet.ams.org/mathscinet-getitem?mr=MR#1}{MR#1}}
 \newcommand{\Zbl}[1]{\href{https://zbmath.org/#1}{Zbl~#1}}
 
-% Formatting
-\setlist{noitemsep}
-\titleformat{\section}{\large\bfseries}{\thesection}{1em}{}[\titlerule]
-\titlespacing*{\section}{0pt}{14pt}{6pt}
-\titleformat{\subsection}{\normalsize\bfseries\itshape}{}{0em}{}
-\titlespacing*{\subsection}{0pt}{11pt}{4pt}
+% Co-author list of a paper: kept together on one line. If it does not fit
+% after the title, the whole list starts on the next line.
+\newcommand{\coauthors}[1]{\mbox{(with #1)}}
 
-% Vertical spacing between entries: a small gap after each paragraph
-% so consecutive items in a section are visually separated.
-\setlength{\parskip}{5.5pt}
+%------------------------
+% Page layout and headings
+%------------------------
 \setlength{\parindent}{0pt}
+% Allow a little extra inter-word space where a line would otherwise overflow.
+\setlength{\emergencystretch}{2.5em}
+\setlength{\parskip}{5pt}
 
-% Begin document
+\titleformat{\section}{\large\bfseries}{}{0em}{}[\vspace{-2pt}\titlerule]
+\titlespacing*{\section}{0pt}{16pt}{8pt}
+\titleformat{\subsection}{\normalsize\itshape}{}{0em}{}
+\titlespacing*{\subsection}{0pt}{10pt}{4pt}
+
+% No heading is placed in the bottom tenth of a page (titlesec option nobottomtitles*).
+\renewcommand{\bottomtitlespace}{0.1\textheight}
+\newcommand{\cvsection}[1]{\section*{#1}}
+\newcommand{\cvsubsection}[1]{\subsection*{#1}}
+
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0pt}
+\fancyfoot[L]{\footnotesize\color{dategrey}Brahadeesh Sankarnarayanan \(\cdot\) Curriculum Vitae\iffull\else{} (short)\fi{} \(\cdot\) Last updated: November 2026}
+\fancyfoot[R]{\footnotesize\color{dategrey}Page \thepage\ of \pageref*{LastPage}}
+
+%------------------------
+% Entries
+%------------------------
+% Every dated entry has its date in a left-hand column of fixed width;
+% the remaining lines of the entry hang under the first line of text.
+\newlength{\datecol}
+\setlength{\datecol}{3.1cm}
+\newcommand{\datefont}{\small\color{dategrey}}
+
+% An entry is never split across two pages.
+\newcommand{\entry}[2]{%
+  \par\begingroup\interlinepenalty=10000
+  \noindent\hangindent=\datecol\hangafter=1%
+  \makebox[\datecol][l]{\datefont #1}#2\par\endgroup}
+
+% Tighter spacing for runs of one-line entries (course lists, memberships, etc.)
+\newenvironment{compactentries}{\par\begingroup\setlength{\parskip}{1.5pt}}{\par\endgroup\vspace{3.5pt}}
+
+% Publication lists: the label [J9] etc. sits in the date column.
+\newenvironment{publist}{%
+  \begin{itemize}[label={}, leftmargin=\datecol, labelwidth=\datecol, labelsep=0pt,
+                  align=left, topsep=0pt, itemsep=5pt, parsep=0pt, font=\datefont]%
+  \raggedright\let\\\newline\interlinepenalty=10000}%
+  {\end{itemize}}
+
+\hyphenation{Jodhpur Madhya Pradesh Statistical Insights Mathematics Mathematical Department Proceedings}
 \begin{document}
-
-\pagestyle{empty}
 
 %------------------------
 % Header
 %------------------------
 \begin{center}
-\textbf{\Large Brahadeesh Sankarnarayanan} \\[2pt]
+{\LARGE\bfseries Brahadeesh Sankarnarayanan} \\[6pt]
 Assistant Professor (Grade II), Department of Mathematics \\
-Indian Institute of Technology Jodhpur, NH 62 Nagaur Road\\
-Karwar 342030, Jodhpur District, Rajasthan, India \\[2pt]
-\href{mailto:brahadeesh@iitj.ac.in}{brahadeesh@iitj.ac.in} \(\cdot\) +91 291 280 1469 \\[2pt]
+Indian Institute of Technology Jodhpur \\
+NH 62 Nagaur Road, Karwar 342030, Jodhpur District, Rajasthan, India \\[3pt]
+\href{mailto:brahadeesh@iitj.ac.in}{brahadeesh@iitj.ac.in} \(\cdot\) +91 291 280 1469 \\[3pt]
 \href{https://brahadeesh1994.github.io/}{Website} \(\cdot\)
 \href{https://arxiv.org/a/sankarnarayanan_b_1.html}{arXiv} \(\cdot\)
 \href{https://scholar.google.com/citations?user=EkZ13RYAAAAJ}{Google Scholar} \(\cdot\)
@@ -101,663 +191,686 @@ Karwar 342030, Jodhpur District, Rajasthan, India \\[2pt]
 \end{center}
 
 %------------------------
-% Research Interests
+% Employment
 %------------------------
-\section*{RESEARCH INTERESTS}
+\cvsection{Employment}
 
-\noindent
-I work in extremal combinatorics and graph theory. My current interests are in spectral extremal graph theory, intersection graphs of paths, intersecting set systems, graph convexity, majority coloring games, and list colorings.
+\entry{Sep 2025--present}{\textbf{Assistant Professor (Grade II)}, Department of Mathematics, IIT Jodhpur}
 
-\subsection*{Current Projects}
+\entry{May--Sep 2025}{\textbf{Research Associate}, Department of Mathematics, IIT Hyderabad \\
+Project: ``Spectral Theory of Signed Graphs'' \\
+Principal Investigator: M.~Rajesh Kannan}
 
-\noindent
-\textbf{Majority coloring game on trees} \\
-With Yash Chawda (IIT Jodhpur), Saraswati Girish Nanoti (IISc) and Eshwar Srinivasan (Amrita Vishwa Vidyapeetham, Coimbatore).
-Investigating optimal strategies and computational complexity for the two-player majority coloring game, particularly on binary and ternary trees.
+\entry{Aug 2024--Feb 2025}{\textbf{Institute Post-Doctoral Fellow}, Department of Mathematics, IIT Bombay \\
+Mentor: Niranjan Balachandran}
 
-\noindent
-\textbf{\(\triangle\)-convexity in graphs} \\
-With Vishnu Kumar (IIT Jodhpur). Investigating convexity structures in graphs, particularly computing dimensional parameters such as the exchange number and Carath\'eodory number for \(\triangle\)-convexity, and characterizing the extremal examples.
-
-\noindent
-\textbf{Brualdi--Hoffman-type extremal problems} \\
-With M.\ Rajesh Kannan (IIT Hyderabad). Investigating spectral extremal problems for \(F\)-free graphs on \(m\) edges, extending recent results for the case \(F = K_3\) to \(F = K_4\) and beyond.
-
-\noindent
-\textbf{Intersection graphs of paths} \\
-With Niranjan Balachandran (IIT Bombay), Shagnik Das (National Taiwan University) and Umesh Shankar (IISc). Investigating the path-representation number \(\mathsf{prn}(G)\) of a graph \(G\): bounds in terms of other graph parameters, algorithms for computing optimal path representations, computational complexity of the parameter for different graph classes.
-
-\noindent
-\textbf{Fractional intersecting families} \\
-Continuing investigation of the Balachandran--Mathew--Mishra conjecture on the maximum size of fractional \(\theta\)-intersecting families over \([n]\), building on \href{https://doi.org/10.37236/12900}{Balachandran--Das--Sankarnarayanan (2025)} and \href{https://doi.org/10.37236/11651}{Balachandran--Bhattacharya--Kher--Mathew--Sankarnarayanan (2023)}.
-
-\noindent
-\textbf{List colorings of graphs on surfaces} \\
-Investigating the gap between the choice number and the chromatic number for graphs embedded on surfaces, particularly the choice number of the toroidal square grid, building on \href{https://doi.org/10.1016/j.dam.2026.01.032}{Balachandran--Sankarnarayanan (2026)} and \href{https://doi.org/10.37236/10263}{Balachandran--Sankarnarayanan (2021)}.
+\entry{Sep--Nov 2017}{\textbf{Project Assistant}, Department of Mathematics, IISER Bhopal \\
+Project: ``Self-dual representations and signs'' \\
+Principal Investigator: Kumar Balasubramanian}
 
 %------------------------
 % Education
 %------------------------
-\section*{EDUCATION}
+\cvsection{Education}
 
-\noindent
-\textbf{PhD (Mathematics)} \hfill 2018 -- 2024 \\
-Indian Institute of Technology (IIT) Bombay \\
+\entry{2018--2024}{\textbf{PhD (Mathematics)}, Indian Institute of Technology Bombay \\
 Thesis: ``Some problems in combinatorics: Excursions in graph colorings and extremal set theory'' \\
-Advisor: Niranjan Balachandran \\
-CPI: 8.89/10.0
+Advisor: Niranjan Balachandran\iffull{} \\
+CPI: 8.89/10.0\fi}
 
-\noindent
-\textbf{BS--MS (Dual) Degree (Major in Mathematics)} \hfill 2012 -- 2017 \\
-Indian Institute of Science Education and Research (IISER) Bhopal \\
+\entry{2012--2017}{\textbf{BS--MS (Dual) Degree}, Indian Institute of Science Education and Research Bhopal \\
+Major in Mathematics \\
 Thesis: ``Automorphic forms and Tate's thesis'' \\
-Advisor: Karam Deo Shankhadhar \\
-CPI: 9.31/10.0
+Advisor: Karam Deo Shankhadhar\iffull{} \\
+CPI: 9.31/10.0\fi}
+
+% School education (10th and 12th standard), kept for forms that ask for it.
+% Uncomment to include in the full CV.
+% \iffull
+% \entry{2012}{\textbf{12th Standard}, Lilavatibai Podar High School \\
+% Examination: Indian School Certificate (ISC) \\
+% Board: Council for the Indian School Certificate Examinations (CISCE) \\
+% Subjects: Physics, Chemistry, Mathematics \\
+% Percentage: 94.8\%}
+%
+% \entry{2010}{\textbf{10th Standard}, Gokuldham High School \& Junior College \\
+% Examination: Indian Certificate of Secondary Education (ICSE) \\
+% Board: Council for the Indian School Certificate Examinations (CISCE) \\
+% Subjects: Science, Mathematics \\
+% Percentage: 93.14\%}
+% \fi
 
 %------------------------
-% Employment
+% Research interests
 %------------------------
-\section*{EMPLOYMENT}
+\cvsection{Research Interests}
 
-\noindent
-\textbf{Assistant Professor (Grade II)} \hfill 09/2025 -- present \\
-Department of Mathematics, IIT Jodhpur
-
-\noindent
-\textbf{Research Associate} \hfill 05/2025 -- 09/2025 \\
-Department of Mathematics, IIT Hyderabad \\
-Project: ``Spectral Theory of Signed Graphs'' \\
-Principal Investigator: M.\ Rajesh Kannan
-
-\noindent
-\textbf{Institute Post-Doctoral Fellow} \hfill 08/2024 -- 02/2025 \\
-Department of Mathematics, IIT Bombay \\
-Mentor: Niranjan Balachandran
-
-\noindent
-\textbf{Project Assistant} \hfill 09/2017 -- 11/2017 \\
-Department of Mathematics, IISER Bhopal \\
-Project: ``Self-dual representations and signs'' \\
-Principal Investigator: Kumar Balasubramanian
+I work in extremal combinatorics and graph theory.
+My current interests are in intersecting set systems, graph convexity, majority coloring games, and list colorings.
 
 %------------------------
 % Publications
 %------------------------
-\section*{PUBLICATIONS}
+\cvsection{Publications}
 
-%\noindent
-%\emph{Author lists are alphabetical by surname, following the standard convention in mathematics; see the AMS statement on Joint Research and Its Publication.}
+\cvsubsection{Refereed Journal Articles}
 
-\subsection*{Refereed Journal Articles}
+\begin{publist}
+\item[{[J9]}] \emph{\(5\)-list coloring toroidal \(6\)-regular triangulations in linear time} \coauthors{N.~Balachandran}. \\
+Discrete Applied Mathematics \textbf{386} (2026), 75--103, \doi{10.1016/j.dam.2026.01.032}\fullids{, \arXiv{2106.01634}, \MR{5028701}, \Zbl{1587.05041}}.
 
-\begin{itemize}[label={}, leftmargin=2.9em, labelwidth=2.4em, labelsep=0.5em, align=left, topsep=0pt, itemsep=4pt, parsep=0pt]
-\item[{[J9]}] \emph{\(5\)-list coloring toroidal \(6\)-regular triangulations in linear time} (with N.\ Balachandran). \\
-Discrete Applied Mathematics \textbf{386} (2026), 75--103, \doi{10.1016/j.dam.2026.01.032}, \\
-\arXiv{2106.01634}, \MR{5028701}, \Zbl{1587.05041}.
+\item[{[J8]}] \emph{Bounded fractional intersecting families are linear in size} \coauthors{N.~Balachandran and S.~Das}. \\
+The Electronic Journal of Combinatorics \textbf{32} (2025), no.~3, \#P3.34, 10~pp., \doi{10.37236/12900}\fullids{, \arXiv{2402.14981}, \MR{4949605}, \Zbl{1572.05240}}.
 
-\item[{[J8]}] \emph{Bounded fractional intersecting families are linear in size}
-(with N.\ Balachandran and S.\ Das). \\
-The Electronic Journal of Combinatorics \textbf{32} (2025), no.~3, \#P3.34, 10~pp., \doi{10.37236/12900}, \\
-\arXiv{2402.14981}, \MR{4949605}, \Zbl{1572.05240}.
+\item[{[J7]}] \emph{Low-rank matrices, tournaments, and symmetric designs} \coauthors{N.~Balachandran}. \\
+Linear Algebra and its Applications \textbf{694} (2024), 136--147, \doi{10.1016/j.laa.2024.04.006}\fullids{, \arXiv{2401.14015}, \MR{4736676}, \Zbl{1539.05071}}.
 
-\item[{[J7]}] \emph{Low-rank matrices, tournaments, and symmetric designs} (with N.\ Balachandran). \\
-Linear Algebra and its Applications \textbf{694} (2024), 136--147, \doi{10.1016/j.laa.2024.04.006}, \\
-\arXiv{2401.14015}, \MR{4736676}, \Zbl{1539.05071}.
+\item[{[J6]}] \emph{Almost full rank matrices arising from transitive tournaments} \coauthors{N.~Balachandran and S.~Bhattacharya}. \\
+Linear and Multilinear Algebra \textbf{72} (2024), no.~2, 153--161, \doi{10.1080/03081087.2022.2158168}\fullids{, \MR{4703565}, \Zbl{1533.05147}}.
 
-\item[{[J6]}] \emph{Almost full rank matrices arising from transitive tournaments}
-(with N.\ Balachandran and S.\ Bhattacharya). \\
-Linear and Multilinear Algebra \textbf{72} (2024), no.~2, 153--161, \doi{10.1080/03081087.2022.2158168}, \\
-\MR{4703565}, \Zbl{1533.05147}.
+\item[{[J5]}] \emph{On hierarchically closed fractional intersecting families}
+\coauthors{N.~Balachandran, S.~Bhattacharya, K.~V.~Kher and R.~Mathew}. \\
+The Electronic Journal of Combinatorics \textbf{30} (2023), no.~4, \#P4.37, 17~pp., \doi{10.37236/11651}\fullids{, \arXiv{2211.02540}, \MR{4672585}, \Zbl{1533.05268}}.\fullids{ \\
+{\small The arXiv version contains an addendum.}}
 
-\item[{[J5]}] \emph{On hierarchically closed fractional intersecting families} \\
-(with N.\ Balachandran, S.\ Bhattacharya, K.\ V.\ Kher and R.\ Mathew). \\
-The Electronic Journal of Combinatorics \textbf{30} (2023), no.~4, \#P4.37, 17~pp., \doi{10.37236/11651}, \\
-\arXiv{2211.02540}, \MR{4672585}, \Zbl{1533.05268}.
-
-\item[{[J4]}] \emph{An ensemble of high-rank matrices arising from tournaments}
-(with N.\ Balachandran and S.\ Bhattacharya). \\
-Linear Algebra and its Applications \textbf{658} (2023), 310--318, \doi{10.1016/j.laa.2022.11.004}, \\
-\arXiv{2108.10871}, \MR{4513895}, \Zbl{1506.15034}.
-%{\small An addendum (in the arXiv version) was announced in Richard A. Brualdi, ``From the Editor-in-Chief'', Linear Algebra and its Applications \textbf{684} (2024), 158--159.}
+\item[{[J4]}] \emph{An ensemble of high-rank matrices arising from tournaments} \coauthors{N.~Balachandran and S.~Bhattacharya}. \\
+Linear Algebra and its Applications \textbf{658} (2023), 310--318, \doi{10.1016/j.laa.2022.11.004}\fullids{, \arXiv{2108.10871}, \MR{4513895}, \Zbl{1506.15034}}.\fullids{ \\
+{\small The arXiv version contains an addendum, announced in R.~A.~Brualdi, ``From the Editor-in-Chief'', Linear Algebra and its Applications \textbf{684} (2024), 158--159.}}
 
 \item[{[J3]}] \emph{Note on \(4\)-coloring \(6\)-regular triangulations on the torus}. \\
-Annals of Combinatorics \textbf{26} (2022), no.~3, 559--569, \doi{10.1007/s00026-022-00573-8}, \\
-\arXiv{2106.01037}, \MR{4473892}, \Zbl{1497.05098}.
+Annals of Combinatorics \textbf{26} (2022), no.~3, 559--569, \doi{10.1007/s00026-022-00573-8}\fullids{, \arXiv{2106.01037}, \MR{4473892}, \Zbl{1497.05098}}.
 
-\item[{[J2]}] \emph{The choice number versus the chromatic number for graphs embeddable on orientable surfaces} \\
-(with N.\ Balachandran). \\
-The Electronic Journal of Combinatorics \textbf{28} (2021), no.~4, \#P4.50, 20~pp., \doi{10.37236/10263}, \\
-\arXiv{2102.06993}, \MR{4394670}, \Zbl{1486.05101}.
+\item[{[J2]}] \emph{The choice number versus the chromatic number for graphs embeddable on orientable surfaces}
+\coauthors{N.~Balachandran}. \\
+The Electronic Journal of Combinatorics \textbf{28} (2021), no.~4, \#P4.50, 20~pp., \doi{10.37236/10263}\fullids{, \arXiv{2102.06993}, \MR{4394670}, \Zbl{1486.05101}}.
 
-\item[{[J1]}] \emph{Self-dual representations of \(\mathrm{SL}(2,F)\): an approach using the Iwahori--Hecke algebra} \\
-(with K.\ Balasubramanian and K.\ S.\ Senthil Raani). \\
-Communications in Algebra \textbf{47} (2019), no.~10, 4210--4215, \doi{10.1080/00927872.2019.1581211}, \\
-\MR{3975999}, \Zbl{1432.20031}.
-\end{itemize}
+\item[{[J1]}] \emph{Self-dual representations of \(\mathrm{SL}(2,F)\): an approach using the Iwahori--Hecke algebra}
+\coauthors{K.~Balasubramanian and K.~S.~Senthil Raani}. \\
+Communications in Algebra \textbf{47} (2019), no.~10, 4210--4215, \doi{10.1080/00927872.2019.1581211}\fullids{, \MR{3975999}, \Zbl{1432.20031}}.
+\end{publist}
 
-\subsection*{Conference Proceedings}
+\cvsubsection{Conference and Workshop Publications}
 
-\begin{itemize}[label={}, leftmargin=2.9em, labelwidth=2.4em, labelsep=0.5em, align=left, topsep=0pt, itemsep=4pt, parsep=0pt]
-\item[{[C2]}] \emph{On the majority game chromatic number of forests and other graphs}
-(with Y.\ Chawda and S.\ G.\ Nanoti). \\
-Accepted at FSTTCS 2026. \\
-\arXiv{2609.23803}.
+\begin{publist}
+\item[{[C4]}] \emph{On the majority game chromatic number of forests and other graphs} \coauthors{Y.~Chawda and S.~G.~Nanoti}. \\
+FSTTCS 2026. In: \emph{46th IARCS Annual Conference on Foundations of Software Technology and Theoretical Computer Science}, Leibniz International Proceedings in Informatics (LIPIcs), vol.~(to appear), article~31, 22~pp., Schloss Dagstuhl -- Leibniz-Zentrum f\"ur Informatik, Wadern (2026), \doi{10.4230/LIPIcs.FSTTCS.2026.31}\fullids{, \arXiv{2609.23803}}.
 
-\item[{[C1]}] \emph{\(5\)-list coloring toroidal \(6\)-regular triangulations in linear time} (with N.\ Balachandran). \\ 
-Extended abstract. CALDAM 2023. In: A.\ Bagchi and R.\ Muthu (eds.) \emph{Algorithms and Discrete Applied Mathematics}, Lecture Notes in Computer Science, vol.~13947, pp.~134--146, Springer, Cham (2023), \\\doi{10.1007/978-3-031-25211-2_10},
-\MR{4573050}, \Zbl{07728658}. \\
-{\small The full version appeared as [J9] above.}
-\end{itemize}
+\item[{[C3]}] \emph{On the majority colouring game}
+\coauthors{S.~Cambie, K.~Clinch, A.~Heckel, A.~Lo, Y.~Yuditsky and G.~Zwaneveld}. \\
+MATRIX--MFO Tandem Workshop: Combinatorial Interchange (MATRIX, Creswick, and MFO, Oberwolfach, September 2026). \emph{Oberwolfach Reports} (to appear). \\
+{\small Extended abstract, unrefereed.}
 
-\subsection*{Preprints}
+\item[{[C2]}] \emph{The list packing conjecture} \coauthors{S.~Das and H.~Wu}. \\
+MATRIX--MFO Tandem Workshop: Combinatorial Interchange (MATRIX, Creswick, and MFO, Oberwolfach, September 2026). \emph{Oberwolfach Reports} (to appear). \\
+{\small Extended abstract, unrefereed.}
 
-\begin{itemize}[label={}, leftmargin=2.9em, labelwidth=2.4em, labelsep=0.5em, align=left, topsep=0pt, itemsep=4pt, parsep=0pt]
-\item[{[P2]}] \emph{Structural and computational aspects of majority coloring games} \\
-(with Y.\ Chawda, S.\ G.\ Nanoti and E.\ Srinivasan). \\
+\item[{[C1]}] \emph{\(5\)-list coloring toroidal \(6\)-regular triangulations in linear time} \coauthors{N.~Balachandran}. \\
+CALDAM 2023. In: A.~Bagchi and R.~Muthu (eds.) \emph{Algorithms and Discrete Applied Mathematics}, Lecture Notes in Computer Science, vol.~13947, pp.~134--146, Springer, Cham (2023), \doi{10.1007/978-3-031-25211-2_10}\fullids{, \MR{4573050}, \Zbl{07728658}}. \\
+{\small Extended abstract. The full version appeared as [J9] above.}
+\end{publist}
+
+\cvsubsection{Preprints}
+
+\begin{publist}
+\item[{[P2]}] \emph{Structural and computational aspects of majority coloring games}
+\coauthors{Y.~Chawda, S.~G.~Nanoti and E.~Srinivasan}. \\
 2026, \arXiv{2609.37796}.
 
-\item[{[P1]}] \emph{Tight bounds on the Carath\'eodory and exchange numbers in \(\triangle\)-convexity} 
-(with V.\ Kumar). \\
+\item[{[P1]}] \emph{Tight bounds on the Carath\'eodory and exchange numbers in \(\triangle\)-convexity} \coauthors{V.~Kumar}. \\
 2026, \arXiv{2609.34441}.
-\end{itemize}
+\end{publist}
 
-\subsection*{Manuscripts in Preparation}
+\iffull
+\cvsubsection{Manuscripts in Preparation}
 
-\begin{itemize}[label={}, leftmargin=2.9em, labelwidth=2.4em, labelsep=0.5em, align=left, topsep=0pt, itemsep=4pt, parsep=0pt]
-\item[{[M1]}] \emph{An extremal problem for vertex intersection graphs of paths} 
-(with N.\ Balachandran, S.\ Das and U.\ Shankar). \\
+\begin{publist}
+\item[{[M1]}] \emph{An extremal problem for vertex intersection graphs of paths} \coauthors{N.~Balachandran, S.~Das and U.~Shankar}. \\
 2025.
-\end{itemize}
+\end{publist}
+\fi
+
+\iffull
+%------------------------
+% Current research directions (full CV only)
+%------------------------
+\cvsection{Current Research Directions}
+
+\textbf{Majority coloring game on trees} \\
+With Yash Chawda (IIT Jodhpur), Saraswati Girish Nanoti (IISc) and Eshwar Srinivasan (Amrita Vishwa Vidyapeetham, Coimbatore).
+Investigating optimal strategies and computational complexity for the two-player majority coloring game, particularly on trees.
+At the MATRIX--MFO Tandem Workshop (2026), also with Stijn Cambie (KU Leuven Kulak), Katie Clinch (University of Queensland), Annika Heckel (Uppsala University), Allan Lo (University of Birmingham), Yelena Yuditsky (University of Leeds) and Gabri\"elle Zwaneveld (University of Amsterdam), studied the majority coloring game on random graphs, cycles, wheels and fans.
+
+\textbf{\(\triangle\)-convexity in graphs} \\
+With Vishnu Kumar (IIT Jodhpur). Investigating convexity structures in graphs, particularly computing dimensional parameters such as the exchange number and Carath\'eodory number for \(\triangle\)-convexity, and characterizing the extremal examples.
+
+\textbf{Fractional intersecting families} \\
+Continuing investigation of the Balachandran--Mathew--Mishra conjecture on the maximum size of fractional \(\theta\)-intersecting families over \([n]\), building on \href{https://doi.org/10.37236/12900}{Balachandran--Das--Sankarnarayanan (2025)} and \href{https://doi.org/10.37236/11651}{Balachandran--Bhattacharya--Kher--Mathew--Sankarnarayanan (2023)}.
+
+\textbf{List colorings of graphs on surfaces} \\
+Investigating the gap between the choice number and the chromatic number for graphs embedded on surfaces, and efficient list coloring algorithms for such graphs, particularly the \(1\)-skeleta of regular maps on closed surfaces, building on \href{https://doi.org/10.1016/j.dam.2026.01.032}{Balachandran--Sankarnarayanan (2026)}, \href{https://doi.org/10.1007/s00026-022-00573-8}{Sankarnarayanan (2022)} and \href{https://doi.org/10.37236/10263}{Balachandran--Sankarnarayanan (2021)}.
+\fi
 
 %------------------------
-% Research Supervision
+% Research grants
 %------------------------
-\section*{RESEARCH SUPERVISION}
+\cvsection{Research Grants}
 
-\subsection*{PhD Students}
-
-\noindent
-\textbf{Piyush Joshi} \hfill enrolled Autumn 2026--27 \\
-Department of Mathematics, IIT Jodhpur
-
-\noindent
-\textbf{Yash Chawda} \hfill enrolled Spring 2025--26 \\
-Department of Mathematics, IIT Jodhpur
-
-\noindent
-\textbf{Vishnu Kumar} \hfill enrolled Autumn 2025--26 \\
-Department of Mathematics, IIT Jodhpur
-
-\subsection*{Executive MTech (Data and Computational Sciences) Projects}
-
-\noindent
-\textbf{Rayipalli Prakash} \hfill 2025--26 \\
-School of Artificial Intelligence and Data Science, IIT Jodhpur \\
-Project: ``GNN-Based Automatic Calorie Identification from Food Images''
-
-\noindent
-\textbf{Md Parvez Rahaman} \hfill 2025--26 \\
-School of Artificial Intelligence and Data Science, IIT Jodhpur \\
-Project: ``AI-Based Text Summarization and Tone Rewriting System Using BART and T5''
-
-\subsection*{Summer Interns: SURAJ Program}
-
-\noindent
-\textbf{Vaibhav Suvagiya} \hfill Summer 2026 \\
-Sardar Vallabhbhai National Institute of Technology, Surat \\
-Project: ``RAMO: A Verified MaxSAT Repair Oracle for Tabu Search on Ramsey 2-Colouring, A De-Confounded Negative Result''
-
-\noindent
-\textbf{B.\ James Mejulan} \hfill Summer 2026 \\
-Sardar Vallabhbhai National Institute of Technology, Surat \\
-Project: ``Generators and Relations for Discrete Groups''
-
-\subsection*{Other Interns}
-
-\noindent
-\textbf{Sai Akshar Tadimeti} \hfill Summer 2026 \\
-IIT Jodhpur
-Reading Project: Discrete mathematics, from Rosen's \emph{Discrete Mathematics and Its Applications}
-
-%------------------------
-% Fellowships, Awards & Honors
-%------------------------
-\section*{FELLOWSHIPS, AWARDS \& HONORS}
-
-\noindent
-\textbf{Institute Post-Doctoral Fellowship} \hfill 08/2024 -- 02/2025 \\
-IIT Bombay
-
-\noindent
-\textbf{National Board for Higher Mathematics (NBHM) Research Award} \hfill 2018 -- 2023 \\
-Department of Atomic Energy, Government of India
-
-\noindent
-\textbf{Joint CSIR--UGC National Eligibility Test for Junior Research Fellowship} \hfill 2017 \\
-CSIR -- Human Resource Development Group; All-India Rank 20 in Mathematical Sciences
-
-\noindent
-\textbf{Director's Gold Medal} \hfill 2017 \\
-IISER Bhopal \\
-Awarded for outstanding all-round achievement and leadership in the BS--MS graduating class
-
-\noindent
-\textbf{Rashtrapati Bhavan In-Residence Program for Scholars from IITs, IISERs, and IISc} \hfill 2016 \\
-Invited by the President of India to represent IISER Bhopal
-
-\noindent
-\textbf{Science Academies' Summer Research Fellowship} \hfill 2015 \& 2016 \\
-Indian Academy of Sciences, Indian National Science Academy, and National Academy of Sciences, India
-
-\noindent
-\textbf{World Science Conference, Israel} \hfill 2015 \\
-Hebrew University of Jerusalem; member of a 15-person Indian contingent
-
-\noindent
-\textbf{INSPIRE Scholarship for Higher Education} \hfill 2012 -- 2017 \\
-Department of Science \& Technology, Government of India
-
-%------------------------
-% Research Grants
-%------------------------
-\section*{RESEARCH GRANTS}
-
-\noindent
-\textbf{Research Initiation Grant (RIG)} \hfill 2026 -- 2027 \\
-IIT Jodhpur \\
+\entry{2026--2027}{\textbf{Research Initiation Grant (RIG)}, IIT Jodhpur \\
 Amount: Rs.\ 4{,}00{,}000 \\
-Role: Principal Investigator
+Role: Principal Investigator}
+
+%------------------------
+% Research supervision
+%------------------------
+\cvsection{Research Supervision}
+
+\cvsubsection{PhD Students}
+
+\entry{2026--present}{\textbf{Piyush Joshi} \\
+Department of Mathematics, IIT Jodhpur; enrolled Autumn 2026--27}
+
+\entry{2026--present}{\textbf{Yash Chawda} \\
+Department of Mathematics, IIT Jodhpur; enrolled Spring 2025--26}
+
+\entry{2025--present}{\textbf{Vishnu Kumar} \\
+Department of Mathematics, IIT Jodhpur; enrolled Autumn 2025--26}
+
+\cvsubsection{Student Awards}
+
+\entry{2026}{Contributed talks by Yash Chawda and Vishnu Kumar were shortlisted for the Prof.\ S.~S.~Shrikhande Memorial Endowment and Prof.\ R.~Balakrishnan Endowment Best Paper Awards, and Yash Chawda won the Prof.\ S.~S.~Shrikhande Memorial Endowment Best Paper Award. \\
+22nd Annual Conference of the ADMA \& International Conference on Discrete Mathematics, IIT Madras}
+
+\iffull
+\cvsubsection{Executive MTech Projects}
+
+\entry{2026--2027}{\textbf{Renuka K} \\
+Executive MTech (Data Engineering) \\
+School of Artificial Intelligence and Data Science, IIT Jodhpur}
+
+\entry{2025--2026}{\textbf{Rayipalli Prakash} \\
+Executive MTech (Data and Computational Sciences) \\
+School of Artificial Intelligence and Data Science, IIT Jodhpur \\
+Project: ``GNN-Based Automatic Calorie Identification from Food Images''}
+
+\entry{2025--2026}{\textbf{Md Parvez Rahaman} \\
+Executive MTech (Data and Computational Sciences) \\
+School of Artificial Intelligence and Data Science, IIT Jodhpur \\
+Project: ``AI-Based Text Summarization and Tone Rewriting System Using BART and T5''}
+
+\cvsubsection{Summer Interns: SURAJ Program}
+
+\entry{Summer 2026}{\textbf{Vaibhav Suvagiya} \\
+Sardar Vallabhbhai National Institute of Technology, Surat \\
+Project: ``RAMO: A Verified MaxSAT Repair Oracle for Tabu Search on Ramsey 2-Colouring, A De-Confounded Negative Result''}
+
+\entry{Summer 2026}{\textbf{B.~James Mejulan} \\
+Sardar Vallabhbhai National Institute of Technology, Surat \\
+Project: ``Generators and Relations for Discrete Groups''}
+
+\cvsubsection{Other Interns}
+
+\entry{Summer 2026}{\textbf{Sai Akshar Tadimeti} \\
+IIT Jodhpur \\
+Reading Project: Discrete mathematics, from Rosen's \emph{Discrete Mathematics and Its Applications}}
+\else
+\cvsubsection{Other Supervision}
+
+\entry{2025--2027}{Executive MTech projects: Renuka K, Rayipalli Prakash, Md Parvez Rahaman \\
+School of Artificial Intelligence and Data Science, IIT Jodhpur}
+
+\entry{Summer 2026}{Summer interns: Vaibhav Suvagiya and B.~James Mejulan (SURAJ Program); Sai Akshar Tadimeti (reading project)}
+\fi
+
+%------------------------
+% Awards and honors
+%------------------------
+\cvsection{Fellowships, Awards and Honors}
+
+\entry{Aug 2024--Feb 2025}{Institute Post-Doctoral Fellowship, IIT Bombay}
+
+\entry{2018--2023}{National Board for Higher Mathematics (NBHM) Research Award \\
+Department of Atomic Energy, Government of India}
+
+\entry{2017}{Joint CSIR--UGC National Eligibility Test for Junior Research Fellowship \\
+CSIR -- Human Resource Development Group; All-India Rank 20 in Mathematical Sciences}
+
+\entry{2017}{Director's Gold Medal, IISER Bhopal \\
+Awarded for outstanding all-round achievement and leadership in the BS--MS graduating class}
+
+\iffull
+\entry{2016}{Rashtrapati Bhavan In-Residence Program for Scholars from IITs, IISERs, and IISc \\
+Invited by the President of India to represent IISER Bhopal}
+
+\entry{2015, 2016}{Science Academies' Summer Research Fellowship \\
+Indian Academy of Sciences, Indian National Science Academy, and National Academy of Sciences, India}
+
+\entry{2015}{World Science Conference, Israel \\
+Hebrew University of Jerusalem; member of a 15-person Indian contingent}
+
+\entry{2012--2017}{INSPIRE Scholarship for Higher Education \\
+Department of Science \& Technology, Government of India}
+\fi
 
 %------------------------
 % Talks
 %------------------------
-\section*{INVITED TALKS AND PARTICIPATION}
+\cvsection{Talks}
 
-\subsection*{Technical Talks}
+\cvsubsection{Research Talks}
 
-\noindent
-\textbf{Teaching logical statements at the undergraduate level: Why one common definition gets in the way} \hfill 2026 \\
-Conference on the Practice of Teaching Undergraduate Mathematics, Krea University, Sri City
+\iffull\else\begin{compactentries}\fi
 
-\noindent
-\textbf{Intersection Graphs and Path Representations} \hfill 2026 \\
-15th Prof.\ E.\ Sampathkumar Memorial Endowment Lecture, 22nd Annual Conference of the ADMA \& International Conference on Discrete Mathematics, IIT Madras
+\entry{2026}{\emph{Intersection Graphs and Path Representations} \\
+15th Prof.\ E.~Sampathkumar Memorial Endowment Lecture, 22nd Annual Conference of the ADMA \& International Conference on Discrete Mathematics, IIT Madras}
 
-\noindent
-\textbf{Tight bounds on the Carath\'eodory and exchange numbers for \(\triangle\)-convexity spaces} \hfill 2026 \\
-Annual Meru Combinatorics Conference, IIT Bhilai
+\entry{2026}{\emph{Tight bounds on the Carath\'eodory and exchange numbers for \(\triangle\)-convexity spaces} \\
+Annual Meru Combinatorics Conference, IIT Bhilai}
 
-\noindent
-\textbf{Competency-based Learning in Mathematics} \hfill 2026 \\
-Session at the STEM Teacher Training Program, organized (in association with Jodhpur Zila Parishad and Shiksha Vibhag) by the Centre for Education Technology, IIT Jodhpur
+\entry{2025}{\emph{Nonstandard analysis: a gentle introduction} \\
+Discussion Meeting on Number Theory and Combinatorics, Evolve Back, Coorg}
 
-\noindent
-\textbf{Nonstandard analysis: a gentle introduction} \hfill 2025 \\
-Discussion Meeting on Number Theory and Combinatorics, Evolve Back, Coorg
+\entry{2025}{\emph{Bisection-closed families, tournaments, and symmetric designs} \\
+Geometry, Probability, and Algorithms, International Centre for Theoretical Sciences, Bengaluru}
 
-\noindent
-\textbf{Bisection-closed families, tournaments, and symmetric designs} \hfill 2025 \\
-Geometry, Probability, and Algorithms, International Centre for Theoretical Sciences, Bengaluru
+\entry{2025}{\emph{Sunflowers and symmetric designs} \\
+Research Seminar, Department of Mathematics, IIT Jodhpur}
 
-\noindent
-\textbf{Sunflowers and symmetric designs} \hfill 2025 \\
-Research Seminar, Department of Mathematics, IIT Jodhpur
+\entry{2024}{\emph{Sunflowers and symmetric designs} \\
+Research Associate Seminar, Theoretical Statistics and Mathematics Unit, Indian Statistical Institute, Bangalore Centre}
 
-\noindent
-\textbf{Sunflowers and symmetric designs} \hfill 2024 \\
-Research Associate Seminar, Theoretical Statistics and Mathematics Unit, Indian Statistical Institute, Bangalore Centre
+\entry{2024}{\emph{Some recent work on fractional intersecting families} \\
+Annual Meru Combinatorics Conference, Graphic Era Hill University, Bhimtal Campus}
 
-\noindent
-\textbf{Some recent work on fractional intersecting families} \hfill 2024 \\
-Annual Meru Combinatorics Conference, Graphic Era Hill University, Bhimtal Campus
+\entry{2024}{\emph{Sunflowers, tournaments, and symmetric designs} \\
+Institute Post-Doctoral Fellowship Seminar, Department of Mathematics, IIT Bombay}
 
-\noindent
-\textbf{Sunflowers, tournaments, and symmetric designs} \hfill 2024 \\
-Institute Post-Doctoral Fellowship Seminar, Department of Mathematics, IIT Bombay
+\entry{2024}{\emph{Some recent work on fractional intersecting families} \\
+CSE Research Symposium, IIT Palakkad}
 
-\noindent
-\textbf{Some recent work on fractional intersecting families} \hfill 2024 \\
-CSE Research Symposium, IIT Palakkad
+\entry{2021}{\emph{Some problems in list-colorings of graphs} \\
+Combinatorics Seminar, Department of Mathematics, IIT Bombay (online)}
+\iffull\else\end{compactentries}\fi
 
-\subsection*{Popular and Expository Talks}
+\cvsubsection{Pedagogy Talks}
 
-\noindent
-\textbf{What Is Combinatorial Thinking?} \hfill 2026 \\
-Summer School for Women in Mathematics and Statistics, ICTS Bengaluru
+\iffull\else\begin{compactentries}\fi
 
-\noindent
-\textbf{A Combinatorial Gem of Maryam Mirzakhani: List Colorings of Planar Graphs} \hfill 2026 \\
-One Day Symposium Celebrating Women in Mathematics, IIT Jodhpur
+\entry{2026}{\emph{Teaching logical statements at the undergraduate level: Why one common definition gets in the way} \\
+Conference on the Practice of Teaching Undergraduate Mathematics, Krea University, Sri City}
 
-\noindent
-\textbf{Counting the Infinite} \hfill 2025 \\
-National Mathematics Day Guest Lecture, Government College Makroniya Bujurg, Sagar, Madhya Pradesh (online)
+\entry{2026}{\emph{Competency-based Learning in Mathematics} \\
+Session at the STEM Teacher Training Program, organized (in association with Jodhpur Zila Parishad and Shiksha Vibhag) by the Centre for Education Technology, IIT Jodhpur}
+\iffull\else\end{compactentries}\fi
 
-\noindent
-\textbf{A Glimpse of Infinity} \hfill 2020 \\
-National Mathematics Day Webinar, Raja Bhoj Govt.\ College Katangi, Balaghat, Madhya Pradesh (online)
+\iffull
+\cvsubsection{Popular Talks}
 
-\subsection*{Research Discussion Groups}
+\entry{2026}{\emph{What Is Combinatorial Thinking?} \\
+Summer School for Women in Mathematics and Statistics, International Centre for Theoretical Sciences, Bengaluru}
 
-\noindent
-\textbf{Leader, Majority coloring game on trees} \hfill 2026 \\
-MATRIX-MFO Tandem Workshop: Combinatorial Interchange, MATRIX, Creswick, Australia
+\entry{2026}{\emph{A Combinatorial Gem of Maryam Mirzakhani: List Colorings of Planar Graphs} \\
+One Day Symposium Celebrating Women in Mathematics, IIT Jodhpur}
 
-\noindent
-\textbf{Participant, List packing conjecture} \hfill 2026 \\
-MATRIX-MFO Tandem Workshop: Combinatorial Interchange, MATRIX, Creswick, Australia
+\entry{2025}{\emph{Counting the Infinite} \\
+National Mathematics Day Guest Lecture, Government College Makroniya Bujurg, Sagar, Madhya Pradesh (online)}
 
-\noindent
-\textbf{Leader, Extremal problems on fractional intersecting families} \hfill 2026 \\
-Conference on Frontiers in Combinatorics -- Topology, Algebra and Data-Driven Insights, BITS Pilani, Pilani Campus
-
+\entry{2020}{\emph{A Glimpse of Infinity} \\
+National Mathematics Day Webinar, Raja Bhoj Government College Katangi, Balaghat, Madhya Pradesh (online)}
+\fi
 
 %------------------------
-% Events Organized
+% Teaching
 %------------------------
-\section*{EVENTS ORGANIZED}
+\cvsection{Teaching}
 
-\noindent
-\textbf{Screening of \emph{Secrets of the Surface: The Mathematical Vision of Maryam Mirzakhani}} \hfill 2026 \\
-Documentary film by George Csicsery; screening organized under the Mathematics Society as a follow-up to the One Day Symposium Celebrating Women in Mathematics \\
-Department of Mathematics, IIT Jodhpur
+\cvsubsection{Instructor: IIT Jodhpur}
 
-\noindent
-\textbf{Career Opportunities Beyond Academia} \hfill 2026 \\
-One-day interaction session with industry mathematicians \\
-Department of Mathematics, IIT Jodhpur
+\begin{compactentries}
+\entry{Autumn 2026--27}{MAL7060 Statistics for Data Science}
+\entry{Autumn 2026--27}{MAL6150 Probability and Statistics}
+\entry{Autumn 2026--27}{MAL3040 Statistics}
+\entry{Spring 2025--26}{MAL2040 Design and Analysis of Experiments \\
+49 students; overall instructor rating 3.70/5.0 (mean), median 4 across all dimensions}
+\end{compactentries}
 
-\noindent
-\textbf{An Introductory Workshop on the Lean Theorem Prover} \hfill 2026 \\
-Three-day workshop led by T.~V.~H.\ Prathamesh (Krea University);
-co-organized with D.\ Kaur and K.\ Goel \\
-Department of Mathematics, IIT Jodhpur
+\iffull
+\cvsubsection{Teaching Assistant: IIT Hyderabad}
 
-%------------------------
-% Teaching Experience
-%------------------------
-\section*{TEACHING EXPERIENCE}
+\begin{compactentries}
+\entry{Autumn 2025--26}{MA5020 Functional Analysis}
+\end{compactentries}
 
-\subsection*{Instructor: IIT Jodhpur}
+\cvsubsection{Teaching Assistant: IIT Bombay}
 
-\noindent
-MAL7060 Statistics for Data Science \hfill Autumn 2026--27
+\begin{compactentries}
+\entry{Autumn 2024--25}{SI 419 Combinatorics}
+\entry{Spring 2021--22}{SI 416 Optimization}
+\entry{Autumn 2021--22}{SI 419 Combinatorics}
+\entry{Autumn 2021--22}{MA 205 Complex Analysis}
+\entry{Summer 2020--21}{MA 108 Differential Equations}
+\entry{Spring 2020--21}{MA 106 Linear Algebra}
+\entry{Spring 2020--21}{MA 111 Calculus II}
+\entry{Autumn 2020--21}{MA 207 Differential Equations II}
+\entry{Autumn 2020--21}{MA 205 Complex Analysis}
+\entry{Spring 2019--20}{MA 108 Differential Equations}
+\entry{Spring 2019--20}{MA 106 Linear Algebra}
+\entry{Autumn 2019--20}{MA 207 Differential Equations II}
+\entry{Autumn 2019--20}{MA 205 Complex Analysis}
+\end{compactentries}
 
-\noindent
-MAL6150 Probability and Statistics \hfill Autumn 2026--27
+\cvsubsection{Other Teaching}
 
-\noindent
-MAL3040 Statistics \hfill Autumn 2026--27
+\entry{2022}{TA Skill Enhancement \& Training (Master TA) \\
+Parimal and Pramod Chaudhari Centre for Learning and Teaching, IIT Bombay}
 
-\noindent
-MAL2040 Design and Analysis of Experiments \hfill Spring 2025--26 \\
-49 students; overall instructor rating 3.70/5.0 (mean), median 4 across all dimensions
+\entry{2020}{A Basic Course in Number Theory (TA) \\
+NPTEL Online Certification course}
+\else
+\cvsubsection{Teaching Assistant}
 
-\subsection*{Teaching Assistant: IIT Hyderabad}
-
-\noindent
-MA5020 Functional Analysis \hfill Autumn 2025--26
-
-\subsection*{Teaching Assistant: IIT Bombay}
-
-\noindent
-SI 419 Combinatorics \hfill Autumn 2024--25, Autumn 2021--22 \\
-SI 416 Optimization \hfill Spring 2021--22 \\
-MA 205 Complex Analysis \hfill Autumn 2021--22, Autumn 2020--21, Autumn 2019--20 \\
-MA 207 Differential Equations II \hfill Autumn 2020--21, Autumn 2019--20 \\
-MA 108 Differential Equations \hfill Summer 2020--21, Spring 2019--20 \\
-MA 106 Linear Algebra \hfill Spring 2020--21, Spring 2019--20 \\
-MA 111 Calculus II \hfill Spring 2020--21
-
-\subsection*{Other Teaching and Mentoring}
-
-\noindent
-\textbf{Summer School for Women in Mathematics and Statistics (Resource Person)} \hfill 2026 \\
-International Centre for Theoretical Sciences, Bengaluru
-
-\noindent
-\textbf{Masterminds Program (Trainer)} \hfill 2023--24, 2024--25 \\
-UAE IMO selection camp, Ministry of Education, UAE \\
-Topics: combinatorics and number theory
-
-\noindent
-\textbf{Self-Assessment Team (Member)} \hfill 2023 \\
-Mathematics Training and Talent Search Programme (MTTS)
-
-\noindent
-\textbf{Online Foundation Course in Mathematics (Mentor)} \hfill 2023 \\
-Mathematics Training and Talent Search Programme (MTTS)
-
-\noindent
-\textbf{Online Short Course in Linear Algebra: Application View (Mentor)} \hfill 2023 \\
-Mathematics Training and Talent Search Programme (MTTS)
-
-\noindent
-\textbf{Study-Help Room (Co-organizer)} \hfill 2023 \\
-Department of Mathematics, IIT Bombay \\
-Weekly drop-in math help for BS and MSc students
-
-\noindent
-\textbf{TA Skill Enhancement \& Training (Master TA)} \hfill 2022 \\
-Parimal and Pramod Chaudhari Centre for Learning and Teaching, IIT Bombay
-
-\noindent
-\textbf{A Basic Course in Number Theory (TA)} \hfill 2020 \\
-NPTEL Online Certification course
+\entry{2019--2025}{Teaching assistant for thirteen semester-long course offerings at IIT Bombay and one at IIT Hyderabad, in combinatorics, optimization, complex analysis, differential equations, linear algebra, calculus and functional analysis}
+\fi
 
 %------------------------
-% Professional Service
+% Professional service
 %------------------------
-\section*{PROFESSIONAL SERVICE}
+\cvsection{Professional Service}
 
-\subsection*{Memberships}
+\cvsubsection{Editorial}
 
-\noindent
-Life Member, Academy of Discrete Mathematics and Applications \hfill 2026 -- present
+\entry{2026--present}{Managing Editor, Australasian Journal of Combinatorics}
 
-\noindent
-Associate Fellow, The Institute of Combinatorics and its Applications \hfill 2026 -- present
+\cvsubsection{Reviewing}
 
-\noindent
-Life Member, The Indian Mathematical Society \hfill 2026 -- present
-
-\noindent
-Life Member, Mathematics Teachers' Association (India) \hfill 2026 -- present
-
-\noindent
-Affiliate Member, American Mathematical Society \hfill 2026 -- present
-
-\subsection*{Reviewing}
-
-\noindent
-Hacettepe Journal of Mathematics and Statistics \hfill 2026 -- present
-
-\noindent
-Theoretical Computer Science \hfill 2026 -- present
-
-\noindent
-Indian Journal of Pure and Applied Mathematics \hfill 2025 -- present
-
-\noindent
-Acta Informatica \hfill 2025 -- present
-
-\noindent
-Proceedings -- Mathematical Sciences (Indian Academy of Sciences) \hfill 2024 -- present
-
-\noindent
-Mathematical Reviews / MathSciNet \hfill 2023 -- present 
+\iffull
+\begin{compactentries}
+\entry{2026--present}{Hacettepe Journal of Mathematics and Statistics}
+\entry{2026--present}{Theoretical Computer Science}
+\entry{2025--present}{Indian Journal of Pure and Applied Mathematics}
+\entry{2025--present}{Acta Informatica}
+\entry{2024--present}{Proceedings -- Mathematical Sciences (Indian Academy of Sciences)}
+\entry{2023--present}{Mathematical Reviews / MathSciNet}
 % Reviewer Number: \href{https://mathscinet.ams.org/mathscinet/publications-search?query=rn:"Sankarnarayanan Brahadeesh"}{169002}
-
-\noindent
-zbMATH Open \hfill 2022 -- present 
+\entry{2022--present}{zbMATH Open}
 % Reviewer ID: \href{https://zbmath.org/?q=rv:19671}{19671}
+\entry{2020--present}{Conference on Algorithms and Discrete Applied Mathematics (CALDAM), subreviewer}
+\end{compactentries}
+\else
+\entry{2020--present}{Referee for Theoretical Computer Science, Acta Informatica, Hacettepe Journal of Mathematics and Statistics, Indian Journal of Pure and Applied Mathematics, and Proceedings -- Mathematical Sciences; subreviewer for CALDAM; reviewer for Mathematical Reviews / MathSciNet and zbMATH Open}
+\fi
 
-\noindent
-Conference on Algorithms and Discrete Applied Mathematics (CALDAM) \hfill 2020 -- present
+\cvsubsection{Conference Roles}
 
-\subsection*{Session Chair}
+\entry{2026}{Leader, discussion group on \emph{Majority coloring game on trees} \\
+MATRIX--MFO Tandem Workshop: Combinatorial Interchange, MATRIX, Creswick, Australia}
 
-\noindent
-\textbf{Keynote session} \hfill 2026 \\
-K.\ Kant (ABV-IIITM Gwalior): \emph{Projection methods for Volterra and Fredholm integral equations with mixed weakly singular kernels}\\
-A.\ Jha (IIT Gandhinagar): \emph{Domain decomposition methods for implicit solvation models} \\
-Workshop on Advanced Methods in Integral Equations and Their Applications, IIT Jodhpur
+\entry{2026}{Participant, discussion group on \emph{List packing conjecture} \\
+MATRIX--MFO Tandem Workshop: Combinatorial Interchange, MATRIX, Creswick, Australia}
 
-\noindent
-\textbf{5th Prof.\ R.\ Balakrishnan Endowment Lecture} \hfill 2026 \\
-R.\ Venkatesh (IISc): \emph{How to obtain the Tutte polynomials of graphs from representation-theoretic methods?} \\
-22nd Annual Conference of the ADMA \& International Conference on Discrete Mathematics, IIT Madras
+\entry{2026}{Session chair, keynote session\iffull: \\
+K.~Kant (ABV-IIITM Gwalior), \emph{Projection methods for Volterra and Fredholm integral equations with mixed weakly singular kernels}; \\
+A.~Jha (IIT Gandhinagar), \emph{Domain decomposition methods for implicit solvation models}\fi{} \\
+Workshop on Advanced Methods in Integral Equations and Their Applications, IIT Jodhpur}
 
-%------------------------
-% Institutional Service
-%------------------------
-\section*{INSTITUTIONAL SERVICE}
+\entry{2026}{Leader, discussion group on \emph{Extremal problems on fractional intersecting families} \\
+Conference on Frontiers in Combinatorics -- Topology, Algebra and Data-Driven Insights, BITS Pilani, Pilani Campus}
 
-\subsection*{IIT Jodhpur}
-
-\noindent
-\textbf{Member, Department Postgraduate Committee (DPGC)} \hfill 2026 -- present \\
-Department of Mathematics
-
-\noindent
-\textbf{Faculty Advisor, MTech (Data and Computational Sciences)} \hfill 2026 -- present \\
-Batch of 2026--2028, Department of Mathematics
-
-\noindent
-\textbf{Member, Department-level committee for projection of new Exec.\ BS program} \hfill 2026 -- present \\
-Executive BS in Mathematics and Computing, Department of Mathematics
-
-\noindent
-\textbf{Member, Department-level committee for projection of new BS program} \hfill 2025 -- present \\
-BS in Mathematics and Computing, Department of Mathematics
-
-\noindent
-\textbf{Faculty Advisor, Mathematics Society} \hfill 2025 -- 2026 \\
-Board of Departmental Societies
-
-\subsection*{IIT Bombay}
-
-\noindent
-\textbf{Coordinator, Students' Seminar} \hfill 01/2023 -- 05/2023 \\
-Department of Mathematics
-
-\subsection*{IISER Bhopal}
-
-\noindent
-President, Students Activity Council \hfill 2016 -- 2017
-
-\noindent
-Coordinator, Mathematics Club \hfill 2013 -- 2015
+\entry{2026}{Session chair, 5th Prof.\ R.~Balakrishnan Endowment Lecture\iffull: \\
+R.~Venkatesh (IISc), \emph{How to obtain the Tutte polynomials of graphs from representation-theoretic methods?}\fi{} \\
+22nd Annual Conference of the ADMA \& International Conference on Discrete Mathematics, IIT Madras}
 
 %------------------------
-% Conferences, Workshops & External Courses Attended
+% Institutional service
 %------------------------
-\section*{CONFERENCES, WORKSHOPS \& EXTERNAL COURSES ATTENDED}
+\cvsection{Institutional Service}
 
-\noindent
-\textbf{MATRIX--MFO Tandem Workshop: Combinatorial Interchange} \hfill 2026 \\
-MATRIX, Creswick, Australia (held simultaneously with MFO, Oberwolfach)
+\cvsubsection{IIT Jodhpur}
 
-\noindent
-\textbf{5th International Conference on Enumerative Combinatorics and Applications} \hfill 2026 \\
-University of Haifa, Israel (online)
+\entry{2026--present}{Member, Department Postgraduate Committee (DPGC), Department of Mathematics}
 
-\noindent
-\textbf{Conference on Frontiers in Combinatorics -- Topology, Algebra and Data-Driven Insights} \hfill 2026 \\
-BITS Pilani, Pilani Campus
+\entry{2026--present}{Faculty Advisor, MTech (Data and Computational Sciences), Batch of 2026--2028, Department of Mathematics}
 
-\noindent
-\textbf{Indian School on Logic and Applications (ISLA)} \hfill 2026 \\
-Krea University, Sri City
+\entry{2026--present}{Member, Department-level committee for projection of new Executive BS program in Mathematics and Computing, Department of Mathematics}
 
-\noindent
-\textbf{Annual Meru Combinatorics Conference} \hfill 2026 \\
-IIT Bhilai
+\entry{2025--present}{Member, Department-level committee for projection of new BS program in Mathematics and Computing, Department of Mathematics}
 
-\noindent
-\textbf{LeanLang for Verified Autonomy Hackathon} \hfill 2026 \\
-Emergence Research Lab, IISc Bangalore
+\entry{2025--2026}{Faculty Advisor, Mathematics Society, Board of Departmental Societies}
 
-\noindent
-\textbf{Indo-Polish Pre-Conference School on Algorithms and Combinatorics} \hfill 2026 \\
-IIT Dharwad
+\iffull
+\cvsubsection{IIT Bombay}
 
-\noindent
-\textbf{Discussion Meeting on Number Theory and Combinatorics} \hfill 2025 \\
-Evolve Back, Coorg
+\entry{Jan--May 2023}{Coordinator, Students' Seminar, Department of Mathematics}
 
-\noindent
-\textbf{Topics in Geometric Combinatorics (NCM Workshop)} \hfill 2025 \\
-Chennai Mathematical Institute
+\entry{2023}{Co-organizer, Study-Help Room, Department of Mathematics \\
+Weekly drop-in math help for BS and MSc students}
 
-\noindent
-\textbf{Annual Meru Combinatorics Conference} \hfill 2025 \\
-BITS Pilani, K.~K.\ Birla Goa Campus
+\cvsubsection{IISER Bhopal}
 
-\noindent
-\textbf{Geometry, Probability, and Algorithms} \hfill 2025 \\
-International Centre for Theoretical Sciences, Bengaluru
+\begin{compactentries}
+\entry{2016--2017}{President, Students Activity Council}
+\entry{2015}{Head, Printing and Publicity Committee, Inter-IISER Sports Meet 2015}
+\entry{2014--2015}{Associate Editor (English), \emph{Uday -- The Ascent}, institute magazine, 5th edition}
+\entry{2013--2015}{Coordinator, Mathematics Club}
+\entry{2013--2015}{Coordinator, Chess Club}
+\entry{2013--2015}{Coordinator, Book Club}
+\entry{2013--2014}{Vice-Secretary, Cultural Council}
+\entry{2012--2014}{Coordinator, Table-Tennis Club}
+\end{compactentries}
+\fi
 
-\noindent
-\textbf{HDXs and Codes} \hfill 2025 \\
-International Centre for Theoretical Sciences, Bengaluru
+\iffull
+%------------------------
+% Events organized (full CV only)
+%------------------------
+\cvsection{Events Organized}
 
-\noindent
-\textbf{Lean for the Curious Mathematician} \hfill 2025 \\
-International Centre for Theoretical Sciences, Bengaluru
+\cvsubsection{IIT Jodhpur}
 
-\noindent
-\textbf{Sparse graphs: treewidth, planarity, bounded expansion (GIAN)} \hfill 2025 \\
-IIT Dharwad
+\entry{2026}{Screening of \emph{Secrets of the Surface: The Mathematical Vision of Maryam Mirzakhani} \\
+Documentary film by George Csicsery}
 
-\noindent
-\textbf{Combinatorial Methods in Enumerative Algebra} \hfill 2024 \\
-International Centre for Theoretical Sciences, Bengaluru
+\entry{2026}{Career Opportunities Beyond Academia \\
+One-day interaction session with industry mathematicians}
 
-\noindent
-\textbf{Discrete Integrable Systems} \hfill 2024 \\
-International Centre for Theoretical Sciences, Bengaluru
+\entry{2026}{An Introductory Workshop on the Lean Theorem Prover \\
+Three-day workshop led by T.~V.~H.~Prathamesh (Krea University); co-organized with D.~Kaur and K.~Goel}
 
-\noindent
-\textbf{Annual Meru Combinatorics Conference} \hfill 2024 \\
-Graphic Era Hill University, Bhimtal Campus
+\cvsubsection{IISER Bhopal}
 
-\noindent
-\textbf{A First Second Course in the Probabilistic Method} \hfill 2024 \\
-IIT Palakkad
+\entry{2014}{Singularity (first edition), annual science festival \\
+Core Committee Member}
 
-\noindent
-\textbf{Annual Meru Combinatorics Conference} \hfill 2023 \\
-Pondicherry University
+\entry{2014}{Virasat, cultural festival of SPIC MACAY \\
+Co-organized with MANIT Bhopal}
+\fi
 
-\noindent
-\textbf{Conference on Algorithms and Discrete Applied Mathematics (CALDAM)} \hfill 2023 \\
-Dhirubhai Ambani Institute of Information and Communication Technology, Gandhinagar
+\iffull
+%------------------------
+% Outreach (full CV only)
+%------------------------
+\cvsection{Outreach}
 
-\noindent
-\textbf{Indo-Dutch Pre-Conference School on Algorithms and Combinatorics} \hfill 2023 \\
-Dhirubhai Ambani Institute of Information and Communication Technology, Gandhinagar
+\entry{2026}{Summer School for Women in Mathematics and Statistics (Resource Person) \\
+International Centre for Theoretical Sciences, Bengaluru}
+
+\entry{2023--2025}{Masterminds Program (Trainer) \\
+UAE IMO selection camp, Ministry of Education, UAE \\
+Topics: combinatorics and number theory}
+
+\entry{2023}{Self-Assessment Team (Member) \\
+Mathematics Training and Talent Search Programme}
+
+\entry{2023}{Online Foundation Course in Mathematics (Mentor) \\
+Mathematics Training and Talent Search Programme}
+
+\entry{2023}{Online Short Course in Linear Algebra: Application View (Mentor) \\
+Mathematics Training and Talent Search Programme}
+
+\entry{2023}{``Bulb Your Ideas'', Infinity 2023 (Co-judge) \\
+Aditya Birla World Academy, Mumbai}
+
+\entry{2020}{``Superhero Teacher'', Teach.erat.hon 2020 (Co-judge) \\
+Lilavatibai Podar Senior Secondary School, Mumbai (online)}
+\fi
+
+%------------------------
+% Professional memberships
+%------------------------
+\cvsection{Professional Memberships}
+
+\iffull
+\begin{compactentries}
+\entry{2026--present}{Life Member, Academy of Discrete Mathematics and Applications}
+\entry{2026--present}{Associate Fellow, The Institute of Combinatorics and its Applications}
+\entry{2026--present}{Life Member, The Indian Mathematical Society}
+\entry{2026--present}{Life Member, Mathematics Teachers' Association (India)}
+\entry{2026--present}{Affiliate Member, American Mathematical Society}
+\end{compactentries}
+\else
+Associate Fellow, The Institute of Combinatorics and its Applications;
+Affiliate Member, American Mathematical Society;
+Life Member, Academy of Discrete Mathematics and Applications, The Indian Mathematical Society, and Mathematics Teachers' Association (India).
+\fi
+
+\iffull
+%------------------------
+% Expository writing (full CV only)
+%------------------------
+\cvsection{Expository Writing}
+
+\entry{2026}{\emph{Infinitesimal Analysis in the Engineer's Education} \\
+TechScape: The Science, Technology and Education Journal \textbf{6} (2026), no.~2, 46--49 \\
+\hindititle{अभियांत्रिकी शिक्षा में अति-सूक्ष्म विश्लेषण}%
+Hindi translation in the Hindi edition, pp.~47--50, prepared under the supervision of the Translation Team: Jai Narayan Tripathi, Mayank Suman and Nootan Singh}
+
+%------------------------
+% Conferences attended (full CV only)
+%------------------------
+\cvsection{Conferences, Workshops and External Courses Attended}
+
+\entry{2026}{MATRIX--MFO Tandem Workshop: Combinatorial Interchange \\
+MATRIX, Creswick, Australia (held simultaneously with MFO, Oberwolfach)}
+
+\entry{2026}{5th International Conference on Enumerative Combinatorics and Applications \\
+University of Haifa, Israel (online)}
+
+\entry{2026}{Conference on Frontiers in Combinatorics -- Topology, Algebra and Data-Driven Insights \\
+BITS Pilani, Pilani Campus}
+
+\entry{2026}{Indian School on Logic and Applications (ISLA) \\
+Krea University, Sri City}
+
+\entry{2026}{Annual Meru Combinatorics Conference \\
+IIT Bhilai}
+
+\entry{2026}{LeanLang for Verified Autonomy Hackathon \\
+Emergence Research Lab, IISc}
+
+\entry{2026}{Indo-Polish Pre-Conference School on Algorithms and Combinatorics \\
+IIT Dharwad}
+
+\entry{2025}{Discussion Meeting on Number Theory and Combinatorics \\
+Evolve Back, Coorg}
+
+\entry{2025}{Topics in Geometric Combinatorics (NCM Workshop) \\
+Chennai Mathematical Institute}
+
+\entry{2025}{Annual Meru Combinatorics Conference \\
+BITS Pilani, K.~K.~Birla Goa Campus}
+
+\entry{2025}{Geometry, Probability, and Algorithms \\
+International Centre for Theoretical Sciences, Bengaluru}
+
+\entry{2025}{HDXs and Codes \\
+International Centre for Theoretical Sciences, Bengaluru}
+
+\entry{2025}{Lean for the Curious Mathematician \\
+International Centre for Theoretical Sciences, Bengaluru}
+
+\entry{2025}{Sparse graphs: treewidth, planarity, bounded expansion (GIAN) \\
+IIT Dharwad}
+
+\entry{2024}{Combinatorial Methods in Enumerative Algebra \\
+International Centre for Theoretical Sciences, Bengaluru}
+
+\entry{2024}{Discrete Integrable Systems \\
+International Centre for Theoretical Sciences, Bengaluru}
+
+\entry{2024}{Annual Meru Combinatorics Conference \\
+Graphic Era Hill University, Bhimtal Campus}
+
+\entry{2024}{A First Second Course in the Probabilistic Method \\
+IIT Palakkad}
+
+\entry{2023}{Annual Meru Combinatorics Conference \\
+Pondicherry University}
+
+\entry{2023}{Conference on Algorithms and Discrete Applied Mathematics (CALDAM) \\
+Dhirubhai Ambani University, Gandhinagar}
+
+\entry{2023}{Indo-Dutch Pre-Conference School on Algorithms and Combinatorics \\
+Dhirubhai Ambani University, Gandhinagar}
+
+\entry{2019}{Indian Women and Mathematics: Regional Workshop on Research and Opportunities \\
+Homi Bhabha Centre for Science Education, Mumbai}
+
+\entry{2019}{Diamond Jubilee Symposium, Department of Mathematics \\
+IIT Bombay}
+
+\entry{2018}{Inter IISER-NISER Mathematics Meet (IINMM) \\
+IISER Bhopal}
+
+\entry{2018}{L-functions (ATM Workshop) \\
+IIT Bombay}
+
+\entry{2017}{Transcendental Numbers and Special Values of Dirichlet Series (GIAN) \\
+IIT Ropar}
+
+\entry{2017}{Differential Geometry and PDEs (GIAN) \\
+IIT Kanpur}
+
+\entry{2017}{Indian Women and Mathematics: Regional Workshop on Research and Opportunities \\
+IISER Bhopal}
+
+\entry{2017}{Siegel Modular Forms and Associated Representations (GIAN) \\
+IISER Pune}
+
+\entry{2016}{Conference on Modular Forms \\
+IISER Bhopal}
+
+\entry{2016}{A Short Course on Modular Forms (GIAN) \\
+IISER Bhopal}
+
+\entry{2015}{Topology and Dynamics Conference \\
+IISER Bhopal}
+
+\entry{2014}{Winter School in Mathematics \\
+IISER Bhopal}
+
+\entry{2013}{Current Trends in Algebra \\
+IISER Bhopal}
+
+\entry{2013}{100th Indian Science Congress \\
+University of Calcutta, Kolkata}
+\fi
 
 %%------------------------
 %% References
 %%------------------------
-%\section*{REFERENCES}
+%\cvsection{References}
 %
-%\noindent
 %\textbf{Niranjan Balachandran} \\
 %Professor, Department of Mathematics, \\
 %Indian Institute of Technology Bombay, Powai, Mumbai 400076, Maharashtra, India \\
 %Email: \href{mailto:niranj@math.iitb.ac.in}{niranj@math.iitb.ac.in} \\
 %Telephone: +91 22 2576 9466
 %
-%\noindent
 %\textbf{Sivaramakrishnan Sivasubramanian} \\
 %Professor, Department of Mathematics, \\
 %Indian Institute of Technology Bombay, Powai, Mumbai 400076, Maharashtra, India \\
 %Email: \href{mailto:krishnan@math.iitb.ac.in}{krishnan@math.iitb.ac.in} \\
 %Telephone: +91 22 2576 7461
 %
-%\noindent
 %\textbf{Rogers Mathew} \\
 %Associate Professor, Department of Computer Science \& Engineering, \\
 %Indian Institute of Technology Hyderabad, Kandi, Sangareddy 502284, Telangana, India \\

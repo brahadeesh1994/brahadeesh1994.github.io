@@ -1087,6 +1087,51 @@ h2 {
 }
 
 
+/* --- Other teaching and mentoring (two-line entries) --- */
+
+.mentoring-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.mentoring-list>li {
+    padding: 10px 0;
+    border-bottom: 1px dotted var(--border);
+}
+
+.mentoring-list>li:last-child {
+    border-bottom: none;
+}
+
+.mentoring-head {
+    display: flex;
+    align-items: baseline;
+    gap: 20px;
+    font-size: 12pt;
+}
+
+.mentoring-title {
+    flex: 1;
+    color: var(--text);
+}
+
+.mentoring-term {
+    flex: 0 0 auto;
+    text-align: right;
+    color: var(--grey);
+    font-size: 11pt;
+    white-space: nowrap;
+}
+
+.mentoring-desc {
+    margin: 2px 0 0 0;
+    font-size: 11pt;
+    color: var(--grey);
+    line-height: 1.5;
+}
+
+
 /* --- Teaching list (used by Activities page for talks) --- */
 
 
@@ -1423,6 +1468,18 @@ footer {
     .course-list .course-term,
     .course-list .course-code {
         width: auto;
+    }
+
+    /* --- Teaching: other teaching and mentoring --- */
+
+    .mentoring-head {
+        flex-wrap: wrap;
+        row-gap: 2px;
+    }
+
+    .mentoring-term {
+        flex: 0 0 100%;
+        text-align: left;
     }
 
     /* --- Footer --- */
