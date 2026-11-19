@@ -114,7 +114,7 @@ nav a.nav-active {
     padding-bottom: 2px;
 }
 
-/* --- Sub-nav (About Me wing) --- */
+/* --- Sub-nav (About PI wing) --- */
 
 .subnav-wrap {
     width: 100%;
@@ -149,7 +149,7 @@ nav a.nav-active {
 }
 
 
-/* --- CAT Lab branding (left side of nav) --- */
+/* --- CAT Lab branding (top of nav) --- */
 
 .logo-area {
     display: flex;
@@ -408,7 +408,7 @@ h2 {
 }
 
 
-/* --- Inquiry checklist (Working with me) --- */
+/* --- Inquiry checklist (Join Us page) --- */
 
 .inquiry-checklist {
     margin: 12px 0 16px 0;
@@ -481,7 +481,7 @@ h2 {
     text-decoration: underline;
 }
 
-/* --- Contact section (bottom of home page) --- */
+/* --- Contact section (Join Us page) --- */
 
 .contact-section address {
     font-style: normal;
@@ -1130,9 +1130,6 @@ h2 {
     color: var(--grey);
     line-height: 1.5;
 }
-
-
-/* --- Teaching list (used by Activities page for talks) --- */
 
 
 /* ============================================================

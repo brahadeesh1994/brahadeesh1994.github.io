@@ -149,11 +149,14 @@
     <p>
         In the \(\triangle\)-convexity on a graph \(G\), the hull of a vertex set \(S\) is computed iteratively.
         Starting from \(I^0_\triangle(S)=S\), each level \(I^k_\triangle(S)\) adds every vertex outside the current set that forms a triangle with two vertices already inside.
-        The process stabilises at \(\operatorname{Hull}(S)=I^\tau_\triangle(S)\), where \(\tau\) is the <em>iteration time</em> of \(S\).
+        The process stabilizes at \(\operatorname{Hull}(S)=I^\tau_\triangle(S)\), where \(\tau\) is the <em>iteration time</em> of \(S\).
     </p>
     <p>
-        A set \(S\) is <em>Carath&eacute;odory-independent</em> if \(\operatorname{Hull}(S)\setminus\bigcup_{a\in S}\operatorname{Hull}(S\setminus\{a\})\neq\emptyset\).
+        A set \(S\) is <em>Carath&eacute;odory independent</em> if \(\operatorname{Hull}(S)\setminus\bigcup_{a\in S}\operatorname{Hull}(S\setminus\{a\})\neq\emptyset\).
         Once the full hull is displayed, use <em>Check Carath&eacute;odory</em> to step through each element \(a\in S\), watching how the union of sub-hulls gradually covers \(\operatorname{Hull}(S)\).
+    </p>
+    <p>
+        Based on a graph explorer built by Yash Chawda (PhD student, IIT Jodhpur), adapted for work with Vishnu Kumar on \(\triangle\)-convexity; see the <a href="../research.html#triangle-convexity">research description</a> for context.
     </p>
 
     <div class="explorer-wrapper">
@@ -1073,10 +1076,10 @@ function updateCaratStatus(){
     if(done){
         lines.push("");
         if(uncovered.size>0)
-            lines.push(`<strong><em>S</em> is Carath&eacute;odory-independent.</strong> `+
+            lines.push(`<strong><em>S</em> is Carath&eacute;odory independent.</strong> `+
                 `Witness set Hull(<em>S</em>)\u202f\\\u202f\u22c3\u202fHull(<em>S</em>\u202f\\\u202f{<em>a</em>}) = ${amberSpan(fmtSet(uncovered))}.`);
         else
-            lines.push(`<strong><em>S</em> is <em>not</em> Carath&eacute;odory-independent.</strong> `+
+            lines.push(`<strong><em>S</em> is <em>not</em> Carath&eacute;odory independent.</strong> `+
                 `Hull(<em>S</em>)\u202f\\\u202f\u22c3\u202fHull(<em>S</em>\u202f\\\u202f{<em>a</em>}) = \u2205.`);
     }
     div.innerHTML=lines.join("<br>");
