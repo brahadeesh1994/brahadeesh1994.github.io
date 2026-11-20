@@ -13,7 +13,7 @@
 \documentclass[a4paper,10pt]{article}
 
 \newif\iffull
-\fulltrue
+\fullfalse
 % For command-line builds: pdflatex "\def\buildshort{}\input{cv}" gives the short CV.
 \ifdefined\buildshort \fullfalse \fi
 
@@ -293,7 +293,7 @@ Communications in Algebra \textbf{47} (2019), no.~10, 4210--4215, \doi{10.1080/0
 
 \begin{publist}
 \item[{[C4]}] \emph{On the majority game chromatic number of forests and other graphs} \coauthors{Y.~Chawda and S.~G.~Nanoti}. \\
-FSTTCS 2026. In: \emph{46th IARCS Annual Conference on Foundations of Software Technology and Theoretical Computer Science}, Leibniz International Proceedings in Informatics (LIPIcs), vol.~(to appear), article~31, 22~pp., Schloss Dagstuhl -- Leibniz-Zentrum f\"ur Informatik, Wadern (2026), \doi{10.4230/LIPIcs.FSTTCS.2026.31}\fullids{, \arXiv{2609.23803}}.
+FSTTCS 2026. In: \emph{46th IARCS Annual Conference on Foundations of Software Technology and Theoretical Computer Science}, Leibniz International Proceedings in Informatics (LIPIcs), vol.~400, article~31, 22~pp., Schloss Dagstuhl -- Leibniz-Zentrum f\"ur Informatik, Wadern (2026), \doi{10.4230/LIPIcs.FSTTCS.2026.31}\fullids{, \arXiv{2609.23803}}.
 
 \item[{[C3]}] \emph{On the majority colouring game}
 \coauthors{S.~Cambie, K.~Clinch, A.~Heckel, A.~Lo, Y.~Yuditsky and G.~Zwaneveld}. \\
@@ -377,7 +377,7 @@ Department of Mathematics, IIT Jodhpur; enrolled Autumn 2025--26}
 
 \cvsubsection{Student Awards}
 
-\entry{2026}{Contributed talks by Yash Chawda and Vishnu Kumar were shortlisted for the Prof.\ S.~S.~Shrikhande Memorial Endowment and Prof.\ R.~Balakrishnan Endowment Best Paper Awards, and Yash Chawda won the Prof.\ S.~S.~Shrikhande Memorial Endowment Best Paper Award. \\
+\entry{2026}{Contributed talks by Yash Chawda and Vishnu Kumar were shortlisted for the Prof.~S.~S.~Shrikhande Memorial Endowment and Prof.~R.~Balakrishnan Endowment Best Paper Awards, and Yash Chawda won the Prof.~S.~S.~Shrikhande Memorial Endowment Best Paper Award. \\
 Annual Conference of the Academy of Discrete Mathematics and Applications \& International Conference on Discrete Mathematics, IIT Madras}
 
 \iffull
@@ -415,10 +415,10 @@ Reading Project: Discrete mathematics from Rosen's ``Discrete Mathematics and It
 \else
 \cvsubsection{Other Supervision}
 
-\entry{2025--2027}{Executive MTech projects: Renuka K, Rayipalli Prakash, Md Parvez Rahaman \\
+\entry{2025--2027}{Executive MTech projects: Renuka K, Rayipalli Prakash and Md Parvez Rahaman \\
 School of Artificial Intelligence and Data Science, IIT Jodhpur}
 
-\entry{Summer 2026}{Summer interns: Vaibhav Suvagiya and B~James Mejulan (SURAJ Program); Sai Akshar Tadimeti (reading project)}
+\entry{Summer 2026}{Summer interns: Vaibhav Suvagiya and B~James Mejulan (SURAJ Program); \mbox{Sai Akshar Tadimeti} (reading project)}
 \fi
 
 %------------------------
@@ -461,7 +461,7 @@ Department of Science \& Technology, Government of India}
 \iffull\else\begin{compactentries}\fi
 
 \entry{2026}{\emph{Intersection Graphs and Path Representations} \\
-Prof.\ E.~Sampathkumar Memorial Endowment Lecture, Annual Conference of the Academy of Discrete Mathematics and Applications \& International Conference on Discrete Mathematics, IIT Madras}
+Prof.~E.~Sampathkumar Memorial Endowment Lecture, Annual Conference of the Academy of Discrete Mathematics and Applications \& International Conference on Discrete Mathematics, IIT Madras}
 
 \entry{2026}{\emph{Tight bounds on the Carath\'eodory and exchange numbers for \(\triangle\)-convexity spaces} \\
 Annual Meru Combinatorics Conference, IIT Bhilai}
@@ -469,26 +469,44 @@ Annual Meru Combinatorics Conference, IIT Bhilai}
 \entry{2025}{\emph{Nonstandard analysis: a gentle introduction} \\
 Discussion Meeting on Number Theory and Combinatorics, Evolve Back, Coorg}
 
+\iffull
 \entry{2025}{\emph{Sunflowers and symmetric designs} \\
 Kerala School of Mathematics, Kozhikode}
+\fi
 
 \entry{2025}{\emph{Bisection-closed families, tournaments, and symmetric designs} \\
 Geometry, Probability, and Algorithms, ICTS, Bengaluru}
 
+\iffull\else
+\entry{2024--2025}{\emph{Sunflowers and symmetric designs} \\
+Kerala School of Mathematics, Kozhikode; Department of Mathematics, IIT Jodhpur; Theoretical Statistics and Mathematics Unit, Indian Statistical Institute, Bangalore Centre}
+\fi
+
+\iffull
 \entry{2025}{\emph{Sunflowers and symmetric designs} \\
 Department of Mathematics, IIT Jodhpur}
+\fi
 
+\iffull
 \entry{2024}{\emph{Sunflowers and symmetric designs} \\
 Theoretical Statistics and Mathematics Unit, Indian Statistical Institute, Bangalore Centre}
+\fi
 
+\iffull
 \entry{2024}{\emph{Some recent work on fractional intersecting families} \\
 Annual Meru Combinatorics Conference, Graphic Era Hill University, Bhimtal Campus}
+\else
+\entry{2024}{\emph{Some recent work on fractional intersecting families} \\
+Annual Meru Combinatorics Conference, Graphic Era Hill University, Bhimtal Campus; CSE Research Symposium, IIT Palakkad}
+\fi
 
 \entry{2024}{\emph{Sunflowers, tournaments, and symmetric designs} \\
 Department of Mathematics, IIT Bombay}
 
+\iffull
 \entry{2024}{\emph{Some recent work on fractional intersecting families} \\
 CSE Research Symposium, IIT Palakkad}
+\fi
 
 \entry{2023}{\emph{Bisection closed families: a hierarchical variant} \\
 Department of Computer Science and Engineering, IIT Gandhinagar}
@@ -577,6 +595,8 @@ Elective course, BSc--BEd (Mathematics Major), Integrated Teacher Education Prog
 \entry{2025}{MAL6XXX Programming Lab \\
 Core laboratory course, MSc (Mathematics); co-designed with K.~Hiremath, G.~Bhatnagar, M.~Mandal and S.~Verma}
 \else
+\cvsubsection{Course Development: IIT Jodhpur}
+
 \begin{compactentries}
 \entry{2025}{Designed four new courses at IIT Jodhpur for the BS, BSc--BEd and MSc programs}
 \end{compactentries}
@@ -633,7 +653,7 @@ NPTEL Online Certification course}
 \else
 \cvsubsection{Teaching Assistant}
 
-\entry{2019--2025}{Teaching assistant for thirteen semester-long course offerings at IIT Bombay and one at IIT Hyderabad, in combinatorics, optimization, complex analysis, differential equations, linear algebra, calculus and functional analysis}
+\entry{2019--2025}{Teaching assistant for thirteen course offerings at IIT Bombay and one at IIT Hyderabad, in combinatorics, optimization, complex analysis, differential equations, linear algebra, calculus and functional analysis}
 \fi
 
 %------------------------
@@ -661,7 +681,7 @@ NPTEL Online Certification course}
 \entry{2020--present}{Conference on Algorithms and Discrete Applied Mathematics, subreviewer}
 \end{compactentries}
 \else
-\entry{2020--present}{Referee for Theoretical Computer Science, Acta Informatica, Hacettepe Journal of Mathematics and Statistics, Indian Journal of Pure and Applied Mathematics, and Proceedings -- Mathematical Sciences; subreviewer for CALDAM; reviewer for Mathematical Reviews / MathSciNet and zbMATH Open}
+\entry{2020--present}{Referee for Hacettepe Journal of Mathematics and Statistics, Theoretical Computer Science, Indian Journal of Pure and Applied Mathematics, Acta Informatica, and Proceedings -- Mathematical Sciences (Indian Academy of Sciences); subreviewer for CALDAM; reviewer for Mathematical Reviews / MathSciNet and zbMATH Open}
 \fi
 
 \cvsubsection{Conference Roles}
@@ -680,7 +700,7 @@ Workshop on Advanced Methods in Integral Equations and Their Applications, IIT J
 \entry{2026}{Leader, discussion group on \emph{Extremal problems on fractional intersecting families} \\
 Conference on Frontiers in Combinatorics -- Topology, Algebra and Data-Driven Insights, BITS Pilani, Pilani Campus}
 
-\entry{2026}{Session chair, Prof.\ R.~Balakrishnan Endowment Lecture\iffull: \\
+\entry{2026}{Session chair, Prof.~R.~Balakrishnan Endowment Lecture\iffull: \\
 R.~Venkatesh (IISc), \emph{How to obtain the Tutte polynomials of graphs from representation-theoretic methods?}\fi{} \\
 Annual Conference of the Academy of Discrete Mathematics and Applications \& International Conference on Discrete Mathematics, IIT Madras}
 
