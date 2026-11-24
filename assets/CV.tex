@@ -113,7 +113,9 @@
 
 % Identifiers wrapped in \fullids appear only in the full CV.
 \newcommand{\fullids}[1]{\iffull#1\fi}
-\newcommand{\arXiv}[1]{\href{https://arxiv.org/abs/#1}{arXiv:#1}}
+\newcommand{\arXiv}[2][]{%
+  \href{https://arxiv.org/abs/#2}{arXiv:#2\if\relax\detokenize{#1}\relax\else\ [#1]\fi}}
+%\newcommand{\arXiv}[1]{\href{https://arxiv.org/abs/#1}{arXiv:#1}}
 \newcommand{\MR}[1]{\href{https://mathscinet.ams.org/mathscinet-getitem?mr=MR#1}{MR#1}}
 \newcommand{\Zbl}[1]{\href{https://zbmath.org/#1}{Zbl~#1}}
 
@@ -257,32 +259,32 @@ My current interests are in intersecting set systems, graph convexity, majority 
 
 \begin{publist}
 \item[{[J9]}] \emph{\(5\)-list coloring toroidal \(6\)-regular triangulations in linear time} \coauthors{N~Balachandran}. \\
-Discrete Applied Mathematics \textbf{386} (2026), 75--103, \doi{10.1016/j.dam.2026.01.032}\fullids{, \arXiv{2106.01634}, \MR{5028701}, \Zbl{1587.05041}}.
+Discrete Applied Mathematics \textbf{386} (2026), 75--103, \doi{10.1016/j.dam.2026.01.032}\fullids{, \arXiv[math.CO]{2106.01634}, \MR{5028701}, \Zbl{1587.05041}}.
 
 \item[{[J8]}] \emph{Bounded fractional intersecting families are linear in size} \coauthors{N~Balachandran and S~Das}. \\
-The Electronic Journal of Combinatorics \textbf{32} (2025), no.~3, \#P3.34, 10~pp., \doi{10.37236/12900}\fullids{, \arXiv{2402.14981}, \MR{4949605}, \Zbl{1572.05240}}.
+The Electronic Journal of Combinatorics \textbf{32} (2025), no.~3, \#P3.34, 10~pp., \doi{10.37236/12900}\fullids{, \arXiv[math.CO]{2402.14981}, \MR{4949605}, \Zbl{1572.05240}}.
 
 \item[{[J7]}] \emph{Low-rank matrices, tournaments, and symmetric designs} \coauthors{N~Balachandran}. \\
-Linear Algebra and its Applications \textbf{694} (2024), 136--147, \doi{10.1016/j.laa.2024.04.006}\fullids{, \arXiv{2401.14015}, \MR{4736676}, \Zbl{1539.05071}}.
+Linear Algebra and its Applications \textbf{694} (2024), 136--147, \doi{10.1016/j.laa.2024.04.006}\fullids{, \arXiv[math.CO]{2401.14015}, \MR{4736676}, \Zbl{1539.05071}}.
 
 \item[{[J6]}] \emph{Almost full rank matrices arising from transitive tournaments} \coauthors{N~Balachandran and S~Bhattacharya}. \\
 Linear and Multilinear Algebra \textbf{72} (2024), no.~2, 153--161, \doi{10.1080/03081087.2022.2158168}\fullids{, \MR{4703565}, \Zbl{1533.05147}}.
 
 \item[{[J5]}] \emph{On hierarchically closed fractional intersecting families}
 \coauthors{N~Balachandran, S~Bhattacharya, K~V~Kher and R~Mathew}. \\
-The Electronic Journal of Combinatorics \textbf{30} (2023), no.~4, \#P4.37, 17~pp., \doi{10.37236/11651}\fullids{, \arXiv{2211.02540}, \MR{4672585}, \Zbl{1533.05268}}.\fullids{ \\
+The Electronic Journal of Combinatorics \textbf{30} (2023), no.~4, \#P4.37, 17~pp., \doi{10.37236/11651}\fullids{, \arXiv[math.CO]{2211.02540}, \MR{4672585}, \Zbl{1533.05268}}.\fullids{ \\
 {\small The arXiv version contains an addendum.}}
 
 \item[{[J4]}] \emph{An ensemble of high-rank matrices arising from tournaments} \coauthors{N~Balachandran and S~Bhattacharya}. \\
-Linear Algebra and its Applications \textbf{658} (2023), 310--318, \doi{10.1016/j.laa.2022.11.004}\fullids{, \arXiv{2108.10871}, \MR{4513895}, \Zbl{1506.15034}}.\fullids{ \\
+Linear Algebra and its Applications \textbf{658} (2023), 310--318, \doi{10.1016/j.laa.2022.11.004}\fullids{, \arXiv[math.CO]{2108.10871}, \MR{4513895}, \Zbl{1506.15034}}.\fullids{ \\
 {\small The arXiv version contains an addendum, announced in R~A~Brualdi, ``From the Editor-in-Chief'', Linear Algebra and its Applications \textbf{684} (2024), 158--159.}}
 
 \item[{[J3]}] \emph{Note on \(4\)-coloring \(6\)-regular triangulations on the torus}. \\
-Annals of Combinatorics \textbf{26} (2022), no.~3, 559--569, \doi{10.1007/s00026-022-00573-8}\fullids{, \arXiv{2106.01037}, \MR{4473892}, \Zbl{1497.05098}}.
+Annals of Combinatorics \textbf{26} (2022), no.~3, 559--569, \doi{10.1007/s00026-022-00573-8}\fullids{, \arXiv[math.CO]{2106.01037}, \MR{4473892}, \Zbl{1497.05098}}.
 
 \item[{[J2]}] \emph{The choice number versus the chromatic number for graphs embeddable on orientable surfaces}
 \coauthors{N~Balachandran}. \\
-The Electronic Journal of Combinatorics \textbf{28} (2021), no.~4, \#P4.50, 20~pp., \doi{10.37236/10263}\fullids{, \arXiv{2102.06993}, \MR{4394670}, \Zbl{1486.05101}}.
+The Electronic Journal of Combinatorics \textbf{28} (2021), no.~4, \#P4.50, 20~pp., \doi{10.37236/10263}\fullids{, \arXiv[math.CO]{2102.06993}, \MR{4394670}, \Zbl{1486.05101}}.
 
 \item[{[J1]}] \emph{Self-dual representations of \(\mathrm{SL}(2,F)\): an approach using the Iwahori--Hecke algebra}
 \coauthors{K~Balasubramanian and K~S~Senthil Raani}. \\
@@ -293,7 +295,7 @@ Communications in Algebra \textbf{47} (2019), no.~10, 4210--4215, \doi{10.1080/0
 
 \begin{publist}
 \item[{[C4]}] \emph{On the majority game chromatic number of forests and other graphs} \coauthors{Y~Chawda and S~G~Nanoti}. \\
-FSTTCS 2026. In: \emph{46th IARCS Annual Conference on Foundations of Software Technology and Theoretical Computer Science}, Leibniz International Proceedings in Informatics (LIPIcs), vol.~400, article~31, 22~pp., Schloss Dagstuhl -- Leibniz-Zentrum f\"ur Informatik, Wadern (2026), \doi{10.4230/LIPIcs.FSTTCS.2026.31}\fullids{, \arXiv{2609.23803}}.
+FSTTCS 2026. In: Raghavan Komondoor, Ramprasad Saptharishi and James Worrell (editors), 46th IARCS Annual Conference on Foundations of Software Technology and Theoretical Computer Science, Leibniz International Proceedings in Informatics (LIPIcs), volume 400, article 18, pages 18:1--18:22, Schloss Dagstuhl -- Leibniz-Zentrum f\"ur Informatik, Dagstuhl (2026), \doi{10.4230/LIPIcs.FSTTCS.2026.18}\fullids{, \arXiv[math.CO]{2609.23803}}.
 
 \item[{[C3]}] \emph{On the majority colouring game}
 \coauthors{S~Cambie, K~Clinch, A~Heckel, A~Lo, Y~Yuditsky and G~Zwaneveld}. \\
