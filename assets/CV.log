@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999997 (TeX Live 2025) (preloaded format=xelatex 2026.5.19)  24 NOV 2026 21:01
+This is XeTeX, Version 3.141592653-2.6-0.999997 (TeX Live 2025) (preloaded format=xelatex 2026.5.19)  25 NOV 2026 18:37
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -450,7 +450,7 @@ LaTeX Font Info:    External font `cmex10' loaded for size
  [1
 
 ] [2]
-Underfull \hbox (badness 1242) in paragraph at lines 423--423
+Underfull \hbox (badness 1242) in paragraph at lines 430--430
 []\TU/lmr/m/n/10 Summer interns: Vaibhav Suvagiya and B James Mejulan (SURAJ Program);
  []
 
@@ -461,10 +461,6 @@ enddocument/afterlastpage (AED): lastpage setting LastPage.
 LaTeX2e <2025-11-01>
 L3 programming layer <2026-01-19>
  ***********
-
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
 Package rerunfilecheck Info: File `CV.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
